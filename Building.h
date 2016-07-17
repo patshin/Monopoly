@@ -15,5 +15,5 @@ class Building {
  bool getOwn();
  void setPlayer(Player* p);
  void removePlayer(Player* p);
- void notify();
+ void notify();//Notify display the change of current landing player(include function display->changeres(Building*))
 }
