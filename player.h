@@ -35,6 +35,8 @@ public:  //roll, trade, finish
   void auction(string bname, int bpos);
   void mortgage(Property* p);
   void notify();
+  void printProperties();
+  void prop_manip(Property*, string); //mor, unmor, trade
   ~Player();
 };
 //improve, set status, get block, trade, win?
