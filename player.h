@@ -30,6 +30,7 @@ public:  //roll, trade, finish
   int getCupsOwn();
   void receiveCup();
   void useCup();
+  int totalMoney();
   void bankrupt();
   bool getGameStatus();
   void auction(string bname, int bpos);
