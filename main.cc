@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <stdexcept>
 #include "controller.h"
 #include "board.h"
 #include "display.h"
@@ -11,7 +12,7 @@ int main(int argc, const char * argv[]) {
   string cmd;
   Board b;
   Textdisplay td;
-  Controller c{&b,&td,0};
+  Controller c{b,td,0};
   if(arg > 4){
     cout << "Too many arguments, program terminated." << endl;
     exit;
@@ -84,10 +85,21 @@ int main(int argc, const char * argv[]) {
 
   while (true) {
     if(c.win()){
-      cout << c.getwinner() << "is the winner" << endl;
-      if(c.win()) break;
+    	cout << c.getwinner() << "is the winner" << endl;
+      	c.clearboard();
+        cout << "Game over. Would you like to play again? Y/N";
+        char c;
+        while(cin >> c){
+        	if(c == 'N') {exit;}
+            if(c == 'Y'){
+            	c.gamestart();
+            	break;
+            }else{
+            	cout << "Command not found. Try agian:";
+            }
+        } 
     }
-    if(c.playerstatus() == stuck){
+    if(c.playerstatus() == stuck){//see player.h
       c.stuckAtTimline();
     }else{
       try{
@@ -110,7 +122,6 @@ int main(int argc, const char * argv[]) {
       }else if (cmd == "bankrupt") {
         c.dropout();
         c.display();
-        c.auction();
       }else if (cmd == "asset") {
         c.asset();
       }else if (cmd == "all"){
@@ -123,11 +134,17 @@ int main(int argc, const char * argv[]) {
         cout << "Game saved. Would you like to end the game? Y/N"
         char c;
         cin >> c;
-        if(c = 'Y') break;
+        if(c == 'Y') break;
+      }else{
+        cout << "Illegal Command. Try again:" << endl;
       }
     }
   }
 }
+
+ 
+
+
 
  
 
