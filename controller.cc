@@ -6,7 +6,16 @@
 using namespace std;
 
 
-Controller::Controller(Board &b, Textdisplay &td,int seed): board{b},td{td},playerindex{0},actionStage{0},NumOfPlayers{0},testingMode{false},seed{seed},trading{false}{} ///pass by reference???
+Controller::Controller(Board &b, Textdisplay &td,int seed): board{b},td{td},playerindex{0},actionStage{0},NumOfPlayers{0},testingMode{false},seed{seed},trading{false}{
+	characters.push_back('G');
+	characters.push_back('B');
+	characters.push_back('D');
+	characters.push_back('P');
+	characters.push_back('S');
+	characters.push_back('$');
+	characters.push_back('L');
+	characters.push_back('T');
+} ///pass by reference???
 
 Controller::~Controller(){} //need implemetations????????
 
@@ -25,14 +34,27 @@ void Controller::gamestart(){
     	}
     }
     cout << "Choose your character from Goose(G), GRT Bus(B), Tim Hortons Doughnut(D), Professor(P), Student(S), Money($), Laptop(L), Pink tie(T)" << endl;
+    int len = 8;
     for (int n = 0; n < NumOfPlayers; n++){
     	cout << "Enter the letter your character represent (case sensitive):";
 	    char c;
 	    while(cin >> c){
-	    	if(c != 'G' || c != 'B' || c != 'D' || c != 'P' || c != 'S' || c != '$' || c != 'L' || c != 'T'){
-	    		cout << "Player Not found. Please enter a player character in the list:";
-	    	}else break;
-	    }
+	    	for(int n = 0; n < len; n++){
+	    		bool found = false;
+	    		if(characters[n] == c){
+	    			characters.erase(characters.begin() + n);
+	    			found = true;
+	    			len--;
+	    			break;
+	    		}
+	    	}
+	    		if(found) break;
+	    		cout << "Player Not found or chosen. Please enter a player character in the list: ";
+	    		for (int j = 0; j < len; j++){
+	    			cout << characters[j] << ' ';
+	    		}
+	    		cout << endl;
+	    	}
 		board.attachplayers(c);//add to the board
 	}
 }
@@ -51,7 +73,7 @@ void Controller::roll(int dice1, int dice2){
 			cout << "dice1: " << dice1 << endl;
 		    cout << "dice2: " << dice2 << endl; 
 		}
-		board.switchStage();
+		//board.switchStage();
 	}else{
 		cout << "Fuck off! You are not allowed to roll." << end;
 	}
@@ -144,3 +166,6 @@ void Controller::improve(){
 void Controller::mortgage(const bool &whether){
 	board.mortgage(whether);
 }
+
+
+
