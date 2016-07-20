@@ -4,7 +4,7 @@
 #include <fstream>
 #include "CollectOSAP.h"
 using namespace std;
-CollectOSAP::CollectOSAP(int site, TextDisplay* board){
+CollectOSAP::CollectOSAP(int site, BoardDisplay* board){
  NonProperty(false, "OSAP", site, board);
 }
 void CollectOSAP::method(Player* p){

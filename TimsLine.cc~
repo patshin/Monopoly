@@ -5,7 +5,7 @@
 #include "TimsLine.h"
 using namespace std;
 
-TimLine::TimLine(int site,TextDisplay* board){
+TimLine::TimLine(int site,BoardDisplay* board){
  NonProperty(false,"TimeLine",stie,board);
 }
 void TimsLine::method(Player* p){

@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Gym.h"
 
-Gym::Gym(string name,int site, TextDisplay* board){
+Gym::Gym(string name,int site, BoardDisplay* board){
  Property(false,150,name,site,board);
  numOwn = 0; 
 }_

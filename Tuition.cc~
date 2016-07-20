@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Tuition.h"
 using namespace std;
-Tuition::Tuition(int site,TextDisplay *board){
+Tuition::Tuition(int site,BoardDisplay *board){
  NonProperty(false."Tuition",site,board);
 }
 

@@ -20,5 +20,3 @@ putlic:
  void doublebase();
  void halfbase();
 }	
-
-#endif

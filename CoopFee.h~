@@ -1,10 +1,7 @@
-#ifndef __COOPFEE_H__
-#define __COOPFEE_H__
 #include <map>
 #include "NonProperty.h"
 class CoopFee: public NonProperty{
 	public:
-CoopFee(int site, TextDisplay* board);
+CoopFee(int site, BoardDisplay* board);
 void method(Player* p);
 }
-#endif

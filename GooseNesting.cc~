@@ -4,7 +4,7 @@
 #include <fstream>
 #include "GooseNesting.h"
 using namespace std;
-GooseNesting::GooseNesting(int site, TextDisplay* board){
+GooseNesting::GooseNesting(int site, BoardDisplay* board){
  Nonproperty(false, "goose",site, board);
 }
 

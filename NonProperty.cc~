@@ -5,7 +5,7 @@
 #include "NonProperty.h"
 using namespace std;
 
-Nonproperty::NonProperty(bool ownable, string name, int site, TextDisplay* board){
+Nonproperty::NonProperty(bool ownable, string name, int site, BoardDisplay* board){
  Building(ownable,name,site,board);
  numRollup = 0;
 }

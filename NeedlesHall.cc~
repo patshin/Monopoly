@@ -4,7 +4,7 @@
 #include <fstream>
 #include "NeedlesHall.h"
 using namespace std;
-NeedlesHall::NeedlesHall(int site, TextDisplay* board){
+NeedlesHall::NeedlesHall(int site, BoardDisplay* board){
  NonProperty(false,"NeedlesHall",site, board);
 }
 void NeedlesHall::method(Player* p){

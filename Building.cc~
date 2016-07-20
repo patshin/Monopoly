@@ -5,7 +5,7 @@
 #include "Building.h"
 using namespace std;
 
-Building::Building(bool ownable,std::string name,int site,TextDisplay* display,Board* board):
+Building::Building(bool ownable,std::string name,int site,BoardDisplay* display,Board* board):
 ownable(ownable), name(name), site(site), display(display), board(board){
  curplayer.clear();
 }

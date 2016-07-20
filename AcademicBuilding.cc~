@@ -4,7 +4,7 @@
 #include <fstream>
 #include "AcademicBuilding.h"
 
-AcademicBuilding::AcademicBuilding(int price, int improveCost, int tuition[],string lock,string name, int site, TextDisplay* board ):improveCost(improveCost), tuition[tuition],lock[lock]{
+AcademicBuilding::AcademicBuilding(int price, int improveCost, int tuition[],string lock,string name, int site, BoardDisplay* board ):improveCost(improveCost), tuition[tuition],lock[lock]{
  Property(true,price,name,site,board);
 }
 int AcademicBuilding::getImproveCount(){

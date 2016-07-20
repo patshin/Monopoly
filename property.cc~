@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Property.h"
 
-Property::Property(bool Academic,int price, std::string name, int site, TextDisplay* board):Academic(Academic),price(price){
+Property::Property(bool Academic,int price, std::string name, int site, BoardDisplay* board):Academic(Academic),price(price){
  Building(true,name,site,board);
  owner = nullptr;
  mortgaged = false; 

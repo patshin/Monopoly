@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Residence.h"
 
-Residence::Residence(string name,int site, TextDisplay* board){
+Residence::Residence(string name,int site, BoardDisplay* board){
  Property(false, 200,name,site,board);
  numOwn = 0;
 }

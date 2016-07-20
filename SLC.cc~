@@ -4,7 +4,7 @@
 #include <fstream>
 #include "SLC.h"
 using namespace std;
-SLC::SLC(int site, TextDisplay* board){
+SLC::SLC(int site, BoardDisplay* board){
  NonProperty(false,"SLC",site,board);
 }
 

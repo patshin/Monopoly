@@ -5,7 +5,7 @@
 #include "CoopFee.h"
 using namespace std;
 
-CoopFee::CoopFee(int site, TextDisplay* board){
+CoopFee::CoopFee(int site, BoardDisplay* board){
  NonProperty(false, "Coop", site, board);
 }
 void CoopFee::method(Player* p){
