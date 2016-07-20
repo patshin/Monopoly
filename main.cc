@@ -14,8 +14,7 @@ int main(int argc, const char * argv[]) {
   Textdisplay td;
   Controller c{b,td,0};
   if(arg > 4){
-    cout << "Too many arguments, program terminated." << endl;
-    exit;
+    cout << "Too many arguments. Loading failure." << endl;
   }
 
 
@@ -79,7 +78,7 @@ int main(int argc, const char * argv[]) {
   }
 
 
-  if(argc == 1){
+  if(argc == 1 || argc > 4){
     c.gamestart();
   }
 
@@ -99,7 +98,7 @@ int main(int argc, const char * argv[]) {
             }
         } 
     }
-    if(c.playerstatus() == stuck){//see player.h
+    if(c.is_atTimline()){//see player.h
       c.stuckAtTimline();
     }else{
       try{
@@ -135,12 +134,21 @@ int main(int argc, const char * argv[]) {
         char c;
         cin >> c;
         if(c == 'Y') break;
+      }else if(cmd == "trade"){
+        c.trade();
+      }else if(cmd == "improve"){
+        c.improve();
+      }else if(cmd == "mortgage"){
+        c.mortgage(true);
+      }else if(cmd == "unmortgage"){
+        c.mortgage(false);
       }else{
-        cout << "Illegal Command. Try again:" << endl;
+        cout << cmd << " Command not found. Try again:" << endl;
       }
     }
   }
 }
+
 
  
 
