@@ -19,14 +19,14 @@ void Property::setOwner(Player* p){
   removeOwner();
   owner = p;
  }
- notify();
+ board->setOwner(p->getChar(),getSite());
 }
 void Property::removeOwner(){
  if(owner == nullptr){
  }else{
   delete(owner);
  }
- notify();
+ board->removeOwner(p->getChar(),getSite);
 }
 int Property::getPrice(){
  return price;
@@ -36,5 +36,17 @@ void Property::changeMort(){
 }
 bool Property::getMort(){
  return mortgaged;
+}
+bool Property::improvable(){
+if (Academic)
+{
+	if(getImproveCount() == 5){
+	 return false;
+	}else{
+     return true;
+	}
+}else{
+  return false;
+ }
 }
 

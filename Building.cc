@@ -9,6 +9,9 @@ Building::Building(bool ownable,std::string name,int site,TextDisplay* display,B
 ownable(ownable), name(name), site(site), display(display), board(board){
  curplayer.clear();
 }
+int Building::getSite(){
+ return site;
+}
 string Building::getName(){
  return name;
 }
@@ -23,17 +26,15 @@ void Building::setPlayer(Player* p){
   }
  }
  curplayer.push_back(p);
- notify();
+ d->setOwner(p->getChar(),site);
 }
 void Building::removePlayer(Player* p){
  int i = curplayer.size();
  for(int n = 0 ; n < i ; n++){
   if(p->getChar() == curplayer[n]->getChar()){
    curplayer.erase(vec.begin()+n);
-   notify();
+   d->removePlayer(P->getChar(),site);
   }
  }
 }
-void Building::notify(){
- display->changeres(&this);
-}
+

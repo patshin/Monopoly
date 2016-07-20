@@ -15,7 +15,6 @@ class Property: public Building{
  void changeMort();
  bool getMort();
  virtual int getFee();
- virtual void notify() = 0;
  virtual int getValue();
 }
 #endif

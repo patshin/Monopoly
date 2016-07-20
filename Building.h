@@ -1,4 +1,4 @@
-#ifdef   __BUILDING_H__
+#ifndef   __BUILDING_H__
 #define  __BUILDING_H__
 #include <vector>
 #include "Player.h"
@@ -13,10 +13,11 @@ class Building {
  Board* board;
 	public:
  Building(bool ownable, std::string name, int site, TextDisplay* board);
+ int getSite();
  std::string getName();
  bool getOwn();
  void setPlayer(Player* p);
  void removePlayer(Player* p);
- void notify();
+ int improvable();
 }
 #endif

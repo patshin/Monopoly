@@ -21,7 +21,7 @@ int AcademicBuilding::getValue(){
 }
 void AcademicBuilding::improve(){
  improveCount++;
- notify();
+ board->improve(getSite(),true);
 }
 void AcademicBuilding::setImproveCount(int n){
  improveCount = n;
