@@ -1,4 +1,20 @@
-//Property
-Property::Property(int price, std::string name, int site, BoardDisplay* board)
-//AcademicBuilding
-AcademicBuilding(Player* owner, int price,int improveCost, int tuition[], string lock,ste::string name, int site, BoardDisplay* board)
+#include "Building.h"
+class Property: public Building{
+ bool Academic;
+ Player* owner;
+ int price;
+ bool mortgaged;
+	public:
+ Property(bool Academic, int price);
+ Player* getOwner();
+ void setOwner(Player* p);
+ void removeOwner();
+ int getPrice();
+ void changeMort();
+ bool getMort();
+ virtual int getFee();
+ virtual void notify() = 0;
+ virtual int getValue();
+}
+
+
