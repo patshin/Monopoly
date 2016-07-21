@@ -15,9 +15,11 @@ class Building {
  Building(bool ownable, std::string name, int site, TextDisplay* board);
  int getSite();
  std::string getName();
+ bool tradable(Player *p);
  bool getOwn();
  void setPlayer(Player* p);
  void removePlayer(Player* p);
  int improvable();
+ virtual void method(Player *p) = 0;
 }
 #endif

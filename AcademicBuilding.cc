@@ -35,3 +35,23 @@ void AcademicBuilding::doublebase(){
 void AcademicBuilding::halfbase(){
  tuition[0] = tuition[0]/2;
 }
+void AcademicBuilding::method(Player *p){
+	if(getOwner() == nullptr){
+ 	cout << "This Building is empty, do you want to purchase it?"<<endl;
+ 	cout << "[Y/N]" << endl;
+ string s;
+ while(cin>>s){
+ 	if(s == "Y"){
+ 		cout << "you have pruchased this property!"<<endl;
+ 		p->purchase(getName());
+ 		return;
+ 	}else if(s =="N"){
+ 		p->auction(getName(),getSite());
+ 		return;
+ 	}else{
+ 		cout << "land on academic building, you need to pay"<<tuition[improveCount]<<endl;
+ 		p->changeBalance(tuition[improveCount]);
+ 	}
+  }
+ }
+}

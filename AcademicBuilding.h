@@ -9,7 +9,7 @@ class AcademicBuilding:public Property{
  int tuition[6];
  std::string block;
 putlic:
- AcademicBuilding(int price,int improveCost, int tuition[], std::string lock,std::string name, int site, TextDisplay* board)
+ AcademicBuilding(int price,int improveCost, int tuition[], std::string lock,std::string name, int site, TextDisplay* board);
  int getImproveCount();
  int getImproveCost();
  int getFee();
@@ -19,6 +19,7 @@ putlic:
  std::string getblock();
  void doublebase();
  void halfbase();
+ void method(Player* p);
 }	
 
 #endif

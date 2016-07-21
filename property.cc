@@ -12,6 +12,9 @@ Property::Property(bool Academic,int price, std::string name, int site, TextDisp
 Player* Property::getOwner(){
  return owner;
 }
+bool Property::getAca(){
+  return Academic;
+}
 void Property::setOwner(Player* p){
  if(owner == nullptr){
   owner = p;

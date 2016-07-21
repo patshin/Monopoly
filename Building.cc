@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <vector>
 #include "Building.h"
 using namespace std;
 
@@ -38,3 +39,31 @@ void Building::removePlayer(Player* p){
  }
 }
 
+
+Building::tradable(Player *p){
+ if(!ownable){
+ 	return false;
+ }
+ vector <Building*> *ptr = p->getBuildingList();
+ int n = ptr->size();
+ bool contain = false;
+ for(int i = 0 ; i < n ; i++){
+  if((ptr[i])->getOwn()){
+   if(((ptr[i])->getOwner())->getName() == p->getName()) {
+   	if(((ptr[i])->getName())==name){
+   		contain = true;
+   	}
+   	if(((ptr[i])->getAca()) == true){
+   		if(((ptr[i])->getImproveCount())!=0){
+   			return false;
+   		}
+   	}
+   }
+  }
+ }
+ if(contain == false){
+ 	return false;
+ }else{
+ 	return true;
+ }
+}

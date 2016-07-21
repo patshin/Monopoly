@@ -100,6 +100,7 @@ int main(int argc, const char * argv[]) {
     }
     if(c.is_atTimline()){//see player.h
       c.stuckAtTimline();
+      }
     }else{
       try{
         cin >> cmd;
@@ -148,11 +149,3 @@ int main(int argc, const char * argv[]) {
     }
   }
 }
-
-
- 
-
-
-
- 
-

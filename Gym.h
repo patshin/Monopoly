@@ -3,11 +3,11 @@
 #include "Property.h"
 
 class Gym : public Property{
- int numOwn;
 	public:
  Gym(std::string name,int site,TextDisplay* board);
  int getFee();
  int getValue();
  void setNumOwn(int n);
+ void method(Player *p);
 }
 #endif

@@ -8,14 +8,16 @@ class Property: public Building{
  bool mortgaged;
 	public:
  Property(bool Academic, int price,std::string name, int site, TextDisplay* board);
+ bool getAca();
  Player* getOwner();
  void setOwner(Player* p);
  void removeOwner();
  int getPrice();
  void changeMort();
  bool getMort();
+ bool improvable();
+ virtual void method(Player *p);
  virtual int getFee();
  virtual int getValue();
 }
 #endif
-

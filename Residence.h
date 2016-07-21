@@ -3,11 +3,10 @@
 #include "Property.h"
 
 class Residence : public Property{
- int numOwn;
 	public:
  Residence(std::string name,int site, TextDisplay* board);
- int getFee();
+ int getFee(int numOwn);
  int getValue();
- void setNumOwn(int n);
+ void method(Player *p);
 }
 #endif
