@@ -30,5 +30,6 @@ public:
     void mortgage(int pos, bool whether);
     // mortgage if whether is true
     // unmortgage if whether is false
+    friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 };
 #endif
