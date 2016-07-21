@@ -20,6 +20,7 @@ putlic:
  void doublebase();
  void halfbase();
  void method(Player* p);
+ 
 }	
 
 #endif

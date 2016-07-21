@@ -67,3 +67,4 @@ Building::tradable(Player *p){
  	return true;
  }
 }
+

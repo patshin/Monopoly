@@ -20,6 +20,5 @@ class Building {
  void setPlayer(Player* p);
  void removePlayer(Player* p);
  int improvable();
- virtual void method(Player *p) = 0;
 }
 #endif
