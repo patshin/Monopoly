@@ -1,13 +1,12 @@
 #ifndef _BOARD_
 #define _BOARD_
-#include "player.h"
 #include "Building.h"
-#include "textdisplay.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
-
+class Textdisplay;
+class Player;
 class Board{
 	int NumPlayers;
 	int currentplayer;
@@ -43,4 +42,3 @@ public:
 
 
 #endif
-
