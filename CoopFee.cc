@@ -5,8 +5,8 @@
 #include "CoopFee.h"
 using namespace std;
 
-CoopFee::CoopFee(int site, TextDisplay* board){
- NonProperty(false, "Coop", site, board);
+CoopFee::CoopFee(int site, Textdisplay* board):
+ NonProperty(false, "Coop", site, board){
 }
 void CoopFee::method(Player* p){
  cout << "Once you choose to coop, you pay 150" << endl;

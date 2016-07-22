@@ -5,9 +5,9 @@
 #include "GotoTims.h"
 using namespace std;
 
-GotoTims::GotoTims(int site, TextDisplay *board){
- NonProperty(false, "GotoTims", site, board);
+GotoTims::GotoTims(int site, Textdisplay *board):
+ NonProperty(false, "GotoTims", site, board){
 }
-void TimsLine::method(Player* p){
+void GotoTims::method(Player* p){
  p->gotoSite(10);
 }

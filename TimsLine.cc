@@ -5,8 +5,8 @@
 #include "TimsLine.h"
 using namespace std;
 
-TimLine::TimLine(int site,TextDisplay* board){
- NonProperty(false,"TimeLine",stie,board);
+TimsLine::TimsLine(int site,Textdisplay* board):
+ NonProperty(false,"TimeLine",site,board){
 }
 void TimsLine::method(Player* p){
  p->setTimTime(1);
@@ -24,7 +24,7 @@ void TimsLine::method(Player* p){
     cout << "tim cup used"<<endl;
     p->useCup();
     p->setTimTime(0);
-    p->setNumRoll(1);
+    setNumRoll(1);
     return;
    }
   }else if(cmd == "dice"){

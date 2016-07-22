@@ -4,8 +4,8 @@
 #include <fstream>
 #include "NeedlesHall.h"
 using namespace std;
-NeedlesHall::NeedlesHall(int site, TextDisplay* board){
- NonProperty(false,"NeedlesHall",site, board);
+NeedlesHall::NeedlesHall(int site, Textdisplay* board):
+ NonProperty(false,"NeedlesHall",site, board){
 }
 void NeedlesHall::method(Player* p){
  int n = getNumRoll();
@@ -20,11 +20,11 @@ void NeedlesHall::method(Player* p){
  }
  int y = rand()%1-18;
  if(y==1){
-  y=-200;
+  y= -200;
  }else if(y>=2&&y<=3){
-  y=-100;
+  y= -100;
  }else if(y>=4&&y<=6){
-  y=-50;'
+  y= -50;
  }else if(y>=7&&y<=12){
   y=25;
  }else if(y>=13&&y<=15){

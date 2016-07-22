@@ -4,8 +4,9 @@
 class NonProperty: public Building{
  int numRollup;
 	public:
- Nonproperty(bool ownable, string name, int site, Textdisplay* board);
+ NonProperty(bool ownable, std::string name, int site, Textdisplay* board);
  int getNumRoll();
  void setNumRoll(int n);
  virtual void method(Player* p) = 0;
 };
+#endif

@@ -3,9 +3,9 @@
 #include <sstream>
 #include <fstream>
 #include "Gym.h"
-
-Gym::Gym(string name,int site, TextDisplay* board){
- Property(false,150,name,site,board);
+using namespace std;
+Gym::Gym(string name,int site, Textdisplay* board):
+ Property(false,150,name,site,board){
 }
 
 int Gym::getFee(int numOwn){

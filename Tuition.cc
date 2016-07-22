@@ -4,8 +4,8 @@
 #include <fstream>
 #include "Tuition.h"
 using namespace std;
-Tuition::Tuition(int site,TextDisplay *board){
- NonProperty(false."Tuition",site,board);
+Tuition::Tuition(int site,Textdisplay *board):
+ NonProperty(false,"Tuition",site,board){
 }
 
 void Tuition::method(Player* p){
@@ -18,15 +18,9 @@ void Tuition::method(Player* p){
   p->changeBalance((p->totalmoney()/10));
  }else{
   cout << "error input, try again" << endl;
-  this.method(p);
+  this->method(p);
  }
 }
 
 
-int totalMoney(){
- int n = balance;
- for(map<string,int>::iterator i = pList.begin(); i!= pList.end();i++){
-  n+=(buildings[i->second])->getValue();
- }
- return n;
-}
+

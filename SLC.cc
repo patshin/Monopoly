@@ -4,8 +4,8 @@
 #include <fstream>
 #include "SLC.h"
 using namespace std;
-SLC::SLC(int site, TextDisplay* board){
- NonProperty(false,"SLC",site,board);
+SLC::SLC(int site, Textdisplay* board):
+ NonProperty(false,"SLC",site,board){
 }
 
 void SLC::method(Player* p){
@@ -19,6 +19,7 @@ void SLC::method(Player* p){
    p->receiveCup();
   }
  }
+ int position;
  int y = rand()%1-24;
  if(y>=1&&y<=3){
   p->move(-3);
@@ -33,10 +34,10 @@ void SLC::method(Player* p){
  }else if(y>=19&&y<=22){
   p->move(3);
  }else if(y == 23){
-  int position = p->pos();
+  position = p->getPos();
   p->gotoSite(10);
  }else{
-  int position = p->pos();
+  position = p->getPos();
   p->move(30 - position);
  }
 }

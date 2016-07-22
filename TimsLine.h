@@ -4,7 +4,7 @@
 #include "NonProperty.h"
 class TimsLine: public NonProperty{
 	public:
-TimLine(int site,Textdisplay* board);
+TimsLine(int site,Textdisplay* board);
 void method(Player* p);
 };
 #endif

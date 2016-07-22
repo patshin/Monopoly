@@ -5,7 +5,7 @@
 class Gym : public Property{
 	public:
  Gym(std::string name,int site,Textdisplay* board);
- int getFee();
+ int getFee(int numOwn);
  int getValue();
  void setNumOwn(int n);
  void method(Player *p);

@@ -3,10 +3,9 @@
 #include <sstream>
 #include <fstream>
 #include "Residence.h"
-
-Residence::Residence(string name,int site, TextDisplay* board){
- Property(false, 200,name,site,board);
- numOwn = 0;
+using namespace std;
+Residence::Residence(string name,int site, Textdisplay* board):
+ Property(false, 200,name,site,board){
 }
 int Residence::getFee(int numOwn){
  if(numOwn == 1){
@@ -23,11 +22,8 @@ int Residence::getFee(int numOwn){
 int Residence::getValue(){
  return 200;
 }
-void Residence::setNumOwn(int n){
- numOwn = n;
-}
 void Residence::method(Player *p){
- if(p->getOwner() == nullptr){
+ if(getOwner() == nullptr){
  	cout << "This residence is empty, do you want to purchase it?"<<endl;
  	cout << "[Y/N]" << endl;
  

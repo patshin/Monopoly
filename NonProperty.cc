@@ -5,16 +5,16 @@
 #include "NonProperty.h"
 using namespace std;
 
-Nonproperty::NonProperty(bool ownable, string name, int site, TextDisplay* board){
- Building(ownable,name,site,board);
+NonProperty::NonProperty(bool ownable, string name, int site, Textdisplay* board):
+ Building(ownable,name,site,board){
  numRollup = 0;
 }
 
-int Nonproperty::getNumRoll(){
+int NonProperty::getNumRoll(){
  return numRollup;
 }
 
-void Nonproperty::setNumRoll(int n){
+void NonProperty::setNumRoll(int n){
  if(n == -1){
   numRollup = numRollup-1;
  }else{
