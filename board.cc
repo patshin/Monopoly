@@ -6,12 +6,21 @@
 #include <sstream>
 #include "board.h"
 #include "player.h"
-#include "building.h"
+#include "Building.h"
+#include "CollectOSAP.h"
+#include "AcademicBuilding.h"
+#include "SLC.h"
+#include "NeedlesHall.h"
+#include "TimsLine.h"
+#include "Residence.h"
+#include "Gym.h"
+#include "GotoTims.h"
+#include "CoopFee.h"
 #include "textdisplay.h"
 using namespace std;
 
 
-Board::Board(): NumPlayers{0},finish{false},currentplayer{0},winner{"No one"},players{{}}{
+Board::Board(): NumPlayers{0},currentplayer{0},winner{"No one"},players{{}}{
     Textdisplay td;
     Building *b1 = new CollectOSAP{0,td};
     building.push_back(b1);
@@ -147,7 +156,7 @@ void Board::playerBankrupt(){
 void Board::printAsset(){
     players[currentplayer]->printProperties();
 }
-void Board::saveTo(filename){
+void Board::saveTo(string filename){
     ofstream savefile{filename};
     savefile << NumPlayers << endl;
     for(int n = 0; n < NumPlayers; n++){

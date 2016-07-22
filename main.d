@@ -1,1 +1,1 @@
-main.o: main.cc controller.h board.h player.h Building.h textdisplay.h
+main.o: main.cc controller.h board.h Building.h player.h textdisplay.h

@@ -7,12 +7,13 @@
 #include <string>
 class Textdisplay;
 class Player;
+
 class Board{
 	int NumPlayers;
 	int currentplayer;
 	std::string winner; 
 	std::vector <Player*> players;///share ptr??
-	std::vector <Building*> buildings;//share ptr??
+	std::vector <Building*> building;//share ptr??
 	Textdisplay *td;
 public:
 	Board();

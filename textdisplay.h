@@ -6,9 +6,9 @@
 #include <vector>
 #include <stdexcept>
 #include <sstream>
-#include "board.h"
+//#include "board.h"
 #include "player.h"
-#include "Building.h"
+//#include "Building.h"
 
 
 class Textdisplay
