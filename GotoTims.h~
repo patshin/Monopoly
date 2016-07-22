@@ -1,7 +1,0 @@
-#include <map>
-#include "NonProperty.h"
-class GotoTims: public NonProperty{
-	public:
-GotoTims(int site, BoardDisplay* board);
-void method(Player* p);
-}
