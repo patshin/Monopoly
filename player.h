@@ -53,7 +53,11 @@ public:
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
   bool own(Property* p);
   std::vector<Building*> *getBuildingList();
+  //count for gyms or residences owned, b = gym or res
   int getNumOwn(std::string b);
+  void setCupsOwn(int cup);
+  void setBalance(int bal);
+  void setPos(int p);
   ~Player();
 };
 //improve, set status, get block, trade, win?

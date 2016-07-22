@@ -414,4 +414,16 @@ int Player::getNumOwn(string b){
   return count;
 }
 
+void PLayer::setCupsOwn(int cup){
+  cupsOwn = cup;
+}
+
+void Player::setBalance(int bal){
+  balance = bal;
+}
+
+void PLayer::setPos(int p){
+  pos = p;
+}
+
 Player::~Player(){}
