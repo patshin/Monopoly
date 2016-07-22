@@ -6,5 +6,5 @@ class TimsLine: public NonProperty{
 	public:
 TimLine(int site,Textdisplay* board);
 void method(Player* p);
-}
+};
 #endif

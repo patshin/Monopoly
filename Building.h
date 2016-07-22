@@ -12,6 +12,7 @@ class Building {
 	public:
  Building(bool ownable, std::string name, int site, Textdisplay* board);
  int getSite();
+ Textdisplay *getBoard();
  std::string getName();
  bool tradable(Player *p);
  bool getOwn();

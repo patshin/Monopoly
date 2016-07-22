@@ -13,6 +13,9 @@ ownable(ownable), name(name), site(site), display(display), board(board){
 int Building::getSite(){
  return site;
 }
+Textdisplay *getBoard(){
+ return display;
+}
 string Building::getName(){
  return name;
 }

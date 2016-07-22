@@ -21,7 +21,6 @@ Controller::~Controller(){} //need implemetations????????
 
 void Controller::gamestart(){
 	cout << "enter the number of players:";
-	string name;
     while(cin >> NumOfPlayers){
     	if(cin.fail()){
     		cout << "Please enter an interger:";
@@ -49,85 +48,32 @@ void Controller::gamestart(){
 	    			break;
 	    		}
 	    	}
-	    	if(found){
-	    		cout << "Enter your name:";
-	    		cin >> name;
-	    		break;
+	    		if(found) break;
+	    		cout << "Player Not found or chosen. Please enter a player character in the list: ";
+	    		for (int j = 0; j < len; j++){
+	    			cout << characters[j] << ' ';
+	    		}
+	    		cout << endl;
 	    	}
-	    	cout << "Player Not found or chosen. Please enter a player character in the list: ";
-	    	for (int j = 0; j < len; j++){
-	    		cout << characters[j] << ' ';
-	    	}
-	    	cout << endl;
-	    }
-		board.attachplayers(name,c);//add to the board
+		board.attachplayers(c);//add to the board
 	}
 }
 
 void Controller::roll(int dice1, int dice2){
-	int turn = 0;
-	string roll;
 	if(c.playerstatus()){
 		if(testingMode = false){
 			srand(seed);
 		    dice1 = rand()%6 + 1;
 		    dice2 = rand()%6 + 1;
-		    while(dice1 == dice2 && turn < 3){
-		    	cout << "dice1: " << dice1 << endl;
-		        cout << "dice2: " << dice2 << endl; 
-		    	cout << "A double, roll again:" << endl;
-		    	cin >> roll;
-		    	while(roll != "roll"){
-		    		cout << "You have to roll!!!!!! Try again" << endl;
-		    		cin >> roll;
-		    	}
-		    	dice1 = rand()%6 + 1;
-		        dice2 = rand()%6 + 1;
-		        turn++;
-		    }
-		    if(turn == 3){
-		    	cout << "dice1: " << dice1 << endl;
-		        cout << "dice2: " << dice2 << endl; 
-		    	cout << "Poor thing. Go to Timline lol." << endl;
-		    	board.playerGotoTim();
-		    }else{
-		    	cout << "dice1: " << dice1 << endl;
-		        cout << "dice2: " << dice2 << endl; 
-		    	board.moveplayer(dice1+dice2); 
-		        
-		    }
+		    board.moveplayer(dice1+dice2); 
+		    cout << "dice1: " << dice1 << endl;
+		    cout << "dice2: " << dice2 << endl; 
 		}else{
-			while(dice1 == dice2 && turn < 3){ ////consider the case where dice1 and 2 greater than 6!!
-		    	cout << "dice1: " << dice1 << endl;
-		        cout << "dice2: " << dice2 << endl; 
-		    	cout << "A double, roll again:" << endl;
-		    	cin >> roll;
-		    	cin >> dice1;
-		    	cin >> dice2;
-		    	while(roll != "roll" || cin.fail()){
-		    		cout << "You have to roll correctly!!!!!! Try again" << endl;
-		    		if(cin.fail()){
-		    			cin.clear();
-		    			cin.ignore();
-		    		}
-		    		cin >> roll;
-		    		cin >> dice1;
-		    		cin >> dice2;
-		    	}
-		    	turn++;
-		    }
-		    if(turn == 3){
-		        cout << "dice1: " << dice1 << endl;
-		        cout << "dice2: " << dice2 << endl; 
-		    	cout << "Poor thing. Go to Timline lol." << endl;
-		    	board.playerGotoTim();
-		    }else{
-		        cout << "dice1: " << dice1 << endl;
-		    	cout << "dice2: " << dice2 << endl; 
-		    	board.moveplayer(dice1 + dice2);
-			}
+			board.moveplayer(dice1 + dice2);
+			cout << "dice1: " << dice1 << endl;
+		    cout << "dice2: " << dice2 << endl; 
 		}
-		board.switchStage();
+		//board.switchStage();
 	}else{
 		cout << "Fuck off! You are not allowed to roll." << end;
 	}

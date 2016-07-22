@@ -19,5 +19,5 @@ class Property: public Building{
  virtual void method(Player *p);
  virtual int getFee();
  virtual int getValue();
-}
+};
 #endif

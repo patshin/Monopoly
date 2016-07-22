@@ -3,13 +3,13 @@
 #include "Property.h"
 
 
-class AcademicBuilding:public Property{
+class AcademicBuilding : public Property{
  int improveCost;
  int improveCount;
- int tuition[6];
+ int* tuition;
  std::string block;
-putlic:
- AcademicBuilding(int price,int improveCost, int tuition[], std::string lock,std::string name, int site, Textdisplay* board);
+public:
+ AcademicBuilding(int price,int imc, int* tut, std::string blk,std::string name, int site, Textdisplay* board);
  int getImproveCount();
  int getImproveCost();
  int getFee();
@@ -21,6 +21,6 @@ putlic:
  void halfbase();
  void method(Player* p);
  
-}	
+};	
 
 #endif

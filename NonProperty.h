@@ -8,4 +8,4 @@ class NonProperty: public Building{
  int getNumRoll();
  void setNumRoll(int n);
  virtual void method(Player* p) = 0;
-}
+};

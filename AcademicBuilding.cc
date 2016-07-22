@@ -3,9 +3,12 @@
 #include <sstream>
 #include <fstream>
 #include "AcademicBuilding.h"
+using namespace std;
 
-AcademicBuilding::AcademicBuilding(int price, int improveCost, int tuition[],string lock,string name, int site, TextDisplay* board ):improveCost(improveCost), tuition[tuition],lock[lock]{
- Property(true,price,name,site,board);
+AcademicBuilding::AcademicBuilding(int price, int imc, int *tut,string blk,string name, int site, Textdisplay* board ) :Property(true,price,name,site,board){
+ this->improveCost=imc;
+ this->tuition=tut;
+ this->block=blk;
 }
 int AcademicBuilding::getImproveCount(){
  return improveCount;
@@ -17,11 +20,11 @@ int AcademicBuilding::getFee(){
  return tuition[improveCount];
 }
 int AcademicBuilding::getValue(){
- return (price+(improveCost*improveCount));
+ return (getPrice()+(improveCost*improveCount));
 }
 void AcademicBuilding::improve(){
  improveCount++;
- board->improve(getSite(),true);
+ getBoard()->improve(getSite(),true);
 }
 void AcademicBuilding::setImproveCount(int n){
  improveCount = n;

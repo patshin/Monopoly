@@ -12,7 +12,8 @@ class Player {
   int pos;   //0-39
   int timeTim;
   int cupsOwn;
-  bool isBankrupted;
+  static bool gameEnd;
+  bool isBankrupted; //
   bool roll;
   std::vector<Building*> buildings;
   std::vector<Player*> players;
@@ -38,18 +39,22 @@ public:
   void receiveCup();
   void useCup();
   int netCapital();
-  void bankrupt();
-  void auction(std::string bname, int bpos);
+  void bankrupt(); //delete p
+  bool getGameStatus();
+  void auction(std::string bname, int bpos); //gai, bid or quit
   void mortgage(Property* p);
   void printProperties();
-  //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
-  void prop_manip(int ppos, int changeMoney, std::string s);
+  // cannot trade buildings with improvements
+  // apply twice if trade building to building
+  void prop_manip(int ppos, int changeMoney, std::string s); //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
+  void isWinner();
   bool isBankrupt();
   void makeBankrupt();
-  bool canBankrupt(int change);
+  bool canBankrupt(int change); //if true, give warning, cannot 付租金
   bool own(Property* p);
   std::vector<Building*> *getBuildingList();
   int getNumOwn(std::string b);
   ~Player();
 };
+//improve, set status, get block, trade, win?
 #endif

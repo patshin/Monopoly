@@ -6,5 +6,5 @@ class GooseNesting: public NonProperty{
 	public:
 GooseNesting(int site, Textdisplay* board);
 void method(Player* p);
-}
+};
 #endif

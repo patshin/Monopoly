@@ -5,5 +5,5 @@ class CollectOSAP: public NonProperty{
 	public:
 CollectOSAP(int site, Textdisplay* board);
 void method(Player* p);
-}
+};
 #endif

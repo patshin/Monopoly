@@ -8,5 +8,5 @@ class Residence : public Property{
  int getFee(int numOwn);
  int getValue();
  void method(Player *p);
-}
+};
 #endif

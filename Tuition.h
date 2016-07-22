@@ -6,5 +6,5 @@ class Tuition: public NonProperty{
 	public:
 Tuition(int site,Textdisplay*board);
 void method(Player* p);
-}
+};
 #endif

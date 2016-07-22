@@ -6,5 +6,5 @@ class GotoTims: public NonProperty{
 	public:
 GotoTims(int site, Textdisplay* board);
 void method(Player* p);
-}
+};
 #endif
