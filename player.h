@@ -19,7 +19,7 @@ class Player {
   std::vector<Player*> players;
   std::map<std::string, int> pList;
 public:
-  Player(char nc, std::vector<building> &b, std::vector<Player> &p);
+  Player(char nc, std::vector<Building> &b, std::vector<Player> &p);
   std::string getName();
   char getChar();
   int getBalance();
