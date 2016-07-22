@@ -44,7 +44,7 @@ public:
     // notify board to return name of winner
 	bool getMode();
 	// return if the game is in testing mode
-	void turonTestingMode();
+	void turnonTestingMode();
 	// turn on the testing mode
 	void clearboard();
 	bool is_atTimline();
