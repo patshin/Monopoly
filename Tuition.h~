@@ -1,7 +1,0 @@
-#include <map>
-#include "NonProperty.h"
-class Tuition: public NonProperty{
-	public:
-Tuition(int site,BoardDisplay*board);
-void method(Player* p);
-}
