@@ -1,7 +1,0 @@
-#include <map>
-#include "NonProperty.h"
-class CoopFee: public NonProperty{
-	public:
-CoopFee(int site, BoardDisplay* board);
-void method(Player* p);
-}
