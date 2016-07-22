@@ -12,29 +12,29 @@ int main(int argc, const char * argv[]) {
   string cmd;
   Board b;
   Textdisplay td;
-  Controller c{b,td,0};
-  if(arg > 4){
+  Controller con{b,td,0};
+  if(argc > 4){
     cout << "Too many arguments. Loading failure." << endl;
   }
 
 
   if(argc == 4){
 
-    if(arg[1] == "-load" || arg[2] == "-load"){
+    if(argv[1] == "-load" || argv[2] == "-load"){
 
-      if(arg[1] == "-load"){
-        ifstream infile{arg[2]};
+      if(argv[1] == "-load"){
+        ifstream infile{argv[2]};
         try{
-          c.load(infile);
+          con.load(infile);
         }
         catch(ios::failure&){
           cout << "Loading failure. Unknown file";
           exit;
         }
       }else{
-        ifstream infile{arg[3]};
+        ifstream infile{argv[3]};
         try{
-          c.load(infile);
+          con.load(infile);
         }
         catch(ios::failure&){
           cout << "Loading failure. Unknown file";
@@ -44,8 +44,8 @@ int main(int argc, const char * argv[]) {
     }else{
       cout << "Invalid arguments." << endl;
     }
-    if(arg[1] == "-testing" || arg[3] == "-testing"){
-      c.turnonTestingMode();
+    if(argv[1] == "-testing" || argv[3] == "-testing"){
+      con.turnonTestingMode();
     }else{
       cout << "One invalid argument." << endl;
     }
@@ -53,9 +53,9 @@ int main(int argc, const char * argv[]) {
 
   if(argc == 3){
     if(argv[1] == "-load"){
-      ifstream infile{arg[2]};
+      ifstream infile{argv[2]};
       try{
-        c.load(infile);
+        con.load(infile);
       }
       catch(ios::failure&){
         cout << "Loading failure. Unknown file";
@@ -63,14 +63,14 @@ int main(int argc, const char * argv[]) {
       }
     }else{
       cout << "Invalid argument." << endl;
-      exit; 
+      exit;
     }
   }
 
 
   if(argc == 2){
     if(argv[1] == "-testing"){
-      c.turnonTestingMode();
+      con.turnonTestingMode();
     }else{
       cout << "Invalid argument." << endl;
       exit;
@@ -79,73 +79,79 @@ int main(int argc, const char * argv[]) {
 
 
   if(argc == 1 || argc > 4){
-    c.gamestart();
+    con.gamestart();
   }
 
   while (true) {
-    if(c.win()){
-    	cout << c.getwinner() << "is the winner" << endl;
-      	c.clearboard();
+    if(con.win()){
+        cout << con.getwinner() << "is the winner" << endl;
+        con.clearboard();
         cout << "Game over. Would you like to play again? Y/N";
         char c;
         while(cin >> c){
-        	if(c == 'N') {exit;}
+                if(c == 'N') {exit;}
             if(c == 'Y'){
-            	c.gamestart();
-            	break;
+                con.gamestart();
+                break;
             }else{
-            	cout << "Command not found. Try agian:";
+                cout << "Command not found. Try agian:";
             }
-        } 
+        }
     }
-    if(c.is_atTimline()){//see player.h
-      c.stuckAtTimline();
-      }
+    if(con.is_atTimline()){//see player.h
+      con.stuckAtTimline();
     }else{
       try{
         cin >> cmd;
       }
       catch(ios::failure&){}
       if (cmd == "roll") {
-        if(c.getMode()){
+        if(con.getMode()){
           int n1;
           int n2;
           cin >> n1 >> n2;
-          c.roll(n1,n2);
+          con.roll(n1,n2);
         }else{
-          c.roll();
+          con.roll();
         }
-        c.display();
+        con.display();
       }else if (cmd == "next") {
-        c.next();
-        c.display();
+        con.next();
+        con.display();
       }else if (cmd == "bankrupt") {
-        c.dropout();
-        c.display();
+        con.dropout();
+        con.display();
       }else if (cmd == "asset") {
-        c.asset();
+        con.asset();
+        con.display();
       }else if (cmd == "all"){
-        c.all();
+        con.all();
+        con.display();
       }else if(cmd == "save"){
         string filename;
         cin >> filename;
-        c.save(string filename);
-        c.display();
-        cout << "Game saved. Would you like to end the game? Y/N"
+        con.save(filename);
+        cout << "Game saved. Would you like to end the game? Y/N";
         char c;
         cin >> c;
         if(c == 'Y') break;
       }else if(cmd == "trade"){
-        c.trade();
+        con.trade();
+        con.display();
       }else if(cmd == "improve"){
-        c.improve();
+        con.improve();
+        con.display();
       }else if(cmd == "mortgage"){
-        c.mortgage(true);
+        con.mortgage(true);
+        con.display();
       }else if(cmd == "unmortgage"){
-        c.mortgage(false);
+        con.mortgage(false);
+        con.display();
       }else{
         cout << cmd << " Command not found. Try again:" << endl;
       }
     }
   }
 }
+
+
