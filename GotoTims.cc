@@ -9,5 +9,5 @@ GotoTims::GotoTims(int site, TextDisplay *board){
  NonProperty(false, "GotoTims", site, board);
 }
 void TimsLine::method(Player* p){
- p->goto(10);
+ p->gotoSite(10);
 }

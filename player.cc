@@ -34,7 +34,7 @@ int Player::getPos(){
 }
 
 bool Player::rollable(){
-  return rollable;
+  return roll;
 }
 
 void Player::changeRollable(){
@@ -62,7 +62,7 @@ void Player::move(int step){
     }
 }
 
-void Player::goto(int p){
+void Player::gotoSite(int p){
   buildings[pos]->removePlayer(players.at(pos));
   pos = p;
   buildings[pos]->setPlayer();
@@ -378,7 +378,7 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
 }
 
 bool Player::isBankrupt(){
-  return isBankrupt;
+  return isBankrupted;
 }
 
 void Player::makeBankrupt(){

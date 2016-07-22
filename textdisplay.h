@@ -18,7 +18,7 @@ class Textdisplay
 public:
 	 Textdisplay();
 	~Textdisplay();
-	std::vector <int> PosToindex(int pos);
+	std::vector PosToindex(int pos);
 	//transfer the position to in board to the index in display which is the rightmost position in that sqaure 
 	void putPlayer(char c, int pos);
 	void movePlayer(int pos, char c, int steps);
@@ -30,6 +30,6 @@ public:
     void mortgage(int pos, bool whether);
     // mortgage if whether is true
     // unmortgage if whether is false
-    friend std::ostream &operator<<(std::ostream &out, const Textdisplay &td);
+    friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 };
 #endif

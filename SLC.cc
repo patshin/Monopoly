@@ -34,7 +34,7 @@ void SLC::method(Player* p){
   p->move(3);
  }else if(y == 23){
   int position = p->pos();
-  p->goto(10);
+  p->gotoSite(10);
  }else{
   int position = p->pos();
   p->move(30 - position);

@@ -9,6 +9,7 @@
 
 class Board{
 	int NumPlayers;
+	bool finish;
 	int currentplayer;
 	std::string winner; 
 	std::vector <Player*> players;///share ptr??
@@ -26,7 +27,7 @@ public:
     void nextplayer();
     void playerBankrupt();
     void printAsset();
-    void saveTo(std::string filename);
+    void saveTo(filename);
     void loadFrom(std::ifstream &filename);
     bool finish();
     void stayAtTim();

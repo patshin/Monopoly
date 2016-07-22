@@ -1,5 +1,7 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
+#include <map>
+#include <vector>
 class Building;
 class Property;
 
@@ -11,13 +13,13 @@ class Player {
   int timeTim;
   int cupsOwn;
   static bool gameEnd;
-  bool isBankrupt; //
-  bool rollable;
-  std::vector buildings;
-  std::vector players;
+  bool isBankrupted; //
+  bool roll;
+  std::vector<Building*> buildings;
+  std::vector<Player*> players;
   std::map<std::string, int> pList;
 public:
-  Player(char nc, vector &b, vector &p);
+  Player(char nc, std::vector<building> &b, std::vector<Player> &p);
   std::string getName();
   char getChar();
   int getBalance();
@@ -25,7 +27,7 @@ public:
   bool rollable();
   void changeRollable();
   void move(int step);// setp/removep
-  void goto(int p);
+  void gotoSite(int p);
   void purchase(std::string bname);
   void sendProperty(Player* p, Building* b); //newly added
   void addProperty(int bpos);
@@ -39,19 +41,19 @@ public:
   int netCapital();
   void bankrupt(); //delete p
   bool getGameStatus();
-  void auction(string bname, int bpos); //gai, bid or quit
+  void auction(std::string bname, int bpos); //gai, bid or quit
   void mortgage(Property* p);
   void printProperties();
   // cannot trade buildings with improvements
   // apply twice if trade building to building
-  void prop_manip(int ppos, int changeMoney, string s); //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
+  void prop_manip(int ppos, int changeMoney, std::string s); //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
   void isWinner();
   bool isBankrupt();
   void makeBankrupt();
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
   bool own(Property* p);
-  vector<Building*> *getBuildingList();
-  int getNumOwn(string b);
+  std::vector<Building*> *getBuildingList();
+  int getNumOwn(std::string b);
   ~Player();
 };
 //improve, set status, get block, trade, win?
