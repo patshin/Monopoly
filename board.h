@@ -2,6 +2,7 @@
 #define _BOARD_
 #include "player.h"
 #include "Building.h"
+#include "textdisplay.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -9,7 +10,6 @@
 
 class Board{
 	int NumPlayers;
-	bool finish;
 	int currentplayer;
 	std::string winner; 
 	std::vector <Player*> players;///share ptr??
@@ -27,7 +27,7 @@ public:
     void nextplayer();
     void playerBankrupt();
     void printAsset();
-    void saveTo(filename);
+    void saveTo(std::string filename);
     void loadFrom(std::ifstream &filename);
     bool finish();
     void stayAtTim();
