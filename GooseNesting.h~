@@ -1,7 +1,0 @@
-#include <map>
-#include "NonProperty.h"
-class GooseNesting: public NonProperty{
-	public:
-GooseNesting(int site, BoardDisplay* board);
-void method(Player* p);
-}
