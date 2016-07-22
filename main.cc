@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <fstream>
 #include <stdexcept>
@@ -100,7 +101,6 @@ int main(int argc, const char * argv[]) {
     }
     if(c.is_atTimline()){//see player.h
       c.stuckAtTimline();
-      }
     }else{
       try{
         cin >> cmd;
@@ -112,8 +112,10 @@ int main(int argc, const char * argv[]) {
           int n2;
           cin >> n1 >> n2;
           c.roll(n1,n2);
+          c.display();
         }else{
           c.roll();
+          c.display();
         }
         c.display();
       }else if (cmd == "next") {
@@ -124,8 +126,10 @@ int main(int argc, const char * argv[]) {
         c.display();
       }else if (cmd == "asset") {
         c.asset();
+        c.display();
       }else if (cmd == "all"){
         c.all();
+        c.display();
       }else if(cmd == "save"){
         string filename;
         cin >> filename;
@@ -137,15 +141,28 @@ int main(int argc, const char * argv[]) {
         if(c == 'Y') break;
       }else if(cmd == "trade"){
         c.trade();
+        c.display();
       }else if(cmd == "improve"){
         c.improve();
+        c.display();
       }else if(cmd == "mortgage"){
         c.mortgage(true);
+        c.display();
       }else if(cmd == "unmortgage"){
         c.mortgage(false);
+        c.display();
       }else{
         cout << cmd << " Command not found. Try again:" << endl;
       }
     }
   }
 }
+
+
+ 
+
+
+
+
+
+
