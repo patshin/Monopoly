@@ -3,7 +3,7 @@
 #include "NonProperty.h"
 class CollectOSAP: public NonProperty{
 	public:
-CollectOSAP(int site, TextDisplay* board);
+CollectOSAP(int site, Textdisplay* board);
 void method(Player* p);
 }
 #endif

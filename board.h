@@ -1,7 +1,7 @@
 #ifndef _BOARD_
 #define _BOARD_
 #include "player.h"
-#include "building.h"
+#include "Building.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -37,7 +37,6 @@ public:
     void clear();
     void trade();
     void improve();
-    void playerGotoTim();
     void mortgage(const bool &whether);
 };
 

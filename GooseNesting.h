@@ -4,7 +4,7 @@
 #include "NonProperty.h"
 class GooseNesting: public NonProperty{
 	public:
-GooseNesting(int site, TextDisplay* board);
+GooseNesting(int site, Textdisplay* board);
 void method(Player* p);
 }
 #endif

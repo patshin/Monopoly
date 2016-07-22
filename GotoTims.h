@@ -4,7 +4,7 @@
 #include "NonProperty.h"
 class GotoTims: public NonProperty{
 	public:
-GotoTims(int site, TextDisplay* board);
+GotoTims(int site, Textdisplay* board);
 void method(Player* p);
 }
 #endif

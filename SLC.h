@@ -4,7 +4,7 @@
 #include "NonProperty.h"
 class SLC: public NonProperty{
 	public:
-SLC(int site, TextDisplay* board);
+SLC(int site, Textdisplay* board);
 
 
 void method(Player* p);

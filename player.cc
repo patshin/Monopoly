@@ -132,7 +132,6 @@ int Player::setTimTime(int n) {
 int Player::getTimTime(){
   return timeTim;
 }
-
 int Player::getCupsOwn(){
   return cupsOwn;
 }

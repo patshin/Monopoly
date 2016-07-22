@@ -4,7 +4,7 @@
 
 class Residence : public Property{
 	public:
- Residence(std::string name,int site, TextDisplay* board);
+ Residence(std::string name,int site, Textdisplay* board);
  int getFee(int numOwn);
  int getValue();
  void method(Player *p);

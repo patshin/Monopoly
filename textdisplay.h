@@ -8,7 +8,7 @@
 #include <sstream>
 #include "board.h"
 #include "player.h"
-#include "building.h"
+#include "Building.h"
 
 
 class Textdisplay

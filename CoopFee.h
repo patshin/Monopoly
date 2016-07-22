@@ -4,7 +4,7 @@
 #include "NonProperty.h"
 class CoopFee: public NonProperty{
 	public:
-CoopFee(int site, TextDisplay* board);
+CoopFee(int site, Textdisplay* board);
 void method(Player* p);
 }
 #endif

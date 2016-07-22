@@ -4,7 +4,7 @@
 #include "NonProperty.h"
 class NeedlesHall: public NonProperty{
 	public:
-NeedlesHall(int site, TextDisplay* board);
+NeedlesHall(int site, Textdisplay* board);
 void method(Player* p);
 }
 #endif
