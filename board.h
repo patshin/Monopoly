@@ -37,6 +37,7 @@ public:
     void clear();
     void trade();
     void improve();
+    void playerGotoTim();
     void mortgage(const bool &whether);
 };
 
