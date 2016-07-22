@@ -15,7 +15,7 @@ class Controller
 	bool trading;
 	bool testingMode;
 public:
-	Controller();
+	Controller(Board &b, Textdisplay &td,int seed);
 	~Controller();
 	void gamestart();
 	//start the game by letting players choose their own characters
@@ -30,7 +30,7 @@ public:
 	// notify board to print all the asset of the current player
 	void all();
 	// notify board to print all the asset of all players
-	void save(string filename);
+	void save(std::string filename);
 	// notify board to save the game to filename
 	void load(std::ifstream &filename);
 	// notify board to load the game from filename stream
