@@ -1,6 +1,0 @@
-#include "NonProperty.h"
-class CollectOSAP: public NonProperty{
-	public:
-CollectOSAP(int site, BoardDisplay* board);
-void method(Player* p);
-}
