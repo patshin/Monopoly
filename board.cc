@@ -211,6 +211,22 @@ void Board::loadFrom(ifstream &filename){
             cout << "Loading Failed. Please check your file." << endl;
             exit;
 		}
+        if(a == 10){
+            ss >> a;
+            if(a == 1){
+                ss >> a;
+                if(a == 2){
+                    players[currentplayer]->setTimTime(1);
+                    players[currentplayer]->setTimTime(1);
+                    players[currentplayer]->setTimTime(1);
+                }else if(a == 1){
+                     players[currentplayer]->setTimTime(1);
+                     players[currentplayer]->setTimTime(1);
+                }else{
+                    players[currentplayer]->setTimTime(1);;
+                }
+            }
+        }
 	}
 	while(true){
 		string s;
@@ -260,6 +276,10 @@ string Board::getwinner(){
 
 bool Board::at_Tim(){
     return players[currentplayer]->getTimTime() > 0;
+}
+
+void Board::playerGotoTim(){
+    players[currentplayer]->goto(10);
 }
 
 void Board::clear(){
