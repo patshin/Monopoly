@@ -1,9 +1,0 @@
-#include <map>
-#include "NonProperty.h"
-class SLC: public NonProperty{
-	public:
-SLC(int site, BoardDisplay* board);
-
-
-void method(Player* p);
-}
