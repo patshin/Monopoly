@@ -1,7 +1,0 @@
-#include <map>
-#include "NonProperty.h"
-class TimsLine: public NonProperty{
-	public:
-TimLine(int site,BoardDisplay* board);
-void method(Player* p);
-}
