@@ -11,7 +11,7 @@ int main(int argc, const char * argv[]) {
   cin.exceptions(ios::eofbit|ios::failbit);
   string cmd;
   Textdisplay td;
-  Board b{&td};
+  Board b{td};
   Controller con{b,0};
   if(argc > 4){
     cout << "Too many arguments. Loading failure." << endl;
