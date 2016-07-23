@@ -10,6 +10,7 @@ using namespace std;
 Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> &p):
   name{name},nameChar{nc},buildings{b},players{p}{
     pos = rand() % 40;
+    buildings[pos]->setPlayer(this);
     balance = 500;
     timeTim = 0;
     cupsOwn = 0;
