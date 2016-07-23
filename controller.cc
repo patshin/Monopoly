@@ -59,8 +59,10 @@ void Controller::gamestart(){
 	    		cout << characters[j] << ' ';
 	    	}
 	    	cout << endl;
-	    }
+	    }   
+//                cout << "player attached failed" << endl;
 		board.attachplayers(name,c);//add to the board
+  //              cout << "player attached." << endl;
 	}
 }
 
@@ -166,6 +168,7 @@ void Controller::load(ifstream &filename){
 }
 
 bool Controller::win(){
+        cout << "Calling win??" << endl;
 	return board.finish();
 }
 

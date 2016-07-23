@@ -23,7 +23,7 @@
 using namespace std;
 
 
-Board::Board(Textdisplay &td): NumPlayers{0},td{td},currentplayer{0},winner{"No one"},players{{}}{
+Board::Board(Textdisplay &td,vector <Player*> &p): NumPlayers{0},td{td},currentplayer{0},winner{"No one"},players{p}{
     Building *b1 = new CollectOSAP{0,&td};
     building.push_back(b1);
     Building *b2 = new AcademicBuilding{40,50,{2,10,30,90,160,250},"Art1","AL",1,&td};
@@ -117,7 +117,7 @@ Board::~Board(){
 }
 
 int Board::findbuilding(string name){
-	for(int n=0; n < 40; n++){
+	for(int n = 0; n < 40; n++){
 		if(building[n]->getName() == name){
 			return n;
 		}
@@ -139,6 +139,7 @@ int Board::findplayer(string name){
 void Board::attachplayers(string name,char c){   
 		Player *p = new Player{name,c, building, players}; //add a field!!
         players.push_back(p);//contained its the player that has the vector, players always being modified??
+        cout << "player pointer" << players[NumPlayers] << endl;
         NumPlayers++;
 }
 void Board::moveplayer(int steps){
@@ -304,6 +305,8 @@ void Board::loadFrom(ifstream &filename){
 }
 
 bool Board::finish(){
+    cout << "calling board finish??" << endl;
+    cout << "NumPlayers: " << NumPlayers << endl; 
     return NumPlayers == 1;
 }
 
@@ -317,6 +320,8 @@ string Board::getwinner(){
 }
 
 bool Board::at_Tim(){
+    cout << "calling board at_Time" << endl;
+    cout << players[currentplayer]->getName() << endl;
     return players[currentplayer]->getTimTime() > 0;
 }
 

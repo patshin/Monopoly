@@ -98,7 +98,7 @@ bool Building::getMort(){
 int Building::getPrice(){
   return 0;
 }
-virtual void Building::method(Player *p){
+void Building::method(Player *p){
 
 }
 void Building::changeMort(){

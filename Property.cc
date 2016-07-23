@@ -76,6 +76,9 @@ int Property::getFee(){
 string Property::getblock(){
  return "";
 }
+void Property::method(Player *p){
+
+}
 int Property::getImproveCost(){
  return 0;
 }

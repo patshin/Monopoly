@@ -66,12 +66,17 @@ Textdisplay::Textdisplay(){ //56
     stringDisplay += "|       |       |       |       |       |       |       |       |       |       |       |";
     stringDisplay += "|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|";//89
     istringstream ss(stringDisplay);
+    int x =0;
     for(int n = 0; n < 56; n++){
+        vector <char> v;
+        display.push_back(v);
     	for(int j = 0; j < 89; j++){
-    		char c;
-    		ss >> c;
-    		display[n][j] = c;
+    		display[n].push_back(stringDisplay[x]);
+                cout << display[n][j];
+//                cout << "pushback works!!" << endl;
+                x++;
     	}
+        cout << endl;
     }
 }
 	

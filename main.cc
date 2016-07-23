@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "controller.h"
 #include "board.h"
+#include "player.h"
 #include "textdisplay.h"
 #include <stdlib.h>
 using namespace std;
@@ -11,8 +12,9 @@ using namespace std;
 int main(int argc, const char * argv[]) {
   cin.exceptions(ios::eofbit|ios::failbit);
   string cmd;
+  vector <Player*> players;
   Textdisplay td;
-  Board b{td};
+  Board b{td,players};
   Controller con{b,0};
   if(argc > 4){
     cout << "Too many arguments. Loading failure." << endl;
@@ -81,10 +83,13 @@ int main(int argc, const char * argv[]) {
 
   if(argc == 1 || argc > 4){
     con.gamestart();
+    cout << "game start" << endl;
   }
 
   while (true) {
+    cout << "in the loop" << endl;
     if(con.win()){
+        cout << "win!!" << endl;
         cout << con.getwinner() << "is the winner" << endl;
         con.clearboard();
         cout << "Game over. Would you like to play again? Y/N";
@@ -100,8 +105,10 @@ int main(int argc, const char * argv[]) {
         }
     }
     if(con.is_atTimline()){//see player.h
+      cout << "Oops. You get stuck." << endl;
       con.stuckAtTimline();
     }else{
+      cout << "Not win, not at TimLine" << endl;
       try{
         cin >> cmd;
       }
