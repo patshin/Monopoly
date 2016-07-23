@@ -9,7 +9,7 @@ using namespace std;
 
 
 Textdisplay::Textdisplay(){ //56
-	stringDisplay = "-----------------------------------------------------------------------------------------";
+     stringDisplay = "-----------------------------------------------------------------------------------------";
     stringDisplay += "|Goose  |       |NEEDLES|       |       |V1     |       |       |CIF    |       |GO TO  |";
     stringDisplay += "|NESTING|-------|HALL   |-------|-------|       |-------|-------|       |-------|TIMS   |";
     stringDisplay += "|       |EV1    |       |EV2    |EV3    |       |PHYS   |B1     |       |B2     |       |";
@@ -115,8 +115,8 @@ void Textdisplay::putPlayer(char c, int pos){
  	int row = v[1];
 	int col = v[2];
  	for(int n = 0; n < 6; n++){
- 		if(display[row][col] + n] == 'c'){
- 			display[row][col] + n] = ' ';
+ 		if(display[row][col + n] == 'c'){
+ 			display[row][col + n] = ' ';
  			break;
  		}
  	}
@@ -171,7 +171,7 @@ void Textdisplay::mortgage(int pos, bool whether){
 	}
 }
 
-ostream &operator<<(ostream &out, const TextDisplay &td) {
+ostream &operator<<(ostream &out, const Textdisplay &td) {
 	for(int j = 0; j < 89; j++){
 		for(int i=0; i < 56; i++){
 			out << td.display[j][i]; //at right?
