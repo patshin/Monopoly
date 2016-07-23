@@ -22,8 +22,7 @@
 using namespace std;
 
 
-Board::Board(): NumPlayers{0},currentplayer{0},winner{"No one"},players{{}}{
-    Textdisplay td;
+Board::Board(Textdisplay &td): NumPlayers{0},td{td},currentplayer{0},winner{"No one"},players{{}}{
     Building *b1 = new CollectOSAP{0,&td};
     building.push_back(b1);
     Building *b2 = new AcademicBuilding{40,50,{2,10,30,90,160,250},"Art1","AL",1,&td};
@@ -105,7 +104,6 @@ Board::Board(): NumPlayers{0},currentplayer{0},winner{"No one"},players{{}}{
     Building *b40 = new AcademicBuilding{400,200,{50,200,600,1400,1700,2000},"Math","DC",39,&td};
     building.push_back(b40);////what else to put in except for the 40 
 
-    this->td = &td;
 }
 
 Board::~Board(){
@@ -418,6 +416,10 @@ void Board::improve(){
             cout << "Illegal command." << endl;
         }
     }
+}
+
+void Board::display(){
+	cout << td << endl; 
 }
 
 
