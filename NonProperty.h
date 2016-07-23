@@ -17,5 +17,6 @@ class NonProperty: public Building{
  int getPrice();
  int getImproveCost();
  void refresh();
+ void changeMort();
 };
 #endif
