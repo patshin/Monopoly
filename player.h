@@ -25,6 +25,7 @@ public:
   int getBalance();
   int getPos();
   bool rollable();
+  bool isBlock(int bindex);
   void changeRollable();
   void move(int step);// setp/removep
   void gotoSite(int p);
