@@ -4,6 +4,7 @@
 #include "textdisplay.h"
 #include "player.h"
 #include <string>
+#include <vector>
 
 class Controller
 {
@@ -13,6 +14,7 @@ class Controller
 	int NumOfPlayers;
 	bool trading;
 	bool testingMode;
+        std::vector <char> characters;
 public:
 	Controller(Board &b, int seed);
 	~Controller();
