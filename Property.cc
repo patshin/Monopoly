@@ -8,6 +8,7 @@ Property::Property(bool Academic,int price, std::string name, int site, Textdisp
  Building(true,name,site,board),Academic(Academic),price(price){
  owner = nullptr;
  mortgaged = false; 
+ improvements = 0;
 }
 Player* Property::getOwner(){
  return owner;
@@ -54,6 +55,12 @@ if (Academic)
 }
 void Property::refresh(){
  b_refresh();
- removeOwner(getSite());
+ getBoard()->removeOwner(getSite());
  setImprovements(0);
+}
+void Property::setImprovements(int n){
+ improvements = n;
+}
+int Property::getImproveCount(){
+ return improvements;
 }

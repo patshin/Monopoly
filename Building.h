@@ -31,6 +31,7 @@ class Building {
  virtual int getImproveCost();
  virtual void refresh() = 0;
  void b_refresh();
-
+ virtual ~Building();
+ virtual void method(Player *p) = 0;
 };
 #endif

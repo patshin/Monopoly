@@ -10,24 +10,18 @@ AcademicBuilding::AcademicBuilding(int price, int imc, vector <int> tut,string b
  this->tuition=tut;
  this->block=blk;
 }
-int AcademicBuilding::getImproveCount(){
- return improveCount;
-}
 int AcademicBuilding::getImproveCost(){
  return improveCost;
 }
 int AcademicBuilding::getFee(){
- return tuition[improveCount];
+ return tuition[getImproveCount()];
 }
 int AcademicBuilding::getValue(){
- return (getPrice()+(improveCost*improveCount));
+ return (getPrice()+(improveCost*getImproveCount()));
 }
 void AcademicBuilding::improve(){
- improveCount++;
+ setImprovements(getImproveCount() + 1);
  getBoard()->improve(getSite(),true);
-}
-void AcademicBuilding::setImprovements(int n){
- improveCount = n;
 }
 string AcademicBuilding::getblock(){
  return block;
@@ -52,8 +46,8 @@ void AcademicBuilding::method(Player *p){
  		p->auction(getName(),getSite());
  		return;
  	}else{
- 		cout << "land on academic building, you need to pay"<<tuition[improveCount]<<endl;
- 		p->changeBalance(tuition[improveCount]);
+ 		cout << "land on academic building, you need to pay"<<tuition[getImproveCount()]<<endl;
+ 		p->changeBalance(tuition[getImproveCount()]);
  	}
   }
  }

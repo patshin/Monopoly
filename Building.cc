@@ -72,3 +72,5 @@ bool Building::tradable(Player *p){
 void Building::b_refresh(){
  curplayer.clear();
 }
+Building ::~Building(){
+}

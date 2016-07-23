@@ -47,9 +47,6 @@ void Residence::method(Player *p){
  	return;
  }
 }
-int Residence::getImproveCount(){
-	return 0;
-}
 int Residence::getImproveCost(){
  return 0;
 }

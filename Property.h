@@ -6,6 +6,7 @@ class Property: public Building{
  Player* owner;
  int price;
  bool mortgaged;
+ int improvements;
 	public:
  Property(bool Academic, int price,std::string name, int site, Textdisplay* board);
  bool getAca();
