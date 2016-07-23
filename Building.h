@@ -33,7 +33,5 @@ class Building {
  void b_refresh();
  virtual ~Building();
  virtual void method(Player *p) = 0;
- virtual void changeMort() = 0;
- virtual std::string getblock() ;
 };
 #endif

@@ -50,6 +50,3 @@ void Residence::method(Player *p){
 int Residence::getImproveCost(){
  return 0;
 }
-string Residence::getblock(){
-	return "";
-}

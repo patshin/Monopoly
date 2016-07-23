@@ -24,6 +24,5 @@ class Property: public Building{
  void setImprovements(int n);
  int getImproveCost();
  void refresh();
- std::string getblock() = 0;
 };
 #endif
