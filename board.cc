@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <sstream>
+#include <stdlib>
 #include "board.h"
 #include "player.h"
 #include "Building.h"
@@ -224,7 +225,7 @@ void Board::loadFrom(ifstream &filename){
 			if(filename.eof()) break;
 			else{
 				cout << "Loading Failed. Please check your file." << endl;
-				exit;
+				exit(EXIT_FAILURE);
 			}
 		}
                 istringstream ss(s);
@@ -241,7 +242,7 @@ void Board::loadFrom(ifstream &filename){
 		}
 		catch(ios::failure&){
             cout << "Loading Failed. Please check your file." << endl;
-            exit;
+            exit(EXIT_FAILURE);
 		}
         if(a == 10){
             ss >> a;
@@ -269,7 +270,7 @@ void Board::loadFrom(ifstream &filename){
 			if(filename.eof()) break;
 			else{
 				cout << "Loading Failed. Please check your file." << endl;
-				exit;
+				exit(EXIT_FAILURE);
 			}
 		}
                 istringstream ss(s);
@@ -297,7 +298,7 @@ void Board::loadFrom(ifstream &filename){
 		}
 		catch(ios::failure&){
 			cout << "Loading Failed. Please check your file." << endl;
-			exit;
+			exit(EXIT_FAILURE);
 		}
 	}
 }
