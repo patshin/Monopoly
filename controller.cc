@@ -203,7 +203,7 @@ bool Controller::is_tading(){
 }
 
 void Controller::display(){
-	cout << td << endl; //cout or out?
+	board.display(); //cout or out?
 }
 
 
