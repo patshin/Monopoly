@@ -53,7 +53,7 @@ void Player::move(int step){
     }else{
       pos = pos+step-39;
     }
-    (buildings.at(pos))->setPlayer();
+    (buildings.at(pos))->setPlayer(&this);
   } else {
     if(pos+step<=0){
       pos = 39+pos-step;
@@ -61,11 +61,12 @@ void Player::move(int step){
       pos += step;
     }
 }
+}
 
 void Player::gotoSite(int p){
   buildings[pos]->removePlayer(players.at(pos));
   pos = p;
-  buildings[pos]->setPlayer();
+  buildings[pos]->setPlayer(&);
   buildings[pos]->method(&);
 }
 
@@ -231,9 +232,9 @@ void Player::auction(string bname, int bpos){ //use map
     while(totalbidders >= 1) {
       if (prevPriceBid == 0){
         bidderList.erase(--bidderList.end());
-        prePriceBid = 1;
+        prevPriceBid = 1;
       }
-      for(bidderList::iterator it=bidderList.begin();it!=bidderList.end();++it){
+      for(map<int string>::iterator it=bidderList.begin();it!=bidderList.end();++it){
         if(totalbidders == 1){
           cout << "Congrats! " << it->second << " wins the bid for ";
           cout << bname << "!" << endl;
@@ -282,7 +283,7 @@ void Player::auction(string bname, int bpos){ //use map
   }
 }
 
-void Players::isWinner(){
+void Player::isWinner(){
   cout << name << "wins the game!" << endl;
   cout << "Game Over." << endl;
 //  delete players.back();
@@ -296,13 +297,13 @@ void Player::printProperties() {
     return;
   }
   cout << "Here is the list of your properties:" << endl;
-  for (pList::iterator it=pList.begin(); it!=plist.end(); ++it){
+  for (map<string,int>::iterator it=pList.begin(); it!=pList.end(); ++it){
     cout << (buildings[it->second])->getName() << endl;
   }
 }
 
 void Player::prop_manip(int ppos, int changeMoney, string s){
-  string pname = p->getName();
+  string pname = getName();
   if(s == "tradein") {
     if(pList.count(pname)!=0){
       cout << name << " already owns " << pname << ". Invalid trade!" << endl;
@@ -382,7 +383,7 @@ bool Player::isBankrupt(){
 }
 
 void Player::makeBankrupt(){
-  isBankrupt = true;
+  isBankrupted = true;
 }
 
 bool Player::canBankrupt(int change){
@@ -414,7 +415,7 @@ int Player::getNumOwn(string b){
   return count;
 }
 
-void PLayer::setCupsOwn(int cup){
+void Player::setCupsOwn(int cup){
   cupsOwn = cup;
 }
 
@@ -422,7 +423,7 @@ void Player::setBalance(int bal){
   balance = bal;
 }
 
-void PLayer::setPos(int p){
+void Player::setPos(int p){
   pos = p;
 }
 
