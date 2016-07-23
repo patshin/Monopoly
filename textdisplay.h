@@ -24,6 +24,7 @@ public:
 	void movePlayer(int pos, char c, int steps);
     void removePlayer(char c, int pos);
     void setOwner(char c, int pos);
+    void removeOwner(int pos);
     void improve(int pos, bool whether);
     // make one improvement if whether is true
     // remove one improvemnt if whether is false
