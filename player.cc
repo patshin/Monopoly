@@ -51,16 +51,17 @@ void Player::move(int step){
     if(pos+step<=39){
       pos += step;
     }else{
-      pos = pos+step-39;
+      pos = pos+step-40;
     }
-    (buildings.at(pos))->setPlayer(this);
   } else {
     if(pos+step<=0){
-      pos = 39+pos-step;
+      pos = 40+pos-step;
     }else{
       pos += step;
     }
-}
+  }
+   buildings[pos]->setPlayer(this);
+   buildings[pos]->method(this);
 }
 
 void Player::gotoSite(int p){
