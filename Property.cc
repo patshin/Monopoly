@@ -29,7 +29,7 @@ void Property::removeOwner(){
  }else{
   delete(owner);
  }
- getBoard()->removePlayer(getOwner()->getChar(),getSite());
+ getBoard()->removeOwner(getSite());
 }
 int Property::getPrice(){
  return price;
@@ -51,4 +51,9 @@ if (Academic)
 }else{
   return false;
  }
+}
+void Property::refresh(){
+ b_refresh();
+ removeOwner(getSite());
+ setImprovements(0);
 }

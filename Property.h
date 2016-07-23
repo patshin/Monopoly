@@ -22,5 +22,6 @@ class Property: public Building{
  void setOwner(Player *p);
  void setImprovements(int n);
  int getImproveCost();
+ void refresh();
 };
 #endif

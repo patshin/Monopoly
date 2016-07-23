@@ -29,6 +29,8 @@ class Building {
  virtual bool getMort() =0;
  virtual int getPrice() ;
  virtual int getImproveCost();
+ virtual void refresh() = 0;
+ void b_refresh();
 
 };
 #endif

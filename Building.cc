@@ -69,3 +69,6 @@ bool Building::tradable(Player *p){
  	return true;
  }
 }
+void Building::b_refresh(){
+ curplayer.clear();
+}

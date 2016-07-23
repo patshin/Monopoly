@@ -46,3 +46,7 @@ int NonProperty::getPrice(){
 int GetImproveCost(){
  return 0;
 }
+void NonProperty::refresh(){
+ b_refresh();
+ numRollup = 4;
+}
