@@ -16,7 +16,7 @@ class Board{
 	std::vector <Building*> building;//share ptr??
 	Textdisplay *td;
 public:
-	Board();
+	Board(Textdisplay *td);
 	~Board();
 	void attachplayers(char c);
     void moveplayer(int steps);
@@ -37,6 +37,7 @@ public:
     void clear();
     void trade();
     void improve();
+    void display();
     void mortgage(const bool &whether);
 };
 
