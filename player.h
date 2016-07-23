@@ -52,7 +52,7 @@ public:
   bool isBankrupt();
   void makeBankrupt();
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
-  bool own(Property* p);
+  bool own(Building* p);
   std::vector<Building*> *getBuildingList();
   //count for gyms or residences owned, b = gym or res
   int getNumOwn(std::string b);
