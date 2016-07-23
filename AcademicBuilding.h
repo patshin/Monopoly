@@ -12,10 +12,10 @@ public:
  int getImproveCost() override;
  int getFee() override;
  int getValue() override;
- void improve() override;
+ void improve() ;
  std::string getblock() override;
- void doublebase() override;
- void halfbase() override;
+ void doublebase() ;
+ void halfbase() ;
  void method(Player* p);
  ~AcademicBuilding();
 };	
