@@ -35,7 +35,7 @@ class Building {
  virtual void changeMort();
  virtual std::string getblock();
  virtual int getNumRoll();
- virtual int setNumRoll();
+ virtual void setNumRoll(int n);
  
 };
 #endif
