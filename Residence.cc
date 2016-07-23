@@ -51,5 +51,5 @@ int Residence::getImproveCost(){
  return 0;
 }
 string Residence::getblock(){
- return ""；
+ return "";
 }
