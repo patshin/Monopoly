@@ -10,9 +10,9 @@ using namespace std;
 int main(int argc, const char * argv[]) {
   cin.exceptions(ios::eofbit|ios::failbit);
   string cmd;
-  Board b;
   Textdisplay td;
-  Controller con{b,td,0};
+  Board b{&td};
+  Controller con{b,0};
   if(argc > 4){
     cout << "Too many arguments. Loading failure." << endl;
   }
