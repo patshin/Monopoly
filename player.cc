@@ -14,7 +14,7 @@ Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> 
     timeTim = 0;
     cupsOwn = 0;
     isBankrupted = false;
-    roll = false;
+    roll = true;
 }
 
 string Player::getName(){
