@@ -361,14 +361,14 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
   } else if (s == "improve") {
     this->changeBalance(0 - buildings[ppos]->getImproveCost());
     // remember to switch improvable to false if improvement count reaches max
-    buildings[ppos]->setImproveCount(buildings[ppos]->getImproveCount() + 1);
+    buildings[ppos]->setImprovements(buildings[ppos]->getImproveCount() + 1);
   } else if (s == "unimprove") {
     if(buildings[ppos]->getImproveCount() <= 0){
       cout << "Invalid command! No more improvements to sell!" << endl;
       return;
     }
     this->changeBalance((buildings[ppos]->getImproveCost())/2);
-    buildings[ppos]->setImproveCount(buildings[ppos]->getImproveCount() - 1);
+    buildings[ppos]->setImprovements(buildings[ppos]->getImproveCount() - 1);
   } else {
     cout << "Invalid command, please type again." << endl;
   }
