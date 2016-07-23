@@ -24,5 +24,9 @@ class Property: public Building{
  void setImprovements(int n);
  int getImproveCost();
  void refresh();
+ std::string getblock();
+ int getNumRoll();
+ int setNumRoll(int n);
+
 };
 #endif
