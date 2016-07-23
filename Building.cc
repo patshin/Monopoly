@@ -77,3 +77,39 @@ Building ::~Building(){
 int Building::getImproveCost(){
  return 0;
 }
+bool Building::getAca(){
+  return false;
+}
+int Building::getImproveCount(){
+  return 0;
+}
+Player* Building::getOwner(){
+  return nullptr;
+}
+void Building::setOwner(Player *p){
+
+}
+void Building::setImprovements(int n){
+
+}
+bool Building::getMort(){
+  return false;
+}
+int Building::getPrice(){
+  return 0;
+}
+void Building::method(Player *p){
+
+}
+void Building::changeMort(){
+
+}
+string Building::getblock(){
+  return "";
+}
+int Building::getNumRoll(){
+  return 0;
+}
+void Building::setNumRoll(int n){
+  
+}
