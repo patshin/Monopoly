@@ -8,14 +8,13 @@
 class Controller
 {
 	Board &board;//okay to use refernece?
-	Textdisplay &td;
 	int seed;
 	int playerindex;
 	int NumOfPlayers;
 	bool trading;
 	bool testingMode;
 public:
-	Controller(Board &b, Textdisplay &td,int seed);
+	Controller(Board &b, int seed);
 	~Controller();
 	void gamestart();
 	//start the game by letting players choose their own characters
