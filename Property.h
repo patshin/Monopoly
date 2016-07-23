@@ -16,7 +16,7 @@ class Property: public Building{
  void changeMort();
  bool getMort();
  bool improvable();
- virtual void method(Player *p);
+ virtual void method(Player *p) = 0;
  virtual int getFee();
  virtual int getValue();
  int getImproveCount();
