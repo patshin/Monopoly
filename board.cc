@@ -189,24 +189,24 @@ void Board::saveTo(string filename){
 
 void Board::loadFrom(ifstream &filename){
 	filename >> NumPlayers;
+        string name;
+        char c;
+        int a;
 	for(int n = 0; n < NumPlayers; n++){
 		string s;
 		try{
 			getline(filename,s);
 		}
-		catch(ios_failure&){
+		catch(ios::failure&){
 			if(filename.eof()) break;
 			else{
 				cout << "Loading Failed. Please check your file." << endl;
 				exit;
 			}
 		}
+                istringstream ss(s);
 		try{
-			istringstream ss(s);
-            string name;
-			char c;
-			int a;
-            ss >> name;
+                    ss >> name;
 		    ss >> c;
 		    this->attachplayers(name,c);
 		    ss >> a;
@@ -216,7 +216,7 @@ void Board::loadFrom(ifstream &filename){
 		    ss >> a;
 		    players[n]->setPos(a); // set position to a; can this method be protected;
 		}
-		catch(ios_failure&){
+		catch(ios::failure&){
             cout << "Loading Failed. Please check your file." << endl;
             exit;
 		}
@@ -242,15 +242,15 @@ void Board::loadFrom(ifstream &filename){
 		try{
 			getline(filename,s);
 		}
-		catch(ios_failure&){
+		catch(ios::failure&){
 			if(filename.eof()) break;
 			else{
 				cout << "Loading Failed. Please check your file." << endl;
 				exit;
 			}
 		}
+                istringstream ss(s);
 		try{
-		    istringstream ss(s);
 		    string name;
 		    string owner;
 		    int improvements;
@@ -263,7 +263,7 @@ void Board::loadFrom(ifstream &filename){
 		    ss >> improvements;
 		    building[index]->setImprovements(improvements); //set number of improvements to improvements; can this method be protected??
 		}
-		catch(ios_failure&){
+		catch(ios::failure&){
 			cout << "Loading Failed. Please check your file." << endl;
 			exit;
 		}
@@ -293,7 +293,6 @@ void Board::playerGotoTim(){
 
 void Board::clear(){
     NumPlayers = 0;
-    finish = false;
     currentplayer = 0;
     winner = "No one";
     for(int n = 0; n < NumPlayers; n++){
@@ -310,7 +309,7 @@ void Board::trade(){
     string receive;
     int givemoney = -1;
     int receivemoney = -1;
-    int receiveIndex;
+    int receiverIndex;
     cout << "Name: ";
     while(cin >> name){
         bool in = false;
@@ -331,7 +330,7 @@ void Board::trade(){
         cin.clear();
         cin >> give;
     }
-    cout << endl << "Receive: "
+    cout << endl << "Receive: ";
     if(cin >> receivemoney){
         receive = "";
     }else{
