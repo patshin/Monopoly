@@ -19,21 +19,22 @@ class Player {
   std::vector<Player*> players;
   std::map<std::string, int> pList;
 public:
-  Player(char nc, std::vector<Building> &b, std::vector<Player> &p);
+  Player(std::string name,char nc, std::vector<Building*> &b, std::vector<Player*> &p);
   std::string getName();
   char getChar();
   int getBalance();
   int getPos();
   bool rollable();
+  bool isBlock(int bindex);
   void changeRollable();
   void move(int step);// setp/removep
   void gotoSite(int p);
   void purchase(std::string bname);
-  void sendProperty(Player* p, Building* b); //newly added
+  void sendProperty(Player* p, int bpos); //newly added
   void addProperty(int bpos);
   void setBlock(int bpos);
   void changeBalance(int change);//give warning if bankrupt
-  int setTimTime(int n);//0 1
+  void setTimTime(int n);//0 1
   int getTimTime();
   int getCupsOwn();
   void receiveCup();
@@ -51,7 +52,7 @@ public:
   bool isBankrupt();
   void makeBankrupt();
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
-  bool own(Property* p);
+  bool own(Building* p);
   std::vector<Building*> *getBuildingList();
   //count for gyms or residences owned, b = gym or res
   int getNumOwn(std::string b);

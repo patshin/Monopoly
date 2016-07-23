@@ -7,14 +7,14 @@
 
 using namespace std;
 
-Player::Player(std::string name, char nc, vector &b, vector &p):
-  name{name},nameChar{nc},buildings{b},players{p},pos{
+Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> &p):
+  name{name},nameChar{nc},buildings{b},players{p}{
     pos = rand() % 40;
     balance = 500;
     cupsOwn = 0;
     gameEnd = false;
-    isBankrupt = false;
-    rollable = false;
+    isBankrupted = false;
+    roll = false;
 }
 
 string Player::getName(){
@@ -38,10 +38,10 @@ bool Player::rollable(){
 }
 
 void Player::changeRollable(){
-  if(rollable == true) {
-    rollable = false;
+  if(roll == true) {
+    roll = false;
   }else{
-    rollable = true;
+    roll = true;
   }
 }
 
@@ -53,7 +53,7 @@ void Player::move(int step){
     }else{
       pos = pos+step-39;
     }
-    (buildings.at(pos))->setPlayer();
+    (buildings.at(pos))->setPlayer(this);
   } else {
     if(pos+step<=0){
       pos = 39+pos-step;
@@ -61,19 +61,20 @@ void Player::move(int step){
       pos += step;
     }
 }
+}
 
 void Player::gotoSite(int p){
   buildings[pos]->removePlayer(players.at(pos));
   pos = p;
-  buildings[pos]->setPlayer();
-  buildings[pos]->method(&);
+  buildings[pos]->setPlayer(this);
+  buildings[pos]->method(this);
 }
 
 void Player::purchase(string bname){
   pList[bname]=pos;
   (buildings.at(pos))->setOwner(this);
   int pay = 0 - (buildings.at(pos))->getPrice();
-  if(canBankrupt(change)) {
+  if(canBankrupt(pay)) {
     cout << "Warning! You don't have enough money!" << endl;
     return;
   }
@@ -98,11 +99,11 @@ void Player::addProperty(int bpos){
 
 bool Player::isBlock(int bindex){
   string blockname = buildings[bindex]->getblock();
-  for (buildings::iterator it = buildings.begin() ; it != buildings.end(); ++it){
-    if(it->getOwn()){
-      if(it->getAca()){
-        if(blockname == it->getblock()){
-          if((it->getOwner())->getName() != name){
+  for (auto it = buildings.begin() ; it != buildings.end(); ++it){
+    if((*it)->getOwn()){
+      if((*it)->getAca()){
+        if(blockname == (*it)->getblock()){
+          if(((*it)->getOwner())->getName() != name){
             return false;
           }
         }
@@ -121,7 +122,7 @@ void Player::changeBalance(int change){
   }
 }
 
-int Player::setTimTime(int n) {
+void Player::setTimTime(int n) {
   if (n==1){
     ++timeTim;
   } else {
@@ -150,9 +151,9 @@ void Player::useCup(){
 
 int Player::netCapital(){
   int money = balance;
-  for (pList::iterator it=pList.begin(); it!=plist.end(); ++it){
-    if((buildings.at(it->second))->isMort == false &&
-     (buildings.at(it->second))->isAcademic == false){
+  for (auto it=pList.begin(); it!=pList.end(); ++it){
+    if((buildings.at(it->second))->getMort() == false &&
+     (buildings.at(it->second))->getAca() == false){
        money += (buildings.at(it->second))->getPrice();
        money += ((buildings.at(it->second))->getImproveCost())*
                  ((buildings.at(it->second))->getImproveCount());
@@ -173,8 +174,8 @@ void Player::bankrupt(){
   } else {
     //restore rollupCup in tim
     int timIndex = 10;
-    int cupRemain = buildings[TimIndex]->getNumRoll();
-    buildings[TimIndex]->setNumRoll(cupRemain + cupsOwn);
+    int cupRemain = buildings[timIndex]->getNumRoll();
+    buildings[timIndex]->setNumRoll(cupRemain + cupsOwn);
     string nextCommand;
     cout << "Please choose from the following two options:" << endl;
     cout << "Type <auction> if you want your properties auctioned." << endl;
@@ -183,15 +184,15 @@ void Player::bankrupt(){
       while(true){
         cin >> nextCommand;
         if (nextCommand == "auction"){
-          for (pList::iterator it=pList.begin(); it!=plist.end(); ++it){
+          for (auto it=pList.begin(); it!=pList.end(); ++it){
             this->auction(it->first, it->second);
           }
           cout << name << "'s properties were auctioned!" << endl;
           break;
         } else if(nextCommand == "give") {
-          string OwedPerson = buildings[pos]->getOwner();
-          for (pList::iterator it=pList.begin(); it!=plist.end(); ++it){
-            this->sendProperty(OwedPerson,buildings[it->second]);
+          Player* OwedPerson = buildings[pos]->getOwner();
+          for (auto it=pList.begin(); it!=pList.end(); ++it){
+            this->sendProperty(OwedPerson,it->second);
           }
           cout << "All properties were sent to " << OwedPerson << "!" << endl;
           break;
@@ -201,8 +202,8 @@ void Player::bankrupt(){
       }
     } catch (ios::failure &){}
   }
-  for (players::iterator it = players.begin() ; it != players.end(); ++it){
-    if(it == this){
+  for (auto it = players.begin() ; it != players.end(); ++it){
+    if((*it)->getName() == name){
       players.erase(it);
       delete this;
     }
@@ -223,7 +224,7 @@ void Player::auction(string bname, int bpos){ //use map
       if(players[i]->getName() == this->getName()){
         continue;
       }
-      bidderList[players[i]->getName()] = players[i]->getName();
+      bidderList[i] = players[i]->getName();
     }
     cout << "Bidding started on " << bname << "!" << endl;
     cout << "Lowest bid is " << (buildings.at(pos))->getPrice() << endl;
@@ -231,13 +232,13 @@ void Player::auction(string bname, int bpos){ //use map
     while(totalbidders >= 1) {
       if (prevPriceBid == 0){
         bidderList.erase(--bidderList.end());
-        prePriceBid = 1;
+        prevPriceBid = 1;
       }
-      for(bidderList::iterator it=bidderList.begin();it!=bidderList.end();++it){
+      for(auto it=bidderList.begin();it!=bidderList.end();++it){
         if(totalbidders == 1){
           cout << "Congrats! " << it->second << " wins the bid for ";
           cout << bname << "!" << endl;
-          this->sendProperty(players[it->first],buildings[bpos]);
+          this->sendProperty(players[it->first],bpos);
           players[it->first]->changeBalance(0 - curbid);
           --totalbidders;
           break;
@@ -282,7 +283,7 @@ void Player::auction(string bname, int bpos){ //use map
   }
 }
 
-void Players::isWinner(){
+void Player::isWinner(){
   cout << name << "wins the game!" << endl;
   cout << "Game Over." << endl;
 //  delete players.back();
@@ -296,13 +297,13 @@ void Player::printProperties() {
     return;
   }
   cout << "Here is the list of your properties:" << endl;
-  for (pList::iterator it=pList.begin(); it!=plist.end(); ++it){
+  for (map<string,int>::iterator it=pList.begin(); it!=pList.end(); ++it){
     cout << (buildings[it->second])->getName() << endl;
   }
 }
 
 void Player::prop_manip(int ppos, int changeMoney, string s){
-  string pname = p->getName();
+  string pname = getName();
   if(s == "tradein") {
     if(pList.count(pname)!=0){
       cout << name << " already owns " << pname << ". Invalid trade!" << endl;
@@ -313,7 +314,7 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
       pList[buildings[ppos]->getName()] = ppos;
     } else {
       if(balance - changeMoney < 0){
-        cout << "Invalid Trade request. Go get more money!"
+        cout << "Invalid Trade request. Go get more money!" << endl;
         return;
       }
       (buildings[ppos]->setOwner(this));
@@ -339,10 +340,6 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
       return;
     }
     if(buildings[ppos]->getMort()) {
-      cout << "Invalid command! This building is already mortgaged!" << endl;
-      return;
-    }
-    f(buildings[ppos]->getMort()) {
       cout << "Invalid command! This building is already mortgaged!" << endl;
       return;
     }
@@ -382,7 +379,7 @@ bool Player::isBankrupt(){
 }
 
 void Player::makeBankrupt(){
-  isBankrupt = true;
+  isBankrupted = true;
 }
 
 bool Player::canBankrupt(int change){
@@ -393,7 +390,7 @@ bool Player::canBankrupt(int change){
   }
 }
 
-bool Player::own(Property* p){
+bool Player::own(Building* p){
   return (this == p->getOwner());
 }
 
@@ -414,7 +411,7 @@ int Player::getNumOwn(string b){
   return count;
 }
 
-void PLayer::setCupsOwn(int cup){
+void Player::setCupsOwn(int cup){
   cupsOwn = cup;
 }
 
@@ -422,7 +419,7 @@ void Player::setBalance(int bal){
   balance = bal;
 }
 
-void PLayer::setPos(int p){
+void Player::setPos(int p){
   pos = p;
 }
 
