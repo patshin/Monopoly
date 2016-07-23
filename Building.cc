@@ -29,7 +29,7 @@ void Building::setPlayer(Player* p){
   }
  }
  curplayer.push_back(p);
- display->setOwner(p->getChar(),site);
+ display->putPlayer(p->getChar(),site);
 }
 void Building::removePlayer(Player* p){
  int i = curplayer.size();
