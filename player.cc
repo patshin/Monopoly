@@ -11,6 +11,7 @@ Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> 
   name{name},nameChar{nc},buildings{b},players{p}{
     pos = rand() % 40;
     balance = 500;
+    timeTim = 0;
     cupsOwn = 0;
     isBankrupted = false;
     roll = false;
