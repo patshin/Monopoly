@@ -9,13 +9,13 @@ class AcademicBuilding : public Property{
  std::string block;
 public:
  AcademicBuilding(int price,int imc, std::vector <int> tut, std::string blk,std::string name, int site, Textdisplay* board);
- int getImproveCost();
- int getFee();
- int getValue();
- void improve();
- std::string getblock();
- void doublebase();
- void halfbase();
+ int getImproveCost() override;
+ int getFee() override;
+ int getValue() override;
+ void improve() override;
+ std::string getblock() override;
+ void doublebase() override;
+ void halfbase() override;
  void method(Player* p);
  ~AcademicBuilding();
 };	

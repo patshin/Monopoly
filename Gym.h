@@ -5,11 +5,11 @@
 class Gym : public Property{
 	public:
  Gym(std::string name,int site,Textdisplay* board);
- int getFee(int numOwn);
- int getValue();
+ int getFee(int numOwn) override;
+ int getValue() override;
  void method(Player *p);
- int getImproveCost();
- std::string getblock();
+ int getImproveCost() override;
+ std::string getblock() override;
  ~Gym();
 };
 #endif
