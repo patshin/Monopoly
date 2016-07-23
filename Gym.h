@@ -9,5 +9,6 @@ class Gym : public Property{
  int getValue();
  void method(Player *p);
  int getImproveCost();
+ std::string getblock();
 };
 #endif

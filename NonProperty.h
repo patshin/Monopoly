@@ -17,5 +17,7 @@ class NonProperty: public Building{
  int getPrice();
  int getImproveCost();
  void refresh();
+ void changeMort();
+ std::string getblock();
 };
 #endif
