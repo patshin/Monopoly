@@ -47,7 +47,7 @@ void Player::changeRollable(){
 }
 
 void Player::move(int step){
-  (buildings.at(pos))->removePlayer(players.at(pos));
+  (buildings.at(pos))->removePlayer(this);
   if (step >= 0) {
     if(pos+step<=39){
       pos += step;
