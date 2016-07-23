@@ -26,7 +26,7 @@ class Property: public Building{
  void refresh();
  std::string getblock();
  int getNumRoll();
- int setNumRoll(int n);
+ void setNumRoll(int n);
 
 };
 #endif
