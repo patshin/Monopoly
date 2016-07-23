@@ -51,3 +51,6 @@ void Gym::method(Player *p){
 int Gym::getImproveCost(){
  return 0;
 }
+string Gym::getblock(){
+ return "";
+}
