@@ -5,7 +5,7 @@
 class Residence : public Property{
 	public:
  Residence(std::string name,int site, Textdisplay* board);
- int getFee(int numOwn) override;
+ int getFee(int numOwn);
  int getValue() override;
  void method(Player *p);
  int getImproveCost() override;

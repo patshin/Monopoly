@@ -64,11 +64,11 @@ void Property::setImprovements(int n){
 int Property::getImproveCount(){
  return improvements;
 }
-int Property::getNumRoll(){
- return 0;
-}
-void Property::setNumRoll(int n){
-}
+ int Property::getNumRoll(){
+ 	return 0;
+ }
+ void Property::setNumRoll(int n){
+ }
 Property::~Property(){}
 int Property::getFee(){
  return 0;
@@ -76,7 +76,6 @@ int Property::getFee(){
 string Property::getblock(){
  return "";
 }
-
 int Property::getImproveCost(){
  return 0;
 }
