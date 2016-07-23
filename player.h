@@ -12,7 +12,6 @@ class Player {
   int pos;   //0-39
   int timeTim;
   int cupsOwn;
-  static bool gameEnd;
   bool isBankrupted; //
   bool roll;
   std::vector<Building*> buildings;
@@ -27,21 +26,20 @@ public:
   bool rollable();
   bool isBlock(int bindex);
   void changeRollable();
-  void move(int step);// setp/removep
+  void move(int step);
   void gotoSite(int p);
   void purchase(std::string bname);
-  void sendProperty(Player* p, int bpos); //newly added
+  void sendProperty(Player* p, int bpos); //send without paying
   void addProperty(int bpos);
   void setBlock(int bpos);
-  void changeBalance(int change);//give warning if bankrupt
-  void setTimTime(int n);//0 1
+  void changeBalance(int change);
+  void setTimTime(int n);//set to 0 if n=0, increment if n=1
   int getTimTime();
   int getCupsOwn();
   void receiveCup();
   void useCup();
   int netCapital();
   void bankrupt(); //delete p
-  bool getGameStatus();
   void auction(std::string bname, int bpos); //gai, bid or quit
   void mortgage(Property* p);
   void printProperties();
@@ -61,5 +59,4 @@ public:
   void setPos(int p);
   ~Player();
 };
-//improve, set status, get block, trade, win?
 #endif
