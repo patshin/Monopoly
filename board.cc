@@ -124,6 +124,17 @@ int Board::findbuilding(string name){
 	return 40;
 }
 
+
+int Board::findplayer(string name){
+        for(int n=0; n < NumPlayers; n++){
+                if(players[n]->getName() == name){
+                        return n;
+                }
+        }
+        return NumPlayers;
+}
+
+
 void Board::attachplayers(string name,char c){   
 		Player *p = new Player{name,c, building, players}; //add a field!!
         players.push_back(p);//contained its the player that has the vector, players always being modified??
@@ -142,7 +153,7 @@ bool Board::playerStatus(){
     
 void Board::nextplayer(){
      if(currentplayer == NumPlayers - 1){
-        currentplayer == 0;
+        currentplayer = 0;
      }else{
         currentplayer++;
      }
@@ -258,7 +269,8 @@ void Board::loadFrom(ifstream &filename){
 		    int index = findbuilding(name);
 		    ss >> owner;
             if(owner != "BANK"){
-                building[index]->setOwner(owner);
+                int playerindex = findplayer(owner);
+                building[index]->setOwner(players[playerindex]);
             } //set owner to owner; can this method be protected??
 		    ss >> improvements;
 		    building[index]->setImprovements(improvements); //set number of improvements to improvements; can this method be protected??
@@ -288,7 +300,7 @@ bool Board::at_Tim(){
 }
 
 void Board::playerGotoTim(){
-    players[currentplayer]->goto(10);
+    players[currentplayer]->gotoSite(10);
 }
 
 void Board::clear(){
@@ -350,13 +362,13 @@ void Board::trade(){
         }
         if(giveBuildingIndex == 40 || ReceiveBuildingIndex == 40){
             cout << "Property not found. Request Rejected." << endl;
-        }else if(!building[giveBuildingIndex]->tradable(players[currentplayer]){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
+        }else if(!building[giveBuildingIndex]->tradable(players[currentplayer])){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
             cout << give << " " << "cannot be traded. Request Rejected." << endl;
-        }else if(!building[ReceiveBuildingIndex]->tradable(players[receiverIndex]){
+        }else if(!building[ReceiveBuildingIndex]->tradable(players[receiverIndex])){
             cout << receive << " " << "cannot be traded. Request Rejected." << endl;
         }else{
             string cmd;
-            cout << "Please choose accept or reject this offer?" << end;
+            cout << "Please choose accept or reject this offer?" << endl;
             while(cin >> cmd){                
                 if(cmd == "reject") break;
                 if(cmd == "accept"){
@@ -366,7 +378,7 @@ void Board::trade(){
                     players[receiverIndex]->prop_manip(ReceiveBuildingIndex, receivemoney, "tradeout");
                     break;
                 }else{
-                    cout << "command not found. Try agian: reject/accept."
+                    cout << "command not found. Try agian: reject/accept.";
                 }
             }
         }
@@ -385,7 +397,7 @@ void Board::improve(){
         if(buildingIndex == 40){
             if(property == "quit") break;
             cout << "Property Not Found. If quit improving, enter quit. Or try again: ";
-        }else if(players[currentplayer]->own(building[buildingIndex])){// inform player to implement this.
+        }else if(building[buildingIndex]->getOwn() && players[currentplayer]->own(building[buildingIndex])){// inform player to implement this.
             cout << "You don't have this property. If quit improving, enter quit. Or try again: ";
         }else if(!players[currentplayer]->isBlock(buildingIndex)){//inform building to implement this;
             cout << "Can't be improved without being monoploy. If quit improving, enter quit. Or try again: ";
@@ -450,7 +462,7 @@ void Board::mortgage(const bool &whether){
             cout << "Haven't bee mortgaged. You must be mistaken.";
         }else{
             int cost = (building[buildingIndex]->getPrice())*6/10;
-            cout << "Unmorgaging this property costs " << get << " dollars." << endl;
+            cout << "Unmorgaging this property costs " << cost << " dollars." << endl;
             players[currentplayer]->prop_manip(buildingIndex, cost, "unmortgage");
         }
     }
