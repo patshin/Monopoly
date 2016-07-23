@@ -22,11 +22,11 @@ class Property: public Building{
  int getImproveCount();
  void setOwner(Player *p);
  void setImprovements(int n);
- int getImproveCost();
+ virtual int getImproveCost();
  void refresh();
- std::string getblock();
+ virtual std::string getblock();
  int getNumRoll();
  void setNumRoll(int n);
-
+ virtual ~Property();
 };
 #endif

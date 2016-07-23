@@ -43,9 +43,6 @@ int NonProperty::getPrice(){
  return 0;
 
 }
-int GetImproveCost(){
- return 0;
-}
 void NonProperty::refresh(){
  b_refresh();
  numRollup = 4;
@@ -54,4 +51,9 @@ void NonProperty::changeMort(){}
 
 string NonProperty::getblock(){
 	return "";
+}
+NonProperty::~NonProperty(){}
+
+int NonProperty::getImproveCost(){
+ return 0;
 }

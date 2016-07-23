@@ -41,3 +41,4 @@ void NeedlesHall::method(Player* p){
  }
  p->changeBalance(y);
 }
+NeedlesHall::~NeedlesHall(){}

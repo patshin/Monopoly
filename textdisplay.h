@@ -14,7 +14,7 @@
 class Textdisplay
 {
 	std::vector<std::vector<char>> display;
-	std::string stringDislay;
+	std::string stringDisplay;
 public:
 	 Textdisplay();
 	~Textdisplay();

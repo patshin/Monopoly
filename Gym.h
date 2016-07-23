@@ -10,5 +10,6 @@ class Gym : public Property{
  void method(Player *p);
  int getImproveCost();
  std::string getblock();
+ ~Gym();
 };
 #endif

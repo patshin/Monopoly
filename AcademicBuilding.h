@@ -17,7 +17,7 @@ public:
  void doublebase();
  void halfbase();
  void method(Player* p);
- 
+ ~AcademicBuilding();
 };	
 
 #endif

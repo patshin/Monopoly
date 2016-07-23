@@ -54,3 +54,4 @@ int Gym::getImproveCost(){
 string Gym::getblock(){
  return "";
 }
+Gym::~Gym(){}

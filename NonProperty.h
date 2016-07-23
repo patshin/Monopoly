@@ -15,9 +15,10 @@ class NonProperty: public Building{
  void setImprovements(int n);
  bool getMort();
  int getPrice();
- int getImproveCost();
  void refresh();
  void changeMort();
  std::string getblock();
+ virtual ~NonProperty();
+ int getImproveCost();
 };
 #endif

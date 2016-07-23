@@ -11,3 +11,4 @@ void CollectOSAP::method(Player* p){
  cout << "You Have Collected $200 !"<< endl;
  p->changeBalance(200);
 }
+CollectOSAP::~CollectOSAP(){}

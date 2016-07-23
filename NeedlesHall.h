@@ -6,5 +6,6 @@ class NeedlesHall: public NonProperty{
 	public:
 NeedlesHall(int site, Textdisplay* board);
 void method(Player* p);
+~NeedlesHall();
 };
 #endif

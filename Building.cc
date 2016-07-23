@@ -74,3 +74,6 @@ void Building::b_refresh(){
 }
 Building ::~Building(){
 }
+int Building::getImproveCost(){
+ return 0;
+}

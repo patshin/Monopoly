@@ -11,3 +11,4 @@ GooseNesting::GooseNesting(int site, Textdisplay* board)
 void GooseNesting::method(Player* p){
  cout<<"ATTACKED BY GOOSE!"<<endl;
 }
+GooseNesting::~GooseNesting(){}

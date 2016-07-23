@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include "Property.h"
-
+using namespace std;
 Property::Property(bool Academic,int price, std::string name, int site, Textdisplay* board):
  Building(true,name,site,board),Academic(Academic),price(price){
  owner = nullptr;
@@ -69,3 +69,19 @@ int Property::getImproveCount(){
  }
  void Property::setNumRoll(int n){
  }
+Property::~Property(){}
+int Property::getFee(){
+ return 0;
+}
+string Property::getblock(){
+ return "";
+}
+void Property::method(Player *p){
+
+}
+int Property::getImproveCost(){
+ return 0;
+}
+int Property::getValue(){
+ return 0;
+}

@@ -12,3 +12,4 @@ void CoopFee::method(Player* p){
  cout << "Once you choose to coop, you pay 150" << endl;
  p->changeBalance(-150);
 }
+CoopFee::~CoopFee(){}
