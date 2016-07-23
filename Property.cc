@@ -64,3 +64,8 @@ void Property::setImprovements(int n){
 int Property::getImproveCount(){
  return improvements;
 }
+ int Property::getNumRoll(){
+ 	return 0;
+ }
+ void Property::setNumRoll(int n){
+ }
