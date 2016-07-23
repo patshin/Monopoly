@@ -4,7 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <sstream>
-#include <stdlib>
+#include <stdlib.h>
 #include "board.h"
 #include "player.h"
 #include "Building.h"
@@ -197,7 +197,7 @@ void Board::saveTo(string filename){
     			if(building[j]->getOwner()){
     				savefile << building[j]->getName() << " " << building[j]->getOwner()->getName(); //To get owner of the building;
     				if(building[j]->getMort()){
-    					savefile << " -1"  << endl; /
+    					savefile << " -1"  << endl; 
                                 }else{
                                         savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
                                 }
