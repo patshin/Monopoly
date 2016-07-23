@@ -50,3 +50,4 @@ void NonProperty::refresh(){
  b_refresh();
  numRollup = 4;
 }
+void NonProperty::changeMort(){}
