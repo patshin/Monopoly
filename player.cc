@@ -393,7 +393,7 @@ bool Player::canBankrupt(int change){
   }
 }
 
-bool Player::own(Property* p){
+bool Player::own(Building* p){
   return (this == p->getOwner());
 }
 
