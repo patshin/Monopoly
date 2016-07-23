@@ -55,7 +55,7 @@ if (Academic)
 }
 void Property::refresh(){
  b_refresh();
- getBoard()->removeOwner(getSite());
+ removeOwner();
  setImprovements(0);
 }
 void Property::setImprovements(int n){
