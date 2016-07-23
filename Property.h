@@ -10,7 +10,6 @@ class Property: public Building{
  Property(bool Academic, int price,std::string name, int site, Textdisplay* board);
  bool getAca();
  Player* getOwner();
- void setOwner(Player* p);
  void removeOwner();
  int getPrice();
  void changeMort();
@@ -19,5 +18,9 @@ class Property: public Building{
  virtual void method(Player *p);
  virtual int getFee();
  virtual int getValue();
+ int getImproveCount();
+ void setOwner(Player *p);
+ void setImprovements(int n);
+ int getImproveCost();
 };
 #endif

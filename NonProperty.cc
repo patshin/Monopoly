@@ -21,3 +21,28 @@ void NonProperty::setNumRoll(int n){
   numRollup = n;
  }
 }
+Player* NonProperty:: getOwner(){
+	return nullptr;
+}
+int NonProperty::getImproveCount(){
+	return 0;
+}
+bool NonProperty::getAca() {
+	return false;
+}
+void NonProperty::setOwner(Player *p) {
+
+}
+void NonProperty::setImprovements(int n){
+	
+}
+bool NonProperty::getMort(){
+ return false;
+}
+int NonProperty::getPrice(){
+ return 0;
+
+}
+int GetImproveCost(){
+ return 0;
+}

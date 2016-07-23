@@ -17,11 +17,18 @@ class Building {
  std::string getName();
  bool tradable(Player *p);
  bool getOwn();
- virtual Player* getOwner() = 0;
  void setPlayer(Player* p);
  void removePlayer(Player* p);
  int improvable();
  virtual bool getAca() = 0;
  virtual int getImproveCount();
+ virtual Player* getOwner() = 0;
+ virtual void setOwner(Player *p) = 0;
+ virtual void setImprovements(int n) = 0;
+ virtual int getImprovCount();
+ virtual bool getMort() =0;
+ virtual int getPrice() ;
+ virtual int getImproveCost();
+
 };
 #endif

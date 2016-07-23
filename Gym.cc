@@ -48,3 +48,12 @@ void Gym::method(Player *p){
  	return;
  }
 }
+int Gym::getImproveCount(){
+	return 0;
+}
+void Gym::setImprovements(){
+	
+}
+int Gym::getImproveCost(){
+ return 0;
+}

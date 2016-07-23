@@ -5,7 +5,7 @@
 #include "AcademicBuilding.h"
 using namespace std;
 
-AcademicBuilding::AcademicBuilding(int price, int imc, int *tut,string blk,string name, int site, Textdisplay* board ) :Property(true,price,name,site,board){
+AcademicBuilding::AcademicBuilding(int price, int imc, vector <int> tut,string blk,string name, int site, Textdisplay* board ) :Property(true,price,name,site,board){
  this->improveCost=imc;
  this->tuition=tut;
  this->block=blk;
@@ -26,7 +26,7 @@ void AcademicBuilding::improve(){
  improveCount++;
  getBoard()->improve(getSite(),true);
 }
-void AcademicBuilding::setImproveCount(int n){
+void AcademicBuilding::setImprovements(int n){
  improveCount = n;
 }
 string AcademicBuilding::getblock(){

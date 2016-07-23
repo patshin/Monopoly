@@ -8,5 +8,9 @@ class Residence : public Property{
  int getFee(int numOwn);
  int getValue();
  void method(Player *p);
+ int getImproveCount();
+ void setImprovements(int n);
+ int getImproveCost();
 };
 #endif
+

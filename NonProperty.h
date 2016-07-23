@@ -8,5 +8,13 @@ class NonProperty: public Building{
  int getNumRoll();
  void setNumRoll(int n);
  virtual void method(Player* p) = 0;
+ Player *getOwner();
+ int getImproveCount();
+ bool getAca() ;
+ void setOwner(Player *p) ;
+ void setImprovements(int n);
+ bool getMort();
+ int getPrice();
+ int getImproveCost();
 };
 #endif

@@ -9,5 +9,8 @@ class Gym : public Property{
  int getValue();
  void setNumOwn(int n);
  void method(Player *p);
+ int getImproveCount();
+ void setImprovements();
+ int getImproveCost();
 };
 #endif
