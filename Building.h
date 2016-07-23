@@ -33,7 +33,7 @@ class Building {
  virtual ~Building();
  virtual void method(Player *p) = 0;
  virtual void changeMort();
- virtual void getblock();
+ virtual std::string getblock();
  virtual int getNumRoll();
  virtual int setNumRoll();
  
