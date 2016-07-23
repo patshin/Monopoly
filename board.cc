@@ -193,13 +193,17 @@ void Board::saveTo(string filename){
     	}//balance or total money
     	for(int j = 0; j < 40; j++){
     		if(building[j]->getOwn()){
-                if(building[j]->getOwner()){
-                    savefile << building[j]->getName() << " " << building[j]->getOwner()->getName(); //To get owner of the building;
-                    savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
-                }else{
-                    savefile << building[j]->getName() << " " << "BANK"; //To get owner of the building;
-                    savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
-                }
+    			if(building[j]->getOwner()){
+    				savefile << building[j]->getName() << " " << building[j]->getOwner()->getName(); //To get owner of the building;
+    				if(building[j]->getMort()){
+    					savefile << " -1"  << endl; /
+                                }else{
+                                        savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
+                                }
+                        }else{
+                                savefile << building[j]->getName() << " " << "BANK"; //To get owner of the building;
+                                savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
+                        }
     		}
     	}
     	
@@ -281,7 +285,15 @@ void Board::loadFrom(ifstream &filename){
                 building[index]->setOwner(players[playerindex]);
             } //set owner to owner; can this method be protected??
 		    ss >> improvements;
-		    building[index]->setImprovements(improvements); //set number of improvements to improvements; can this method be protected??
+		    if(improvements == 0){
+		    	if(building[index]->getAca()){
+		    		building[index]->setImprovements(improvements);
+		    	}
+		    }else if(improvements == -1){
+		    	building[index]->changeMort();
+		    }else{
+		        building[index]->setImprovements(improvements); //set number of improvements to improvements; can this method be protected??
+		    }
 		}
 		catch(ios::failure&){
 			cout << "Loading Failed. Please check your file." << endl;
