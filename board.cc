@@ -167,6 +167,14 @@ void Board::playerBankrupt(){
 void Board::printAsset(){
     players[currentplayer]->printProperties();
 }
+
+void Board::printall(){
+     for(int n = 0; n < NumPlayers; n++){
+         players[n]->printProperties();
+     }
+}
+
+
 void Board::saveTo(string filename){
     ofstream savefile{filename};
     savefile << NumPlayers << endl;
