@@ -5,7 +5,7 @@
 #include "controller.h"
 #include "board.h"
 #include "textdisplay.h"
-#include <stdlib>
+#include <stdlib.h>
 using namespace std;
 
 int main(int argc, const char * argv[]) {
