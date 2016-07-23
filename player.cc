@@ -7,14 +7,14 @@
 
 using namespace std;
 
-Player::Player(std::string name, char nc, vector &b, vector &p):
-  name{name},nameChar{nc},buildings{b},players{p},pos{
+Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> &p):
+  name{name},nameChar{nc},buildings{b},players{p}{
     pos = rand() % 40;
     balance = 500;
     cupsOwn = 0;
     gameEnd = false;
-    isBankrupt = false;
-    rollable = false;
+    isBankrupted = false;
+    roll = false;
 }
 
 string Player::getName(){
@@ -38,10 +38,10 @@ bool Player::rollable(){
 }
 
 void Player::changeRollable(){
-  if(rollable == true) {
-    rollable = false;
+  if(roll == true) {
+    roll = false;
   }else{
-    rollable = true;
+    roll = true;
   }
 }
 
