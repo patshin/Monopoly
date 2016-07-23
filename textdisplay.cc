@@ -127,6 +127,13 @@ void Textdisplay::putPlayer(char c, int pos){
 	int col = v[2];
 	display[row][col] = c;
  }
+ 
+void Textdisplay::removeOwner(int pos){
+ 	vector<int> v = PosToindex(pos);
+ 	int row = v[1] + 1;
+	int col = v[2];
+	display[row][col] = '_';
+ }
 void Textdisplay::improve(int pos, bool whether){
 	if(whether){
 		vector<int> v = PosToindex(pos);
