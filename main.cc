@@ -5,6 +5,7 @@
 #include "controller.h"
 #include "board.h"
 #include "textdisplay.h"
+#include <stdlib>
 using namespace std;
 
 int main(int argc, const char * argv[]) {
@@ -29,7 +30,7 @@ int main(int argc, const char * argv[]) {
         }
         catch(ios::failure&){
           cout << "Loading failure. Unknown file";
-          exit;
+          exit(EXIT_FAILURE);
         }
       }else{
         ifstream infile{argv[3]};
@@ -38,7 +39,7 @@ int main(int argc, const char * argv[]) {
         }
         catch(ios::failure&){
           cout << "Loading failure. Unknown file";
-          exit;
+          exit(EXIT_FAILURE);
         }
       }
     }else{
@@ -59,11 +60,11 @@ int main(int argc, const char * argv[]) {
       }
       catch(ios::failure&){
         cout << "Loading failure. Unknown file";
-        exit;
+        exit(EXIT_FAILURE);
       }
     }else{
       cout << "Invalid argument." << endl;
-      exit;
+      exit(EXIT_FAILURE);
     }
   }
 
@@ -73,7 +74,7 @@ int main(int argc, const char * argv[]) {
       con.turnonTestingMode();
     }else{
       cout << "Invalid argument." << endl;
-      exit;
+      exit(EXIT_FAILURE);
     }
   }
 
@@ -89,7 +90,7 @@ int main(int argc, const char * argv[]) {
         cout << "Game over. Would you like to play again? Y/N";
         char c;
         while(cin >> c){
-                if(c == 'N') {exit;}
+                if(c == 'N') {exit(EXIT_SUCCESS);}
             if(c == 'Y'){
                 con.gamestart();
                 break;
