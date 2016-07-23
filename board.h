@@ -18,13 +18,15 @@ class Board{
 public:
 	Board(Textdisplay &td);
 	~Board();
-	void attachplayers(char c);
+	void attachplayers(std::string name,char c);
     void moveplayer(int steps);
     void switchStage();
     //notify the current player to switch status(being able to roll or not)
     bool playerStatus();
     // notify the current player to return status(being able to roll or not)
     void nextplayer();
+    int findbuilding(std::string name);
+    int findplayer(std::string name);
     void playerBankrupt();
     void printAsset();
     void saveTo(std::string filename);
@@ -36,10 +38,15 @@ public:
     bool at_Tim();
     void clear();
     void trade();
+    void playerGotoTim();
     void improve();
     void display();
     void mortgage(const bool &whether);
 };
+
+
+
+#endif
 
 
 
