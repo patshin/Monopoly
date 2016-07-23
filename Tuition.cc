@@ -15,7 +15,7 @@ void Tuition::method(Player* p){
  if(s == "pay"){
   p->changeBalance(-300);
  }else if(s == "lose"){
-  p->changeBalance((p->totalmoney()/10));
+  p->changeBalance(((p->netCapital())/10));
  }else{
   cout << "error input, try again" << endl;
   this->method(p);
