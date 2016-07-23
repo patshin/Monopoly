@@ -9,16 +9,16 @@ class Textdisplay;
 class Player;
 
 class Board{
-	int NumPlayers;
-	int currentplayer;
-	std::string winner; 
-	std::vector <Player*> players;///share ptr??
-	std::vector <Building*> building;//share ptr??
-	Textdisplay td;
+        int NumPlayers;
+        int currentplayer;
+        std::string winner;
+        std::vector <Player*> players;///share ptr??
+        std::vector <Building*> building;//share ptr??
+        Textdisplay td;
 public:
-	Board(Textdisplay &td);
-	~Board();
-	void attachplayers(std::string name,char c);
+        Board(Textdisplay &td);
+        ~Board();
+        void attachplayers(std::string name,char c);
     void moveplayer(int steps);
     void switchStage();
     //notify the current player to switch status(being able to roll or not)
@@ -29,6 +29,7 @@ public:
     int findplayer(std::string name);
     void playerBankrupt();
     void printAsset();
+    void printall();
     void saveTo(std::string filename);
     void loadFrom(std::ifstream &filename);
     bool finish();
