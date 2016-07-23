@@ -25,7 +25,6 @@ class Building {
  virtual Player* getOwner() = 0;
  virtual void setOwner(Player *p) = 0;
  virtual void setImprovements(int n) = 0;
- virtual int getImprovCount();
  virtual bool getMort() =0;
  virtual int getPrice() ;
  virtual int getImproveCost();
@@ -34,5 +33,9 @@ class Building {
  virtual ~Building();
  virtual void method(Player *p) = 0;
  virtual void changeMort();
+ virtual void getblock();
+ virtual int getNumRoll();
+ virtual int setNumRoll();
+ 
 };
 #endif
