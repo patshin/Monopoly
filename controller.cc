@@ -6,7 +6,7 @@
 using namespace std;
 
 
-Controller::Controller(Board &b, Textdisplay &td,int seed): board{b},td{td},playerindex{0},actionStage{0},NumOfPlayers{0},testingMode{false},seed{seed},trading{false}{
+Controller::Controller(Board &b,int seed): board{b},playerindex{0},NumOfPlayers{0},testingMode{false},seed{seed},trading{false}{
 	characters.push_back('G');
 	characters.push_back('B');
 	characters.push_back('D');
@@ -36,12 +36,12 @@ void Controller::gamestart(){
     }
     cout << "Choose your character from Goose(G), GRT Bus(B), Tim Hortons Doughnut(D), Professor(P), Student(S), Money($), Laptop(L), Pink tie(T)" << endl;
     int len = 8;
+    bool found = false;
     for (int n = 0; n < NumOfPlayers; n++){
     	cout << "Enter the letter your character represent (case sensitive):";
 	    char c;
 	    while(cin >> c){
 	    	for(int n = 0; n < len; n++){
-	    		bool found = false;
 	    		if(characters[n] == c){
 	    			characters.erase(characters.begin() + n);
 	    			found = true;
@@ -67,8 +67,8 @@ void Controller::gamestart(){
 void Controller::roll(int dice1, int dice2){
 	int turn = 0;
 	string roll;
-	if(c.playerstatus()){
-		if(testingMode = false){
+	if(playerstatus()){
+		if(!testingMode){
 			srand(seed);
 		    dice1 = rand()%6 + 1;
 		    dice2 = rand()%6 + 1;
@@ -129,12 +129,12 @@ void Controller::roll(int dice1, int dice2){
 		}
 		board.switchStage();
 	}else{
-		cout << "Fuck off! You are not allowed to roll." << end;
+		cout << "Fuck off! You are not allowed to roll." << endl;
 	}
 }
 
 void Controller::next(){
-	if(c.playerstatus()){
+	if(playerstatus()){
 		cout << "Please roll first." << endl;
 	}else{
         board.nextplayer();
@@ -178,14 +178,14 @@ bool Controller::playerstatus(){
 }
 
 string Controller::getwinner(){
-	return board.winner();
+	return board.getwinner();
 }
 
 bool Controller::getMode(){
 	return testingMode;
 }
 
-void Controller::turonTestingMode(){
+void Controller::turnonTestingMode(){
 	testingMode = true;
 }
 
@@ -198,7 +198,7 @@ bool Controller::is_atTimline(){
 }
 
 
-bool Controller::is_tading(){
+bool Controller::is_trading(){
 	return trading;
 }
 
@@ -213,13 +213,10 @@ void Controller::trade(){
 }
 
 void Controller::improve(){
-	board.imporve();
+	board.improve();
 }
 
 
 void Controller::mortgage(const bool &whether){
 	board.mortgage(whether);
 }
-
-
-
