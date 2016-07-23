@@ -51,3 +51,7 @@ void NonProperty::refresh(){
  numRollup = 4;
 }
 void NonProperty::changeMort(){}
+
+string NonProperty::getblock(){
+	return "";
+}
