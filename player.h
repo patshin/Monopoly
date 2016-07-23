@@ -19,13 +19,12 @@ class Player {
   std::vector<Player*> players;
   std::map<std::string, int> pList;
 public:
-  Player(std::string name,char nc, std::vector<Building*> &b, std::vector<Player*> &p);
+  Player(char nc, std::vector<Building> &b, std::vector<Player> &p);
   std::string getName();
   char getChar();
   int getBalance();
   int getPos();
   bool rollable();
-  bool isBlock(int bindex);
   void changeRollable();
   void move(int step);// setp/removep
   void gotoSite(int p);
@@ -52,7 +51,7 @@ public:
   bool isBankrupt();
   void makeBankrupt();
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
-  bool own(Building* p);
+  bool own(Property* p);
   std::vector<Building*> *getBuildingList();
   //count for gyms or residences owned, b = gym or res
   int getNumOwn(std::string b);
