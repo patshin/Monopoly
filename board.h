@@ -16,7 +16,7 @@ class Board{
 	std::vector <Building*> building;//share ptr??
 	Textdisplay td;
 public:
-	Board(Textdisplay td);
+	Board(Textdisplay &td);
 	~Board();
 	void attachplayers(char c);
     void moveplayer(int steps);
