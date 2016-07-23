@@ -12,7 +12,6 @@ Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> 
     pos = rand() % 40;
     balance = 500;
     cupsOwn = 0;
-    gameEnd = false;
     isBankrupted = false;
     roll = false;
 }
@@ -164,44 +163,35 @@ int Player::netCapital(){
 
 void Player::bankrupt(){
   cout << name << " is now bankrupted! Cheers!" << endl;
-  if (players.size() <= 2){
-    gameEnd = true;
-    if(players.back() != this){
-      (players.back())->isWinner();
-    } else {
-      (players.front())->isWinner();
-    }
-  } else {
-    //restore rollupCup in tim
-    int timIndex = 10;
-    int cupRemain = buildings[timIndex]->getNumRoll();
-    buildings[timIndex]->setNumRoll(cupRemain + cupsOwn);
-    string nextCommand;
-    cout << "Please choose from the following two options:" << endl;
-    cout << "Type <auction> if you want your properties auctioned." << endl;
-    cout << "Type <give> to send your properties to the player owed." << endl;
-    try{
-      while(true){
-        cin >> nextCommand;
-        if (nextCommand == "auction"){
-          for (auto it=pList.begin(); it!=pList.end(); ++it){
-            this->auction(it->first, it->second);
-          }
-          cout << name << "'s properties were auctioned!" << endl;
-          break;
-        } else if(nextCommand == "give") {
-          Player* OwedPerson = buildings[pos]->getOwner();
-          for (auto it=pList.begin(); it!=pList.end(); ++it){
-            this->sendProperty(OwedPerson,it->second);
-          }
-          cout << "All properties were sent to " << OwedPerson << "!" << endl;
-          break;
-        } else {
-          cout << "Invalid command. Please choose again." << endl;
+  //restore rollupCup in tim
+  int timIndex = 10;
+  int cupRemain = buildings[timIndex]->getNumRoll();
+  buildings[timIndex]->setNumRoll(cupRemain + cupsOwn);
+  string nextCommand;
+  cout << "Please choose from the following two options:" << endl;
+  cout << "Type <auction> if you want your properties auctioned." << endl;
+  cout << "Type <give> to send your properties to the player owed." << endl;
+  try{
+    while(true){
+      cin >> nextCommand;
+      if (nextCommand == "auction"){
+        for (auto it=pList.begin(); it!=pList.end(); ++it){
+          this->auction(it->first, it->second);
         }
+        cout << name << "'s properties were auctioned!" << endl;
+        break;
+      } else if(nextCommand == "give") {
+        Player* OwedPerson = buildings[pos]->getOwner();
+        for (auto it=pList.begin(); it!=pList.end(); ++it){
+          this->sendProperty(OwedPerson,it->second);
+        }
+        cout << "All properties were sent to " << OwedPerson << "!" << endl;
+        break;
+      } else {
+        cout << "Invalid command. Please choose again." << endl;
       }
-    } catch (ios::failure &){}
-  }
+    }
+  } catch (ios::failure &){}
   for (auto it = players.begin() ; it != players.end(); ++it){
     if((*it)->getName() == name){
       players.erase(it);
@@ -210,77 +200,71 @@ void Player::bankrupt(){
   }
 }
 
-bool Player::getGameStatus(){
-  return gameEnd;
-}
-
 void Player::auction(string bname, int bpos){ //use map
-  if (gameEnd == false) {
-    int totalbidders = players.size() - 1;
-    int curbid = (buildings.at(pos))->getPrice();
-    int cur_index;
-    map<int, string> bidderList;
-    for(int i=0; i<totalbidders;++i){
-      if(players[i]->getName() == this->getName()){
-        continue;
-      }
-      bidderList[i] = players[i]->getName();
+  int totalbidders = players.size() - 1;
+  int curbid = (buildings.at(pos))->getPrice();
+  int cur_index;
+  map<int, string> bidderList;
+  for(int i=0; i<totalbidders;++i){
+    if(players[i]->getName() == this->getName()){
+      continue;
     }
-    cout << "Bidding started on " << bname << "!" << endl;
-    cout << "Lowest bid is " << (buildings.at(pos))->getPrice() << endl;
-    int prevPriceBid;
-    while(totalbidders >= 1) {
-      if (prevPriceBid == 0){
-        bidderList.erase(--bidderList.end());
-        prevPriceBid = 1;
+    bidderList[i] = players[i]->getName();
+  }
+  cout << "Bidding started on " << bname << "!" << endl;
+  cout << "Lowest bid is " << (buildings.at(pos))->getPrice() << endl;
+  int prevPriceBid;
+  while(totalbidders >= 1) {
+    if (prevPriceBid == 0){
+      bidderList.erase(--bidderList.end());
+      prevPriceBid = 1;
+    }
+    for(auto it=bidderList.begin();it!=bidderList.end();++it){
+      if(totalbidders == 1){
+        cout << "Congrats! " << it->second << " wins the bid for ";
+        cout << bname << "!" << endl;
+        this->sendProperty(players[it->first],bpos);
+        players[it->first]->changeBalance(0 - curbid);
+        --totalbidders;
+        break;
       }
-      for(auto it=bidderList.begin();it!=bidderList.end();++it){
-        if(totalbidders == 1){
-          cout << "Congrats! " << it->second << " wins the bid for ";
-          cout << bname << "!" << endl;
-          this->sendProperty(players[it->first],bpos);
-          players[it->first]->changeBalance(0 - curbid);
-          --totalbidders;
-          break;
-        }
-        if (prevPriceBid == 0){
-          bidderList.erase(--it);
-        }
-        cout << it->second << ":" << endl;
-        cout << "Please choose from the following two options:" << endl;
-        cout << "If bidding, type in an integer greater than the current bid."
-        << endl;
-        cout << "If quiting, type 0." << endl;
-        try {
-          int priceBid;
-          cin >> priceBid;
-          if(players[it->first]->canBankrupt(0 - priceBid)) {
-            cout << "Invalid bid! You don't have enough money!" << endl;
-            --it;
-            continue;
-          }
-          if(priceBid == 0){
-            prevPriceBid = 0;
-            --totalbidders;
-            continue;
-          }else if(priceBid > curbid){
-            curbid = priceBid;
-            prevPriceBid = curbid;
-            continue;
-          }else{
-            cout << "Invalid price. Please enter your command again." << endl;
-            --it;
-            continue;
-          }
-        } catch (ios::failure &){
-          cout << "Invalid command entered." << endl;
+      if (prevPriceBid == 0){
+        bidderList.erase(--it);
+      }
+      cout << it->second << ":" << endl;
+      cout << "Please choose from the following two options:" << endl;
+      cout << "If bidding, type in an integer greater than the current bid."
+      << endl;
+      cout << "If quiting, type 0." << endl;
+      try {
+        int priceBid;
+        cin >> priceBid;
+        if(players[it->first]->canBankrupt(0 - priceBid)) {
+          cout << "Invalid bid! You don't have enough money!" << endl;
           --it;
           continue;
         }
+        if(priceBid == 0){
+          prevPriceBid = 0;
+          --totalbidders;
+          continue;
+        }else if(priceBid > curbid){
+          curbid = priceBid;
+          prevPriceBid = curbid;
+          continue;
+        }else{
+          cout << "Invalid price. Please enter your command again." << endl;
+          --it;
+          continue;
+        }
+      } catch (ios::failure &){
+        cout << "Invalid command entered." << endl;
+        --it;
+        continue;
       }
     }
-    bidderList.clear();
   }
+  bidderList.clear();
 }
 
 void Player::isWinner(){
