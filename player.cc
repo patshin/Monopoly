@@ -94,8 +94,8 @@ void Player::purchase(string bname){
     cout << "Warning! You don't have enough money!" << endl;
     return;
   }
-  cout<<"3"<<endl;
   this->changeBalance(pay);
+  cout << name << " now owns " << bname << "!" << endl;
 }
 
 void Player::sendProperty(Player* p, int bpos){
@@ -130,17 +130,15 @@ bool Player::isBlock(int bindex){
 }
 
 void Player::changeBalance(int change){
-    if(canBankrupt(change)) {
-      cout << "Warning! You don't have enough money!" << endl;
-      return;
-    } else {
-    balance += change;
-    if(change >= 0){
-    	cout << change << " was added into " << name << "'s balance!" << endl;
-    }else{
-    	int i = 0 - change;
-    	cout << i << " was removed from " << name << "'s balance!" << endl;
-    }
+  if(canBankrupt(change)) {
+    cout << "Warning! You are going to be bankrupted!" << endl;
+  }
+  balance += change;  
+  if(change >= 0){
+  cout << change << " was added into " << name << "'s balance!" << endl;
+  }else{
+    int i = 0 - change;
+    cout << i << " was removed from " << name << "'s balance!" << endl;
   }
 }
 
@@ -185,7 +183,7 @@ int Player::netCapital(){
 }
 
 void Player::bankrupt(){
-  cout << name << " is now bankrupted! Cheers!" << endl;
+  cout << name << " is now bankrupted! HAHAHA!" << endl;
   //restore rollupCup in tim
   int timIndex = 10;
   int cupRemain = buildings[timIndex]->getNumRoll();
@@ -208,19 +206,20 @@ void Player::bankrupt(){
         for (auto it=pList.begin(); it!=pList.end(); ++it){
           this->sendProperty(OwedPerson,it->second);
         }
-        cout << "All properties were sent to " << OwedPerson << "!" << endl;
+        cout << "All properties were sent to " << OwedPerson->getName() << "!" << endl;
         break;
       } else {
         cout << "Invalid command. Please choose again." << endl;
       }
     }
   } catch (ios::failure &){}
+  //delete every player's TBC
   for (auto it = players.begin() ; it != players.end(); ++it){
     if((*it)->getName() == name){
       players.erase(it);
-      delete this;
     }
   }
+  delete this;
 }
 
 void Player::auction(string bname, int bpos){ //use map
@@ -295,6 +294,7 @@ void Player::printProperties() {
     cout << "You don't own any properties right now!" << endl;
     return;
   }
+  cout << name << "'s current balance: " << balance << endl;
   cout << name << " owns:" << endl;
   for (map<string,int>::iterator it=pList.begin(); it!=pList.end(); ++it){
     cout << (buildings[it->second])->getName() << " ";
@@ -310,15 +310,15 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
       return;
     }
     if (changeMoney < 0) {
-      (buildings[ppos]->setOwner(this));
-      pList[buildings[ppos]->getName()] = ppos;
+      buildings[ppos]->setOwner(this);
+      this->addProperty(ppos);
     } else {
       if(balance - changeMoney < 0){
         cout << "Invalid Trade request. Go get more money!" << endl;
         return;
       }
-      (buildings[ppos]->setOwner(this));
-      pList[buildings[ppos]->getName()] = ppos;
+      buildings[ppos]->setOwner(this);
+      this->addProperty(ppos);
       this->changeBalance(0 - changeMoney);
     }
   } else if (s == "tradeout") {
@@ -359,6 +359,10 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
     this->changeBalance(0 - (buildings[ppos]->getPrice())*percentToPay);
     buildings[ppos]->changeMort();
   } else if (s == "improve") {
+    if(balance - changeMoney < 0){
+      cout << "Invalid Improve request. Go get more money!" << endl;
+      return;
+    }
     this->changeBalance(0 - buildings[ppos]->getImproveCost());
     // remember to switch improvable to false if improvement count reaches max
     buildings[ppos]->setImprovements(buildings[ppos]->getImproveCount() + 1);
