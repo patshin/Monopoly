@@ -258,6 +258,7 @@ void Player::auction(string bname, int bpos){ //use map
       cout << "If bidding, type in an integer greater than the current bid."
       << endl;
       cout << "If quiting, type 0." << endl;
+      --curbid;
       try {
 	int priceBid = 1;
 	while(cin >> priceBid){
