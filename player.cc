@@ -289,7 +289,7 @@ void Player::printProperties() {
     cout << "You don't own any properties right now!" << endl;
     return;
   }
-  cout << "Here is a list of your properties:" << endl;
+  cout << name << " owns:" << endl;
   for (map<string,int>::iterator it=pList.begin(); it!=pList.end(); ++it){
     cout << (buildings[it->second])->getName() << " ";
   }
