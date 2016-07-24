@@ -253,7 +253,7 @@ void Player::auction(string bname, int bpos){ //use map
       cout << "If quiting, type 0." << endl;
       try {
 	int priceBid = 1;
-	while(cin >> priceBid){
+//	while(cin >> priceBid){
         if(players[it->first]->canBankrupt(0 - priceBid)) {
           cout << "Invalid bid! You don't have enough money!" << endl;
           --it;
@@ -272,7 +272,7 @@ void Player::auction(string bname, int bpos){ //use map
           --it;
           continue;
         }
-	}
+//	}
       } catch (ios::failure &){
         cout << "Invalid command entered." << endl;
         --it;
