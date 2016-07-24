@@ -44,6 +44,7 @@ public:
     void display();
     void mortgage(const bool &whether);
     std::string playername();
+    void sendvector(int index);
 };
 
 
