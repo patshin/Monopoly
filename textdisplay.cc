@@ -93,9 +93,9 @@ vector <int> Textdisplay::PosToindex(int pos){
 	}else if(pos >= 20 && pos <= 30){
 		row = 4;
 		col = (pos - 20) * 8 + 1;
-	}else if(pos >= 21 && pos <= 39){
+	}else if(pos >= 31 && pos <= 39){
 		col = 81;
-		row = (pos - 20) * 5 + 4;
+		row = (pos - 30) * 5 + 4;
 	}
 	vector<int> v;
 	v.push_back(row);
