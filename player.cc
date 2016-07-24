@@ -95,6 +95,7 @@ void Player::purchase(string bname){
     return;
   }
   this->changeBalance(pay);
+  cout << name << " now owns " << bname << "!" << endl; 
 }
 
 void Player::sendProperty(Player* p, int bpos){
