@@ -113,10 +113,10 @@ int main(int argc, const char * argv[]) {
     }
     if(con.rollStage()){
        cout << "It's "<< con.playername() << "'s turn to play" << endl;
-       cout << "Choose of the commands: roll|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|assets|all|save <filename>" << endl; 
+       cout << "Choose of the commands: roll|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|asset|all|save <filename>" << endl; 
      }else{
         cout << "You finished rolling." << endl;
-        cout << "Choose of the commands: next|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|assets|all|save <filename>" << endl;
+        cout << "Choose of the commands: next|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|asset|all|save <filename>" << endl;
      }
       try{
         cin >> cmd;
