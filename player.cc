@@ -273,23 +273,16 @@ void Player::auction(string bname, int bpos){ //use map
   bidderList.clear();
 }
 
-void Player::isWinner(){
-  cout << name << "wins the game!" << endl;
-  cout << "Game Over." << endl;
-//  delete players.back();
-//  delete players.front();
-//  players.clear();
-}
-
 void Player::printProperties() {
   if(pList.size()==0) {
     cout << "You don't own any properties right now!" << endl;
     return;
   }
-  cout << "Here is the list of your properties:" << endl;
+  cout << "Here is a list of your properties:" << endl;
   for (map<string,int>::iterator it=pList.begin(); it!=pList.end(); ++it){
-    cout << (buildings[it->second])->getName() << endl;
+    cout << (buildings[it->second])->getName() << " ";
   }
+  cout << endl;
 }
 
 void Player::prop_manip(int ppos, int changeMoney, string s){
