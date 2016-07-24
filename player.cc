@@ -97,7 +97,6 @@ void Player::purchase(string bname){
 }
 
 void Player::sendProperty(Player* p, int bpos){
-  //setBlock(bpos);
   string bname = buildings[bpos]->getName();
   if(this->own(buildings[bpos])){
     pList.erase(bname);
