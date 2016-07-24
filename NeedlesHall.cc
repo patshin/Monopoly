@@ -18,6 +18,7 @@ void NeedlesHall::method(Player* p){
    p->receiveCup();
   }
  }
+ srand(time(0));
  int y = rand()%1-18;
  if(y==1){
   y= -200;

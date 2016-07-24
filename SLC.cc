@@ -12,6 +12,7 @@ void SLC::method(Player* p){
  int n = getNumRoll();
  if(n == 0){
  }else{
+  srand(time(0));
   int x = rand()%1-100;
   if(x == 1){
    cout << "Congrats! You've received a Tim Cup!" << endl;
