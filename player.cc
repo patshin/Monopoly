@@ -10,7 +10,9 @@ using namespace std;
 Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> &p):
   name{name},nameChar{nc},buildings{b},players{p}{
     pos = rand() % 40;
-    buildings[pos]->setPlayer(this);
+    while(pos == 30){
+     pos = rand()%40;
+    }
     balance = 500;
     timeTim = 0;
     cupsOwn = 0;
@@ -47,22 +49,22 @@ void Player::changeRollable(){
 }
 
 void Player::move(int step){
-  (buildings.at(pos))->removePlayer(this);
+  (buildings.at(pos))->removePlayer(this);  
   if (step >= 0) {
     if(pos+step<=39){
       pos += step;
     }else{
-      pos = pos+step-40;
+      pos = pos+step-39;
     }
+    (buildings.at(pos))->setPlayer(this);
   } else {
     if(pos+step<=0){
-      pos = 40+pos-step;
+      pos = 39+pos-step;
     }else{
       pos += step;
     }
-  }
-   buildings[pos]->setPlayer(this);
-   buildings[pos]->method(this);
+    (buildings.at(pos))->setPlayer(this);
+}
 }
 
 void Player::gotoSite(int p){
