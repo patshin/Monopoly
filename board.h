@@ -43,11 +43,9 @@ public:
     void improve();
     void display();
     void mortgage(const bool &whether);
+    std::string playername();
 };
 
 
 
 #endif
-
-
-
