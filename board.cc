@@ -143,13 +143,7 @@ void Board::attachplayers(string name,char c){
         NumPlayers++;
 }
 void Board::moveplayer(int steps){
-    cout << "calling board moveplayer";
-   try{
-      players[currentplayer]->move(steps);
-    }
-    catch(out_of_range&){
-      cout << " fail, out of range." << endl;
-   } 
+    players[currentplayer]->move(steps);
 }
 
 void Board::switchStage(){
@@ -199,7 +193,6 @@ void Board::saveTo(string filename){
     		    savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << " " << players[n]->getTimTime() << endl;
     		}
     	}//balance or total money
-      }
     	for(int j = 0; j < 40; j++){
     		if(building[j]->getOwn()){
     			if(building[j]->getOwner()){
@@ -216,8 +209,8 @@ void Board::saveTo(string filename){
     		}
     	}
     	
+    }
 }
-
 
 void Board::loadFrom(ifstream &filename){
 	filename >> NumPlayers;
@@ -312,8 +305,8 @@ void Board::loadFrom(ifstream &filename){
 }
 
 bool Board::finish(){
-//    cout << "calling board finish??" << endl;
-//    cout << "NumPlayers: " << NumPlayers << endl; 
+    cout << "calling board finish??" << endl;
+    cout << "NumPlayers: " << NumPlayers << endl; 
     return NumPlayers == 1;
 }
 
@@ -327,8 +320,8 @@ string Board::getwinner(){
 }
 
 bool Board::at_Tim(){
-  //  cout << "calling board at_Time" << endl;
-  //  cout << players[currentplayer]->getName() << endl;
+    cout << "calling board at_Time" << endl;
+    cout << players[currentplayer]->getName() << endl;
     return players[currentplayer]->getTimTime() > 0;
 }
 
@@ -463,7 +456,7 @@ void Board::improve(){
 }
 
 void Board::display(){
-	cout << td << endl; 
+	cout<<td<<endl;
 }
 
 
