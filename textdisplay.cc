@@ -104,7 +104,7 @@ vector <int> Textdisplay::PosToindex(int pos){
 }
 
 void Textdisplay::putPlayer(char c, int pos){
-	cout << c << " is at position " << pos <<endl;
+//	cout << c << " is at position " << pos <<endl;
 	vector<int> v = PosToindex(pos);
 	int row = v[0];
 	int col = v[1]; 
@@ -113,10 +113,10 @@ void Textdisplay::putPlayer(char c, int pos){
 			col++;
 		}else break;
 	}
-	cout << "col is "<<col <<" row is "<<row <<endl;
-	cout << display[row][col] << "v" << endl;
+//	cout << "col is "<<col <<" row is "<<row <<endl;
+//	cout << display[row][col] << "v" << endl;
 	display[row][col] = c;
-        cout << display[row][col] << "v" << endl;
+  //      cout << display[row][col] << "v" << endl;
         cout << (*this);
 //        cout << "finish displaying" << endl;
 }

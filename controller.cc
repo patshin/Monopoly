@@ -37,11 +37,11 @@ void Controller::gamestart(){
     cout << "Choose your character from Goose(G), GRT Bus(B), Tim Hortons Doughnut(D), Professor(P), Student(S), Money($), Laptop(L), Pink tie(T)" << endl;
     int len = 8;
     bool found = false;
-    for (int n = 0; n < NumOfPlayers; ++n){
+    for (int n = 0; n < NumOfPlayers; n++){
     	cout << "Enter the letter your character represent (case sensitive):";
 	    char c;
 	    while(cin >> c){
-	    	for(int n = 0; n < len; ++n){
+	    	for(int n = 0; n < len; n++){
 	    		if(characters[n] == c){
 	    			characters.erase(characters.begin() + n);
 	    			found = true;
@@ -55,7 +55,7 @@ void Controller::gamestart(){
 	    		break;
 	    	}
 	    	cout << "Player Not found or chosen. Please enter a player character in the list: ";
-	    	for (int j = 0; j < len; ++j){
+	    	for (int j = 0; j < len; j++){
 	    		cout << characters[j] << ' ';
 	    	}
 	    	cout << endl;
@@ -85,7 +85,7 @@ void Controller::roll(int dice1, int dice2){
 		    	}
 		    	dice1 = rand()%6 + 1;
 		        dice2 = rand()%6 + 1;
-		        ++turn;
+		        turn++;
 		    }
 		    if(turn == 3){
 		    	cout << "dice1: " << dice1 << endl;
@@ -116,7 +116,7 @@ void Controller::roll(int dice1, int dice2){
 		    		cin >> dice1;
 		    		cin >> dice2;
 		    	}
-		    	++turn;
+		    	turn++;
 		    }
 		    if(turn == 3){
 		        cout << "dice1: " << dice1 << endl;
@@ -125,7 +125,8 @@ void Controller::roll(int dice1, int dice2){
 		    	board.playerGotoTim();
 		    }else{
 		        cout << "dice1: " << dice1 << endl;
-		    	cout << "dice2: " << dice2 << endl; 
+		    	cout << "dice2: " << dice2 << endl;
+                        cout << "start moving" << endl; 
 		    	board.moveplayer(dice1 + dice2);
 			}
 		}
@@ -140,7 +141,7 @@ void Controller::next(){
 		cout << "Please roll first." << endl;
 	}else{
         board.nextplayer();
-        ++playerindex;
+        playerindex++;
 	}
 
 }

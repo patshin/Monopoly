@@ -9,6 +9,7 @@ TimsLine::TimsLine(int site,Textdisplay* board):
  NonProperty(false,"TimeLine",site,board){
 }
 void TimsLine::method(Player* p){
+ cout << "Now im in timline function." << endl;
  p->setTimTime(1);
  cout << "You are stuck at the tim line, choose to [dice] double, [pay] 50 or [use] a tim cup, you can also [skip]" <<endl;
  cout <<"You now have "<< p->getCupsOwn() <<" tim cups."<<endl;

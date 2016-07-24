@@ -143,6 +143,7 @@ void Board::attachplayers(string name,char c){
         NumPlayers++;
 }
 void Board::moveplayer(int steps){
+    cout << "start moving in board" << endl;
     players[currentplayer]->move(steps);
 }
 

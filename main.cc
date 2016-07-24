@@ -57,11 +57,11 @@ int main(int argc, const char * argv[]) {
   }
 
   if(argc == 3){
-   cout << "2 arguments" << endl;
+//   cout << "2 arguments" << endl;
    string arg1 = argv[1];
    string arg2 = argv[2];
     if(arg1 == "-load"){
-      cout << "start" << endl;
+  //    cout << "start" << endl;
       ifstream infile{arg2};
       try{
         con.load(infile);
@@ -89,12 +89,12 @@ int main(int argc, const char * argv[]) {
 
 
   if(argc == 1 || argc > 4){
+    cout << "Welcome to the game." << endl;
     con.gamestart();
-    cout << "game start" << endl;
   }
 
   while (true) {
-    cout << "in the loop" << endl;
+//    cout << "in the loop" << endl;
     if(con.win()){
   //      cout << "win!!" << endl;
         cout << con.getwinner() << "is the winner" << endl;
@@ -129,19 +129,19 @@ int main(int argc, const char * argv[]) {
         }else{
           con.roll();
         }
-    //    con.display();
+//        con.display();
       }else if (cmd == "next") {
         con.next();
-      //  con.display();
+  //      con.display();
       }else if (cmd == "bankrupt") {
         con.dropout();
-  //      con.display();
+    //    con.display();
       }else if (cmd == "asset") {
         con.asset();
-    //    con.display();
+      //  con.display();
       }else if (cmd == "all"){
         con.all();
-//        con.display();
+     //   con.display();
       }else if(cmd == "save"){
         string filename;
         cin >> filename;
@@ -152,16 +152,16 @@ int main(int argc, const char * argv[]) {
         if(s == "Y") {exit(EXIT_SUCCESS);}
       }else if(cmd == "trade"){
         con.trade();
-  //      con.display();
+     //   con.display();
       }else if(cmd == "improve"){
         con.improve();
     //    con.display();
       }else if(cmd == "mortgage"){
         con.mortgage(true);
-//        con.display();
+     //   con.display();
       }else if(cmd == "unmortgage"){
         con.mortgage(false);
-  //      con.display();
+       // con.display();
       }else{
         cout << cmd << " Command not found. Try again:" << endl;
       }

@@ -64,14 +64,20 @@ void Player::move(int step){
       pos += step;
     }
   }
+  cout << "player::start setting player" << endl;
   buildings[pos]->setPlayer(this);
+  cout << "player::finish setting" << endl;
   buildings[pos]->method(this);
+  cout << "player::finishing this building" << endl;
 }
 
 void Player::gotoSite(int p){
+  cout << "go to " << p << endl;
   buildings[pos]->removePlayer(this);
+  cout << "player::finish removing" << endl;
   pos = p;
   buildings[pos]->setPlayer(this);
+  cout << "Now Im in DC" << endl;
   buildings[pos]->method(this);
 }
 
