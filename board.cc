@@ -192,7 +192,9 @@ void Board::saveTo(string filename){
     			savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
     		    savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << " " << players[n]->getTimTime() << endl;
     		}
-    	}//balance or total money
+    	}
+    	
+    }//balance or total money
     	for(int j = 0; j < 40; j++){
     		if(building[j]->getOwn()){
     			if(building[j]->getOwner()){
@@ -209,8 +211,8 @@ void Board::saveTo(string filename){
     		}
     	}
     	
-    }
 }
+
 
 void Board::loadFrom(ifstream &filename){
 	filename >> NumPlayers;
