@@ -51,6 +51,10 @@ void Player::changeRollable(){
 
 void Player::move(int step){
   buildings[pos]->removePlayer(this);  
+  if(timeTim == 1 || timTim == 2){
+    gotoSite(10);
+    return;
+  }
   if (step >= 0) {
     if(pos+step<=39){
       pos += step;
@@ -411,6 +415,10 @@ void Player::setBalance(int bal){
 
 void Player::setPos(int p){
   pos = p;
+}
+
+void Player::setPlayerList(&vector<Player*> pv){
+  players = pv;
 }
 
 Player::~Player(){}
