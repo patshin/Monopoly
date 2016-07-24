@@ -135,9 +135,10 @@ void Player::changeBalance(int change){
     } else {
     balance += change;
     if(change >= 0){
-    	cout << (int change) << " was added into " << name << "'s balance!" << endl;
+    	cout << change << " was added into " << name << "'s balance!" << endl;
     }else{
-    	cout << (int change) << " was removed from " << name << "'s balance!" << endl;
+    	int i = 0 - change;
+    	cout << i << " was removed from " << name << "'s balance!" << endl;
     }
   }
 }
