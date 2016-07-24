@@ -46,7 +46,6 @@ public:
   // cannot trade buildings with improvements
   // apply twice if trade building to building
   void prop_manip(int ppos, int changeMoney, std::string s); //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
-  void isWinner();
   bool isBankrupt();
   void makeBankrupt();
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
