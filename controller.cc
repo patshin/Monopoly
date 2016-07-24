@@ -135,7 +135,7 @@ void Controller::roll(int dice1, int dice2){
 		    	board.moveplayer(dice1 + dice2);
 			}
 		}
-		if(playerStatus()){
+		if(board.playerStatus()){
 			board.switchStage();
 			
 		}
