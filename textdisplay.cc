@@ -85,17 +85,17 @@ vector <int> Textdisplay::PosToindex(int pos){
 	int row;
 	int col;
 	if(pos >= 0 && pos <= 10){
-		col = 30;//81 - pos*8;
-		row = 30;//54;
+		col = 81 - pos*8;
+		row = 54;
 	}else if(pos >= 11 && pos <= 19){
-		row = 30;//54 - (pos - 10)*5;
-		col = 30;//1;
+		row = 54 - (pos - 10)*5;
+		col = 1;
 	}else if(pos >= 20 && pos <= 30){
-		col = 30;//4;
-		row = 30;//(pos - 20) * 8 + 1;
+		row = 4;
+		col = (pos - 20) * 8 + 1;
 	}else if(pos >= 21 && pos <= 39){
-		row = 30;//81;
-		col = 30;//(pos - 20) * 5 + 4;
+		col = 81;
+		row = (pos - 20) * 5 + 4;
 	}
 	vector<int> v;
 	v.push_back(row);
@@ -104,79 +104,87 @@ vector <int> Textdisplay::PosToindex(int pos){
 }
 
 void Textdisplay::putPlayer(char c, int pos){
-	cout <<pos<< "is position"<<endl;
+	cout << c << " is at position " << pos <<endl;
 	vector<int> v = PosToindex(pos);
-	int col = v[0];
-	int row = v[1]; 
+	int row = v[0];
+	int col = v[1]; 
 	for(int i=0; i < 6; i++){
-		if(display[col][row] != ' '){
+		if(display[row][col] != ' '){
 			col++;
 		}else break;
 	}
-	cout << "col is "<<col <<"row is "<<row <<endl;
-	cout <<"30 30 is  "<<display[30][30]<<endl;
-	display[30][30] = c;
+	cout << "col is "<<col <<" row is "<<row <<endl;
+	cout << display[row][col] << "v" << endl;
+	display[row][col] = c;
+        cout << display[row][col] << "v" << endl;
+        cout << (*this);
+//        cout << "finish displaying" << endl;
 }
 //	void movePlayer(int pos, char c, int steps);
  void Textdisplay::removePlayer(char c, int pos){
  	vector<int> v = PosToindex(pos);
- 	int row = v[1];
-	int col = v[2];
+ 	int row = v[0];
+	int col = v[1];
  	for(int n = 0; n < 6; n++){
- 		if(display[col+n][row] == 'c'){
- 			display[col+n][row] = ' ';
+ 		if(display[row][col+n] == c){
+ 			display[row][col+n] = ' ';
  			break;
  		}
  	}
+         cout << (*this);
  }
  void Textdisplay::setOwner(char c, int pos){
  	vector<int> v = PosToindex(pos);
- 	int row = v[1] + 1;
-	int col = v[2];
-	display[col][row] = c;
+ 	int row = v[0] + 1;
+	int col = v[1];
+	display[row][col] = c;
+        cout << (*this);
  }
  
 void Textdisplay::removeOwner(int pos){
  	vector<int> v = PosToindex(pos);
- 	int row = v[1] + 1;
-	int col = v[2];
-	display[col][row] = '_';
+ 	int row = v[0] + 1;
+	int col = v[1];
+	display[row][col] = '_';
+        cout << (*this);
  }
 void Textdisplay::improve(int pos, bool whether){
 	if(whether){
 		vector<int> v = PosToindex(pos);
- 	    int row = v[1] - 3;
-	    int col = v[2];
+ 	    int row = v[0] - 3;
+	    int col = v[1];
 	    for(int i=0; i < 6; i++){
-	    	if(display[col][row] != ' '){
+	    	if(display[row][col] != ' '){
 	    		col++;
 	    	}else break;
-	    	display[col][row] = 'I';
+	    	display[row][col] = 'I';
 	    }
 	}else{
 		vector<int> v = PosToindex(pos);
- 	    int row = v[1] - 3;
-	    int col = v[2];
+ 	    int row = v[0] - 3;
+	    int col = v[1];
 	    for(int i=0; i < 6; i++){
-	    	if(display[col][row] != ' '){
+	    	if(display[row][col] != ' '){
 	    		col++;
 	    	}else break;
-	    	display[col-1][row] = ' ';
+	    	display[row][col-1] = ' ';
 	    }
 	}
+         cout << (*this);
 }
 void Textdisplay::mortgage(int pos, bool whether){
 	if(whether){
 		vector<int> v = PosToindex(pos);
- 	    int row = v[1] - 1;
-	    int col = v[2] + 2;
-	    display[col][row] = 'M';
+ 	    int row = v[0] - 1;
+	    int col = v[1] + 2;
+	    display[row][col] = 'M';
 	}else{
 		vector<int> v = PosToindex(pos);
- 	    int row = v[1] - 1;
-	    int col = v[2] + 2;
-	    display[col][row] = '_';
+ 	    int row = v[0] - 1;
+	    int col = v[1] + 2;
+	    display[row][col] = '_';
 	}
+         cout << (*this);
 }
 
 ostream &operator<<(ostream &out, const Textdisplay &td) {
