@@ -311,14 +311,14 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
     }
     if (changeMoney < 0) {
       (buildings[ppos]->setOwner(this));
-      pList[buildings[ppos]->getName()] = ppos;
+      this->addProperty(ppos);
     } else {
       if(balance - changeMoney < 0){
         cout << "Invalid Trade request. Go get more money!" << endl;
         return;
       }
       (buildings[ppos]->setOwner(this));
-      pList[buildings[ppos]->getName()] = ppos;
+      this->addProperty(ppos);
       this->changeBalance(0 - changeMoney);
     }
   } else if (s == "tradeout") {
