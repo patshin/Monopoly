@@ -64,6 +64,9 @@ void Controller::gamestart(){
 		board.attachplayers(name,c);//add to the board
                 cout << "player attached." << endl;
 	}
+	for(int j = 0; j < NumOfPlayers; j++){
+		board.sendvector(j);
+	}
 }
 bool Controller::rollStage(){
     return board.playerStatus();
