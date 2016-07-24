@@ -18,6 +18,7 @@ Player::Player(std::string name, char nc, vector<Building*> &b, vector<Player*> 
     cupsOwn = 0;
     isBankrupted = false;
     roll = true;
+    buildings[pos]->setPlayer(this);
 }
 
 string Player::getName(){
@@ -49,22 +50,22 @@ void Player::changeRollable(){
 }
 
 void Player::move(int step){
-  (buildings.at(pos))->removePlayer(this);  
+  buildings[pos]->removePlayer(this);  
   if (step >= 0) {
     if(pos+step<=39){
       pos += step;
     }else{
-      pos = pos+step-39;
+      pos = pos+step-40;
     }
-    (buildings.at(pos))->setPlayer(this);
   } else {
     if(pos+step<=0){
-      pos = 39+pos-step;
+      pos = 40+pos-step;
     }else{
       pos += step;
     }
-    (buildings.at(pos))->setPlayer(this);
-}
+  }
+  buildings[pos]->setPlayer(this);
+  buildings[pos]->method(this);
 }
 
 void Player::gotoSite(int p){
