@@ -170,6 +170,10 @@ void Board::sendvector(int index){
 }
 
 void Board::playerBankrupt(){
+    if(!(players[currentplayer]->canBankrupt(0))){
+     cout<<"you cannot declare bankrupt now, you still have money"<<endl;
+     return;
+    }
     players[currentplayer]->bankrupt();//what player actually does?
     NumPlayers--;
 }

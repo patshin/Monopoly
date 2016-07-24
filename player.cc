@@ -94,6 +94,7 @@ void Player::purchase(string bname){
     cout << "Warning! You don't have enough money!" << endl;
     return;
   }
+  cout<<"3"<<endl;
   this->changeBalance(pay);
 }
 

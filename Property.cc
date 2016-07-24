@@ -24,6 +24,7 @@ void Property::setOwner(Player* p){
   owner = p;
  }
  getBoard()->setOwner(p->getChar(),getSite());
+ p->addProperty(getSite());
 }
 void Property::removeOwner(){
  if(owner == nullptr){
