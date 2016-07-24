@@ -69,7 +69,7 @@ void Player::move(int step){
 }
 
 void Player::gotoSite(int p){
-  buildings[pos]->removePlayer(players.at(pos));
+  buildings[pos]->removePlayer(this);
   pos = p;
   buildings[pos]->setPlayer(this);
   buildings[pos]->method(this);
