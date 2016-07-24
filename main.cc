@@ -111,11 +111,6 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-    if(con.is_atTimline()){//see player.h
-      cout << "Oops. You get stuck." << endl;
-      con.stuckAtTimline();
-    }else{
-//      cout << "Not win, not at TimLine" << endl;
       try{
         cin >> cmd;
       }
@@ -165,6 +160,5 @@ int main(int argc, const char * argv[]) {
       }else{
         cout << cmd << " Command not found. Try again:" << endl;
       }
-    }
   }
 }
