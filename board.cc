@@ -139,11 +139,11 @@ int Board::findplayer(string name){
 void Board::attachplayers(string name,char c){   
 		Player *p = new Player{name,c, building, players}; //add a field!!
         players.push_back(p);//contained its the player that has the vector, players always being modified??
-        cout << "player pointer" << players[NumPlayers] << endl;
+//        cout << "player pointer" << players[NumPlayers] << endl;
         NumPlayers++;
 }
 void Board::moveplayer(int steps){
-    cout << "start moving in board" << endl;
+//    cout << "start moving in board" << endl;
     players[currentplayer]->move(steps);
 }
 
@@ -152,6 +152,10 @@ void Board::switchStage(){
 }
 bool Board::playerStatus(){
     return players[currentplayer]->rollable();//return the status of a player who can roll or not
+}
+
+string Board::playername(){
+     return players[currentplayer]->getName();
 }
     
 void Board::nextplayer(){
