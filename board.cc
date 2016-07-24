@@ -183,6 +183,9 @@ void Board::printall(){
          players[n]->printProperties();
      }
 }
+bool Board::playerbankrupt(){
+      return players[currentplayer]->getBalance() < 0;
+}
 
 
 void Board::saveTo(string filename){
@@ -223,14 +226,20 @@ void Board::saveTo(string filename){
 
 
 void Board::loadFrom(ifstream &filename){
-	filename >> NumPlayers;
+        int num;
+	filename >> num;
+//        cout << "number of players: " << num << endl;
         string name;
+        string line;
         char c;
         int a;
-	for(int n = 0; n < NumPlayers; n++){
-		string s;
+        getline(filename,line);//why the first line doesn't have anything.
+	for(int n = 0; n < num; n++){
+  //              cout << "number of players in the loop " << NumPlayers << " n: " << n << endl;
 		try{
-			getline(filename,s);
+			getline(filename,line);
+    //                    cout << "This line is: " << line << endl;
+                        if(line == "") break;
 		}
 		catch(ios::failure&){
 			if(filename.eof()) break;
@@ -239,21 +248,26 @@ void Board::loadFrom(ifstream &filename){
 				exit(EXIT_FAILURE);
 			}
 		}
-                istringstream ss(s);
+                istringstream ss(line);
 		try{
                     ss >> name;
+      //              cout << "Name: " << name << endl;
 		    ss >> c;
+        //            cout << "char: " << c << endl;
 		    this->attachplayers(name,c);
 		    ss >> a;
+          //          cout << "Cups owned: " << a << endl;
 		    players[n]->setCupsOwn(a); //set cups owned to a; can this method be protected??
 		    ss >> a;
+            //        cout << "Balance: " << a << endl;
 		    players[n]->setBalance(a); // set balance to a; can this method be protected;
 		    ss >> a;
+              //      cout << "Postion: " << a << endl;
 		    players[n]->setPos(a); // set position to a; can this method be protected;
 		}
 		catch(ios::failure&){
-            cout << "Loading Failed. Please check your file." << endl;
-            exit(EXIT_FAILURE);
+                     cout << "Loading Failed. Please check your file." << endl;
+                     exit(EXIT_FAILURE);
 		}
         if(a == 10){
             ss >> a;
@@ -271,13 +285,16 @@ void Board::loadFrom(ifstream &filename){
                 }
             }
         }
-	}
+    }
 	while(true){
 		string s;
 		try{
 			getline(filename,s);
+                        cout << "this line is: " << s << endl;
+                        if(s == "") break;
 		}
 		catch(ios::failure&){
+//                        cout << "catch error" << endl;
 			if(filename.eof()) break;
 			else{
 				cout << "Loading Failed. Please check your file." << endl;
@@ -306,6 +323,7 @@ void Board::loadFrom(ifstream &filename){
 		    }else{
 		        building[index]->setImprovements(improvements); //set number of improvements to improvements; can this method be protected??
 		    }
+               //    cout << building[index]->getName() << " is okay" << endl;
 		}
 		catch(ios::failure&){
 			cout << "Loading Failed. Please check your file." << endl;
@@ -315,8 +333,8 @@ void Board::loadFrom(ifstream &filename){
 }
 
 bool Board::finish(){
-    cout << "calling board finish??" << endl;
-    cout << "NumPlayers: " << NumPlayers << endl; 
+//    cout << "calling board finish??" << endl;
+//    cout << "NumPlayers: " << NumPlayers << endl; 
     return NumPlayers == 1;
 }
 
