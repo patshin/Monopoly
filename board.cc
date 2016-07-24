@@ -165,8 +165,8 @@ void Board::nextplayer(){
         currentplayer++;
      }
 }
-void Board::sendvector(){
-     players[currentplayer]->setPlayerList(players);
+void Board::sendvector(int index){
+     players[index]->setPlayerList(players);
 }
 
 void Board::playerBankrupt(){
