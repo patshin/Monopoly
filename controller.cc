@@ -135,7 +135,10 @@ void Controller::roll(int dice1, int dice2){
 		    	board.moveplayer(dice1 + dice2);
 			}
 		}
-		board.switchStage();
+		if(playerStatus()){
+			board.switchStage();
+			
+		}
 	}else{
 		cout << "Fuck off! You are not allowed to roll." << endl;
 	}
