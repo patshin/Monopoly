@@ -9,7 +9,6 @@
 class Controller
 {
 	Board &board;//okay to use refernece?
-	int seed;
 	int playerindex;
 	int NumOfPlayers;
 	bool trading;
@@ -54,6 +53,8 @@ public:
 	void trade();
 	void improve();
 	void mortgage(const bool &whether);
+        bool rollStage();
+        std::string playername();
 };
 
 #endif
