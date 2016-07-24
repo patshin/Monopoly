@@ -6,7 +6,7 @@
 using namespace std;
 
 
-Controller::Controller(Board &b,int seed): board{b},playerindex{0},NumOfPlayers{0},testingMode{false},seed{seed},trading{false}{
+Controller::Controller(Board &b,int seed): board{b},playerindex{0},NumOfPlayers{0},testingMode{false},trading{false}{
 	characters.push_back('G');
 	characters.push_back('B');
 	characters.push_back('D');
@@ -65,13 +65,18 @@ void Controller::gamestart(){
                 cout << "player attached." << endl;
 	}
 }
+bool Controller::rollStage(){
+    return board.playerStatus();
+}
+string Controller::playername(){
+    return board.playername();
+}
 
 void Controller::roll(int dice1, int dice2){
 	int turn = 0;
 	string roll;
 	if(playerstatus()){
 		if(!testingMode){
-			srand(seed);
 		    dice1 = rand()%6 + 1;
 		    dice2 = rand()%6 + 1;
 		    while(dice1 == dice2 && turn < 3){
@@ -140,6 +145,7 @@ void Controller::next(){
 	if(playerstatus()){
 		cout << "Please roll first." << endl;
 	}else{
+        board.switchStage();
         board.nextplayer();
         playerindex++;
 	}
