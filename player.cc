@@ -68,6 +68,7 @@ void Player::move(int step){
       pos += step;
     }
   }
+  cout << name << "was moved to" << buildings[pos]->getName() << endl;
   cout << "player::start setting player" << endl;
   buildings[pos]->setPlayer(this);
   cout << "player::finish setting" << endl;
@@ -133,6 +134,11 @@ void Player::changeBalance(int change){
       return;
     } else {
     balance += change;
+    if(change >= 0){
+    	cout << (int change) << " was added into " << name << "'s balance!" << endl;
+    }else{
+    	cout << (int change) << " was removed from " << name << "'s balance!" << endl;
+    }
   }
 }
 
@@ -193,7 +199,7 @@ void Player::bankrupt(){
         for (auto it=pList.begin(); it!=pList.end(); ++it){
           this->auction(it->first, it->second);
         }
-        cout << name << "'s properties were auctioned!" << endl;
+        cout << name << "'s properties were successfully auctioned!" << endl;
         break;
       } else if(nextCommand == "give") {
         Player* OwedPerson = buildings[pos]->getOwner();
