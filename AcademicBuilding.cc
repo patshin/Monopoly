@@ -45,11 +45,15 @@ void AcademicBuilding::method(Player *p){
  	}else if(s =="N"){
  		p->auction(getName(),getSite());
  		return;
- 	}else{
- 		cout << "land on academic building, you need to pay"<<tuition[getImproveCount()]<<endl;
- 		p->changeBalance(tuition[getImproveCount()]);
- 	}
+ 	}else{}
   }
+ }else{
+  if(getOwner()->getChar() == p->getChar()){
+   return;
+  }
+  cout << "land on academic building, you need to pay"<<tuition[getImproveCount()]<<endl;
+  p->changeBalance(-tuition[getImproveCount()]);
+  (getOwner())->changeBalance(tuition[getImproveCount()]);
  }
 }
 AcademicBuilding::~AcademicBuilding(){}

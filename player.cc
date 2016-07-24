@@ -69,20 +69,20 @@ void Player::move(int step){
     }
   }
   cout << name << "was moved to" << buildings[pos]->getName() << endl;
-  cout << "player::start setting player" << endl;
+  //cout << "player::start setting player" << endl;
   buildings[pos]->setPlayer(this);
-  cout << "player::finish setting" << endl;
+  //cout << "player::finish setting" << endl;
   buildings[pos]->method(this);
-  cout << "player::finishing this building" << endl;
+  //cout << "player::finishing this building" << endl;
 }
 
 void Player::gotoSite(int p){
   cout << "go to " << p << endl;
   buildings[pos]->removePlayer(this);
-  cout << "player::finish removing" << endl;
+  //cout << "player::finish removing" << endl;
   pos = p;
   buildings[pos]->setPlayer(this);
-  cout << "Now Im in DC" << endl;
+  //cout << "Now Im in DC" << endl;
   buildings[pos]->method(this);
 }
 
@@ -95,7 +95,6 @@ void Player::purchase(string bname){
     return;
   }
   this->changeBalance(pay);
-  cout << name << " now owns " << bname << "!" << endl; 
 }
 
 void Player::sendProperty(Player* p, int bpos){
@@ -311,14 +310,14 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
     }
     if (changeMoney < 0) {
       (buildings[ppos]->setOwner(this));
-      this->addProperty(ppos);
+      pList[buildings[ppos]->getName()] = ppos;
     } else {
       if(balance - changeMoney < 0){
         cout << "Invalid Trade request. Go get more money!" << endl;
         return;
       }
       (buildings[ppos]->setOwner(this));
-      this->addProperty(ppos);
+      pList[buildings[ppos]->getName()] = ppos;
       this->changeBalance(0 - changeMoney);
     }
   } else if (s == "tradeout") {

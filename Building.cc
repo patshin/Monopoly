@@ -29,9 +29,9 @@ void Building::setPlayer(Player* p){
   }
  }
  curplayer.push_back(p);
- cout << "Building::entering display" << endl;
+ //cout << "Building::entering display" << endl;
  display->putPlayer(p->getChar(),site);
- cout << "Building::finish displaying" << endl;
+ //cout << "Building::finish displaying" << endl;
 }
 void Building::removePlayer(Player* p){
  int i = curplayer.size();

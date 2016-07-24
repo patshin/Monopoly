@@ -39,11 +39,15 @@ void Residence::method(Player *p){
  	}else{}
   }
  }else{
+ if(getOwner()->getChar() == p->getChar()){
+   return;
+  }
  	Player *pyr = getOwner();
  	int n = pyr->getNumOwn("res");
  	int fee = getFee(n);
  	cout << "land at res, you need to pay "<<fee <<endl;
  	p->changeBalance(-fee);
+	pyr->changeBalance(fee);
  	return;
  }
 }
