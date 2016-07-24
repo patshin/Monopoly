@@ -148,13 +148,17 @@ void Controller::roll(int dice1, int dice2){
 }
 
 void Controller::next(){
-	if(playerstatus()){
-		cout << "Please roll first." << endl;
-	}else{
-        board.switchStage();
-        board.nextplayer();
-        playerindex++;
-	}
+       if(board.playerbankrupt()){
+         cout << "You don't have money to move on. Declare bankcrucy or sell your property." << endl;
+        }else{
+        	if(playerstatus()){
+	        	cout << "Please roll first." << endl;
+        	}else{
+                       board.switchStage();
+                       board.nextplayer();
+                       playerindex++;
+        	}
+       }
 
 }
 
