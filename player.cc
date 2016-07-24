@@ -51,7 +51,7 @@ void Player::changeRollable(){
 
 void Player::move(int step){
   buildings[pos]->removePlayer(this);  
-  if(timeTim == 1 || timTim == 2){
+  if(timeTim == 1 || timeTim == 2){
     gotoSite(10);
     return;
   }
@@ -416,7 +416,7 @@ void Player::setPos(int p){
   pos = p;
 }
 
-void Player::setPlayerList(&vector<Player*> pv){
+void Player::setPlayerList(vector<Player*> &pv){
   players = pv;
 }
 
