@@ -45,8 +45,7 @@ public:
     void mortgage(const bool &whether);
     std::string playername();
     void sendvector(int index);
+    bool playerbankrupt();
 };
-
-
 
 #endif
