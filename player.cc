@@ -193,8 +193,7 @@ void Player::bankrupt(){
   cout << "Type <auction> if you want your properties auctioned." << endl;
   cout << "Type <give> to send your properties to the player owed." << endl;
   try{
-    while(true){
-      cin >> nextCommand;
+    while(cin >> nextCommand;){
       if (nextCommand == "auction"){
         for (auto it=pList.begin(); it!=pList.end(); ++it){
           this->auction(it->first, it->second);
@@ -210,6 +209,7 @@ void Player::bankrupt(){
         break;
       } else {
         cout << "Invalid command. Please choose again." << endl;
+        continue;
       }
     }
   } catch (ios::failure &){}
@@ -219,6 +219,7 @@ void Player::bankrupt(){
       players.erase(it);
     }
   }
+//  cout << "Number of players remain:" << endl;
   delete this;
 }
 
