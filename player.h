@@ -32,27 +32,40 @@ public:
   bool isBlock(int bindex);
   //switch roll: T/F
   void changeRollable();
-  //
+  //move player by step
   void move(int step);
+  //move player to position p
   void gotoSite(int p);
+  //buy property using money
   void purchase(std::string bname);
-  void sendProperty(Player* p, int bpos); //send without paying
+  //send property without getting paid
+  void sendProperty(Player* p, int bpos);
+  //receive property at bpos, without paying
   void addProperty(int bpos);
-  void setBlock(int bpos);
+  //change player balance
   void changeBalance(int change);
-  void setTimTime(int n);//set to 0 if n=0, increment if n=1
+  //set timeTim to 0 if n=0, increment if n=1
+  void setTimTime(int n);
+  //get timeTim
   int getTimTime();
+  //get Rollup Cups owned
   int getCupsOwn();
+  //add one to cups owned
   void receiveCup();
+  //subtract one from cups owned
   void useCup();
+  //net worth of player's properties
   int netCapital();
-  void bankrupt(); //delete p
-  void auction(std::string bname, int bpos); //gai, bid or quit
-  void mortgage(Property* p);
+  //declare bankruptcy
+  void bankrupt(); 
+  //auction starts for building bname
+  void auction(std::string bname, int bpos); 
+  //print properties owned
   void printProperties();
-  // cannot trade buildings with improvements
-  // apply twice if trade building to building
-  void prop_manip(int ppos, int changeMoney, std::string s); //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
+  // property manipulations
+  // s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
+  void prop_manip(int ppos, int changeMoney, std::string s);
+  // check if bankrupted
   bool isBankrupt();
   void makeBankrupt();
   bool canBankrupt(int change); //if true, give warning, cannot 付租金
