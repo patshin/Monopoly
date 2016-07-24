@@ -76,7 +76,7 @@ public:
   void setCupsOwn(int cup);
   void setBalance(int bal);
   void setPos(int p);
-  void setPlayerList(vector<Player*> &pv);
+  void setPlayerList(std::vector<Player*> &pv);
   ~Player();
 };
 #endif
