@@ -165,6 +165,9 @@ void Board::nextplayer(){
         currentplayer++;
      }
 }
+void Board::sendvector(){
+     players[currentplayer]->setPlayerList(players);
+}
 
 void Board::playerBankrupt(){
     players[currentplayer]->bankrupt();//what player actually does?
