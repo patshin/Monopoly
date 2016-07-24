@@ -225,7 +225,7 @@ void Player::auction(string bname, int bpos){ //use map
   }
   cout << "Bidding started on " << bname << "!" << endl;
   cout << "Lowest bid is " << (buildings.at(pos))->getPrice() << endl;
-  int prevPriceBid;
+  int prevPriceBid = 1;
   while(totalbidders >= 1) {
     if (prevPriceBid == 0){
       bidderList.erase(--bidderList.end());
