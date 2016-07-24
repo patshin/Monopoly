@@ -22,11 +22,13 @@ int main(int argc, const char * argv[]) {
 
 
   if(argc == 4){
+    string arg1 = argv[1];
+    string arg2 = argv[2];
+    string arg3 = argv[3];
+    if(arg1 == "-load" || arg2 == "-load"){
 
-    if(argv[1] == "-load" || argv[2] == "-load"){
-
-      if(argv[1] == "-load"){
-        ifstream infile{argv[2]};
+      if(arg1 == "-load"){
+        ifstream infile{arg2};
         try{
           con.load(infile);
         }
@@ -35,7 +37,7 @@ int main(int argc, const char * argv[]) {
           exit(EXIT_FAILURE);
         }
       }else{
-        ifstream infile{argv[3]};
+        ifstream infile{arg3};
         try{
           con.load(infile);
         }
@@ -47,7 +49,7 @@ int main(int argc, const char * argv[]) {
     }else{
       cout << "Invalid arguments." << endl;
     }
-    if(argv[1] == "-testing" || argv[3] == "-testing"){
+    if(arg1 == "-testing" || arg3 == "-testing"){
       con.turnonTestingMode();
     }else{
       cout << "One invalid argument." << endl;
@@ -55,8 +57,12 @@ int main(int argc, const char * argv[]) {
   }
 
   if(argc == 3){
-    if(argv[1] == "-load"){
-      ifstream infile{argv[2]};
+   cout << "2 arguments" << endl;
+   string arg1 = argv[1];
+   string arg2 = argv[2];
+    if(arg1 == "-load"){
+      cout << "start" << endl;
+      ifstream infile{arg2};
       try{
         con.load(infile);
       }
@@ -72,7 +78,8 @@ int main(int argc, const char * argv[]) {
 
 
   if(argc == 2){
-    if(argv[1] == "-testing"){
+    string arg1 = argv[1];
+    if(arg1 == "-testing"){
       con.turnonTestingMode();
     }else{
       cout << "Invalid argument." << endl;
@@ -89,7 +96,7 @@ int main(int argc, const char * argv[]) {
   while (true) {
     cout << "in the loop" << endl;
     if(con.win()){
-        cout << "win!!" << endl;
+  //      cout << "win!!" << endl;
         cout << con.getwinner() << "is the winner" << endl;
         con.clearboard();
         cout << "Game over. Would you like to play again? Y/N";
@@ -108,7 +115,7 @@ int main(int argc, const char * argv[]) {
       cout << "Oops. You get stuck." << endl;
       con.stuckAtTimline();
     }else{
-      cout << "Not win, not at TimLine" << endl;
+//      cout << "Not win, not at TimLine" << endl;
       try{
         cin >> cmd;
       }
@@ -139,10 +146,10 @@ int main(int argc, const char * argv[]) {
         string filename;
         cin >> filename;
         con.save(filename);
-        cout << "Game saved. Would you like to end the game? Y/N";
-        char c;
-        cin >> c;
-        if(c == 'Y') break;
+        cout << "Game saved. Would you like to end the game? Y/N" << endl;
+        string s;
+        cin >> s;
+        if(s == "Y") {exit(EXIT_SUCCESS);}
       }else if(cmd == "trade"){
         con.trade();
         con.display();
@@ -161,5 +168,3 @@ int main(int argc, const char * argv[]) {
     }
   }
 }
-
-
