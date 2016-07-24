@@ -129,19 +129,19 @@ int main(int argc, const char * argv[]) {
         }else{
           con.roll();
         }
-        con.display();
+    //    con.display();
       }else if (cmd == "next") {
         con.next();
-        con.display();
+      //  con.display();
       }else if (cmd == "bankrupt") {
         con.dropout();
-        con.display();
+  //      con.display();
       }else if (cmd == "asset") {
         con.asset();
-        con.display();
+    //    con.display();
       }else if (cmd == "all"){
         con.all();
-        con.display();
+//        con.display();
       }else if(cmd == "save"){
         string filename;
         cin >> filename;
@@ -152,16 +152,16 @@ int main(int argc, const char * argv[]) {
         if(s == "Y") {exit(EXIT_SUCCESS);}
       }else if(cmd == "trade"){
         con.trade();
-        con.display();
+  //      con.display();
       }else if(cmd == "improve"){
         con.improve();
-        con.display();
+    //    con.display();
       }else if(cmd == "mortgage"){
         con.mortgage(true);
-        con.display();
+//        con.display();
       }else if(cmd == "unmortgage"){
         con.mortgage(false);
-        con.display();
+  //      con.display();
       }else{
         cout << cmd << " Command not found. Try again:" << endl;
       }
