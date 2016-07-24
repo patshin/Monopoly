@@ -12,7 +12,7 @@ class Player {
   int pos;   //0-39
   int timeTim;
   int cupsOwn;
-  bool isBankrupted; //
+  bool isBankrupted; 
   bool roll;
   std::vector<Building*> buildings;
   std::vector<Player*> players;
@@ -20,12 +20,19 @@ class Player {
 public:
   Player(std::string name,char nc, std::vector<Building*> &b, std::vector<Player*> &p);
   std::string getName();
+  //get player character
   char getChar();
+  //get player balance
   int getBalance();
+  //get player position
   int getPos();
+  //check if player can roll
   bool rollable();
+  //check is bindex owned created a block
   bool isBlock(int bindex);
+  //switch roll: T/F
   void changeRollable();
+  //
   void move(int step);
   void gotoSite(int p);
   void purchase(std::string bname);
@@ -56,7 +63,7 @@ public:
   void setCupsOwn(int cup);
   void setBalance(int bal);
   void setPos(int p);
-  void setPlayerList(&vector<Player*> pv);
+  void setPlayerList(vector<Player*> &pv);
   ~Player();
 };
 #endif
