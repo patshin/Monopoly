@@ -129,6 +129,8 @@ bool Player::isBlock(int bindex){
 }
 
 bool Player::canTrade(int bindex){
+	if(buildings[bindex]->getImproveCount() > 0) return false;
+	//check if block has any improvements
   string blockname = buildings[bindex]->getblock();
   for (auto it = buildings.begin() ; it != buildings.end(); ++it){
     if((*it)->getOwn()){
@@ -320,16 +322,24 @@ void Player::printProperties() {
   cout << endl;
 }
 
+/*
+BtoB: 
+*/
+
 void Player::prop_manip(int ppos, int changeMoney, string s){
   string pname = getName();
   if(s == "tradein") {
-    if(pList.count(pname)!=0){
-      cout << name << " already owns " << pname << ". Invalid trade!" << endl;
-      return;
-    }
-    if (changeMoney < 0) {
-      buildings[ppos]->setOwner(this);
+  	if(ppos>0 && changeMoney<0){
+  		buildings[ppos]->setOwner(this);
       this->addProperty(ppos);
+      this->changeBalance(changeMoney);
+  	}else if(ppos<0 && changeMoney>0){
+  		this->changeBalance(changeMoney);
+  	}else{
+  		cout << "Invalid trade-in, please try again later." << endl;
+  	}
+  /*
+     this->addProperty(ppos);
     } else {
       if(balance - changeMoney < 0){
         cout << "Invalid Trade request. Go get more money!" << endl;
@@ -339,11 +349,26 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
       this->addProperty(ppos);
       this->changeBalance(0 - changeMoney);
     }
+    */
   } else if (s == "tradeout") {
-    if(!(this->own(buildings[ppos]))){
-      cout << name << " doesn't own " << pname << ". Invalid trade!" << endl;
+  	if(ppos>0 && changeMoney<0){
+  		pList.erase(buildings[ppos]->getName());
+  	}else if(ppos<0 && changeMoney>0){
+  		this->changeBalance(0 - changeMoney);
+  	}else{
+  		cout << "Invalid trade-out, please try again later." << endl;
+  	}
+  	/*
+  	if(ppos < 0){		//giving out money for property
+  		if(balance - changeMoney < 0){
+        cout << "Invalid Trade request. Go get more money!" << endl;
+        return;
+      }
+      buildings[ppos]->setOwner(this);
+      this->addProperty(ppos);
+      this->changeBalance(0 - changeMoney);
       return;
-    }
+  	}
     if (changeMoney < 0) {
   //    buildings[ppos]->setOwner(nullptr));
       pList.erase(buildings[ppos]->getName());
@@ -352,6 +377,7 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
       pList.erase(buildings[ppos]->getName());
       this->changeBalance(changeMoney);
     }
+    */
   } else if (s == "mortgage") {
     if(!(this->own(buildings[ppos]))){
       cout << name << " doesn't own " << pname << ". Invalid mortgage!" << endl;
@@ -445,9 +471,9 @@ void Player::setPos(int p){
   pos = p;
   buildings[pos]->setPlayer(this);
 }
-
+/*
 void Player::setPlayerList(vector<Player*> &pv){
   players = pv;
 }
-
+*/
 Player::~Player(){}
