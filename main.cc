@@ -94,6 +94,7 @@ int main(int argc, const char * argv[]) {
   if(argc == 1 || argc == 2 || argc > 4){
     cout << "Welcome to the game." << endl;
     con.gamestart();
+    con.display();
   }
 
   while (true) {
@@ -144,10 +145,10 @@ int main(int argc, const char * argv[]) {
         con.display();
       }else if (cmd == "asset") {
         con.asset();
-        con.display();
+    //    con.display();
       }else if (cmd == "all"){
         con.all();
-        con.display();
+      //  con.display();
       }else if(cmd == "save"){
         string filename;
         cin >> filename;
