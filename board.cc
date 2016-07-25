@@ -428,10 +428,16 @@ void Board::trade(){
             cout << receive << " " << "cannot be traded. Request Rejected." << endl;
         }else{
             string cmd;
-            cout << "Please choose accept or reject this offer?" << endl;
+            cout << name <<endl;
+            cout << "Please choose <accept> or <reject> this offer?" << endl;
             while(cin >> cmd){                
                 if(cmd == "reject") break;
                 if(cmd == "accept"){
+                	//debugging
+                    cout << "giveBuilding index is " << giveBuildingIndex << end;
+                    cout << "ReceiveBuilding index is " << ReceiveBuildingIndex << end;
+                    cout << "givemoney index is " << givemoney << end;
+                    cout << "receive index is " << receivemoney << end;
                     players[currentplayer]->prop_manip(giveBuildingIndex, givemoney, "tradeout");
                     players[currentplayer]->prop_manip(ReceiveBuildingIndex, receivemoney, "tradein");
                     players[receiverIndex]->prop_manip(giveBuildingIndex, givemoney, "tradein");
