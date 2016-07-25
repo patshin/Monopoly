@@ -301,7 +301,7 @@ void Board::loadFrom(ifstream &filename){
 		string s;
 		try{
 			getline(filename,s);
-                        cout << "this line is: " << s << endl;
+  //                      cout << "this line is: " << s << endl;
                         if(s == "") break;
 		}
 		catch(ios::failure&){
