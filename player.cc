@@ -213,6 +213,9 @@ void Player::bankrupt(){
   try{
     while(cin >> nextCommand){
       if (nextCommand == "auction"){
+      	for (auto it=pList.begin(); it!=pList.end(); ++it){
+          cout << it->first << it->second << endl;
+        }
         for (auto it=pList.begin(); it!=pList.end(); ++it){
           this->auction(it->first, it->second);
         }
