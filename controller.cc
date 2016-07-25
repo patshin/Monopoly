@@ -78,6 +78,7 @@ void Controller::gamestart(){
 	for(int j = 0; j < NumOfPlayers; j++){
 		board.sendvector(j);
 	}
+	characters.clear();
 }
 bool Controller::rollStage(){
     return board.playerStatus();
