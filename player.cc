@@ -270,12 +270,17 @@ void Player::auction(string bname, int bpos){
     }
     for(auto itt=bidderList.begin();itt!=bidderList.end();++itt){
       if(totalbidders == 1){
+      	if(nonzerobid == 0) {
+      	  cout << "No one has placed bid. Auction cancelled." << endl;
+      	  --totalbidders;
+      	  break;
+      	}
         cout << "Congrats! " << itt->second << " wins the bid for ";
         cout << bname << "!" << endl;
         this->sendProperty(players[itt->first],bpos);
-        if(nonzerobid == 0){
-          players[itt->first]->changeBalance(0 - curbid - 1);
-        } else {
+//        if(nonzerobid == 0){
+//          players[itt->first]->changeBalance(0 - curbid - 1);
+//        } else {
           players[itt->first]->changeBalance(0 - curbid);	
         }
         --totalbidders;
