@@ -134,7 +134,7 @@ void Player::changeBalance(int change){
     cout << "Warning! You are going to be bankrupted!" << endl;
   }
   balance += change;  
-  if(change >= 0){
+  if(change > 0){
   cout << change << " was added into " << name << "'s balance!" << endl;
   }else{
     int i = 0 - change;
