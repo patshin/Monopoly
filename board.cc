@@ -201,27 +201,38 @@ bool Board::playerbankrupt(){
 void Board::saveTo(string filename){
     ofstream savefile{filename};
     savefile << NumPlayers << endl;
-    for(int n = 0; n < NumPlayers; n++){
-    	if(players[n]->getPos() != 10){
-    		savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
-    		savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << endl;
-    	}else{
-    		if(players[n]->getTimTime() == 0){
-    			savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
-    		    savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << " 0" << endl;
-    		}else{
-    			savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
-    		    savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << " " << players[n]->getTimTime() << endl;
-    		}
-    	}
-    	
+    int times = 0;
+    int n = 0;
+  //  cout << "times " << times << endl;
+    while (times < NumPlayers){
+        if(currentplayer + times < NumPlayers){
+              n = currentplayer + times;
+        }else{
+              n = times - NumPlayers + 1;
+         }
+ //       cout << "n: " << n << endl;
+        if(players[n]->getPos() != 10){
+                savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
+                savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << endl;
+        }else{
+  //          cout << "save starts "<< "n: " << n << endl;
+                if(players[n]->getTimTime() == 0){
+                        savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
+                    savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << " 0" << endl;
+                }else{
+                        savefile << players[n]->getName() << " " << players[n]->getChar() << " " << players[n]->getCupsOwn();
+                    savefile << " " << players[n]->getBalance() << " " << players[n]->getPos() << " " << players[n]->getTimTime() << endl;
+                }
+        }
+        times++;
+
     }//balance or total money
-    	for(int j = 0; j < 40; j++){
-    		if(building[j]->getOwn()){
-    			if(building[j]->getOwner()){
-    				savefile << building[j]->getName() << " " << building[j]->getOwner()->getName(); //To get owner of the building;
-    				if(building[j]->getMort()){
-    					savefile << " -1"  << endl; 
+        for(int j = 0; j < 40; j++){
+                if(building[j]->getOwn()){
+                        if(building[j]->getOwner()){
+                                savefile << building[j]->getName() << " " << building[j]->getOwner()->getName(); //To get owner of the building;
+                                if(building[j]->getMort()){
+                                        savefile << " -1"  << endl;
                                 }else{
                                         savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
                                 }
@@ -229,9 +240,9 @@ void Board::saveTo(string filename){
                                 savefile << building[j]->getName() << " " << "BANK"; //To get owner of the building;
                                 savefile << " " << building[j]->getImproveCount() << endl; // To get number of improvements of the building
                         }
-    		}
-    	}
-    	
+                }
+        }
+
 }
 
 
