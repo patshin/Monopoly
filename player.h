@@ -86,7 +86,7 @@ public:
   //reset the player vector in a player
   void setPlayerList(std::vector<Player*> &pv);
   //remove a player from the player vector
-  void removePlayer(std::string n);
+  //void removePlayer(std::string n);
   ~Player();
 };
 #endif
