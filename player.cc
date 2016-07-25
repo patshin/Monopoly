@@ -228,12 +228,14 @@ void Player::bankrupt(){
     }
   } catch (ios::failure &){}
   //remove this player from every player's vector
+  /*
   for (auto it = players.begin() ; it != players.end(); ++it){
   	(*it)->removePlayer(name);
   }
+  */
   delete this;
 }
-
+/*
 void Player::removePlayer(string n){
     for (auto it = players.begin() ; it != players.end(); ++it){
     if((*it)->getName() == n){
@@ -242,7 +244,7 @@ void Player::removePlayer(string n){
     }
   }
 }
-
+*/
 void Player::auction(string bname, int bpos){
   int totalbidders = players.size() - 1;
   int nonzerobid = 0;
