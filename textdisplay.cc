@@ -117,7 +117,7 @@ void Textdisplay::putPlayer(char c, int pos){
 //	cout << display[row][col] << "v" << endl;
 	display[row][col] = c;
   //      cout << display[row][col] << "v" << endl;
-        cout << (*this);
+       // cout << (*this);
 //        cout << "finish displaying" << endl;
 }
 //	void movePlayer(int pos, char c, int steps);
@@ -131,14 +131,14 @@ void Textdisplay::putPlayer(char c, int pos){
  			break;
  		}
  	}
-         cout << (*this);
+     //    cout << (*this);
  }
  void Textdisplay::setOwner(char c, int pos){
  	vector<int> v = PosToindex(pos);
  	int row = v[0] + 1;
 	int col = v[1];
 	display[row][col] = c;
-        cout << (*this);
+      //  cout << (*this);
  }
  
 void Textdisplay::removeOwner(int pos){
@@ -146,7 +146,7 @@ void Textdisplay::removeOwner(int pos){
  	int row = v[0] + 1;
 	int col = v[1];
 	display[row][col] = '_';
-        cout << (*this);
+    //    cout << (*this);
  }
 void Textdisplay::improve(int pos, bool whether){
 	if(whether){
@@ -172,7 +172,7 @@ void Textdisplay::improve(int pos, bool whether){
 		}
 	    }
 	}
-         cout << (*this);
+  //       cout << (*this);
 }
 void Textdisplay::mortgage(int pos, bool whether){
 	if(whether){
@@ -186,7 +186,7 @@ void Textdisplay::mortgage(int pos, bool whether){
 	    int col = v[1] + 2;
 	    display[row][col] = '_';
 	}
-         cout << (*this);
+//         cout << (*this);
 }
 
 ostream &operator<<(ostream &out, const Textdisplay &td) {
