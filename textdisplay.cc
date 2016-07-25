@@ -72,7 +72,7 @@ Textdisplay::Textdisplay(){ //56
         display.push_back(v);
     	for(int j = 0; j < 89; j++){
     		display[n].push_back(stringDisplay[x]);
- //               cout << display[n][j];
+                cout << display[n][j];
 //                cout << "pushback works!!" << endl;
                 x++;
     	}
