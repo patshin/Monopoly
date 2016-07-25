@@ -214,17 +214,17 @@ void Player::bankrupt(){
     while(cin >> nextCommand){
       if (nextCommand == "auction"){
       	for (auto it=pList.begin(); it!=pList.end(); ++it){
-          cout << it->first << it->second << endl;
+          cout << it->first << " " << it->second << endl;
         }
         for (auto it=pList.begin(); it!=pList.end(); ++it){
-          this->auction(it->first, it->second);
+          auction(it->first, it->second);
         }
         cout << name << "'s properties were successfully auctioned!" << endl;
         break;
       } else if(nextCommand == "give") {
         Player* OwedPerson = buildings[pos]->getOwner();
         for (auto it=pList.begin(); it!=pList.end(); ++it){
-          this->sendProperty(OwedPerson,it->second);
+          sendProperty(OwedPerson,it->second);
         }
         cout << "All properties were sent to " << OwedPerson->getName() << "!" << endl;
         break;
