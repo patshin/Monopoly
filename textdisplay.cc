@@ -152,8 +152,8 @@ void Textdisplay::removeOwner(int pos){
     //    cout << (*this);
  }
 void Textdisplay::improve(int pos, bool whether){
+	vector<int> v = PosToindex(pos);
 	if(whether){
-		vector<int> v = PosToindex(pos);
  	    int row = v[0] - 3;
 	    int col = v[1];
 	    for(int i=0; i < 6; i++){
@@ -164,7 +164,6 @@ void Textdisplay::improve(int pos, bool whether){
 		}
 	    }
 	}else{
-		vector<int> v = PosToindex(pos);
  	    int row = v[0] - 3;
 	    int col = v[1];
 	    for(int i=0; i < 6; i++){
@@ -179,13 +178,12 @@ void Textdisplay::improve(int pos, bool whether){
 }
 
 void Textdisplay::mortgage(int pos, bool whether){
+	vector<int> v = PosToindex(pos);
 	if(whether){
-		vector<int> v = PosToindex(pos);
  	    int row = v[0] - 1;
 	    int col = v[1] + 2;
 	    display[row][col] = 'M';
 	}else{
-		vector<int> v = PosToindex(pos);
  	    int row = v[0] - 1;
 	    int col = v[1] + 2;
 	    display[row][col] = '_';
