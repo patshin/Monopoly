@@ -60,10 +60,14 @@ void Player::move(int step){
       pos += step;
     }else{
       pos = pos+step-40;
+      //IF OSAP
+      buildings[0]->method();
     }
   } else {
     if(pos+step<=0){
       pos = 40+pos-step;
+      //IF OSAP
+      buildings[0]->method();
     }else{
       pos += step;
     }
