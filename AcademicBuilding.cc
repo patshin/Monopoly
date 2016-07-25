@@ -60,4 +60,7 @@ void AcademicBuilding::method(Player *p){
   (getOwner())->changeBalance(tuition[getImproveCount()]);
  }
 }
-AcademicBuilding::~AcademicBuilding(){}
+
+AcademicBuilding::~AcademicBuilding(){
+	tuition.clear();
+}
