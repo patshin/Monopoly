@@ -78,17 +78,20 @@ int main(int argc, const char * argv[]) {
 
 
   if(argc == 2){
+   // cout << "testing mode in" << endl;
     string arg1 = argv[1];
+  //  cout << "testing mode in " << arg1 << endl;
     if(arg1 == "-testing"){
       con.turnonTestingMode();
+    //  cout << "testing mode on" << endl;
     }else{
       cout << "Invalid argument." << endl;
       exit(EXIT_FAILURE);
     }
-  }
+   }
 
 
-  if(argc == 1 || argc > 4){
+  if(argc == 1 || argc == 2 || argc > 4){
     cout << "Welcome to the game." << endl;
     con.gamestart();
   }
@@ -124,6 +127,7 @@ int main(int argc, const char * argv[]) {
       catch(ios::failure&){}
       if (cmd == "roll") {
         if(con.getMode()){
+         cout << "This is testing mode,enter the number of <dice1> <dice2>." << endl;
           int n1;
           int n2;
           cin >> n1 >> n2;
