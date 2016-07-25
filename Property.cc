@@ -27,7 +27,10 @@ void Property::setOwner(Player* p){
  p->addProperty(getSite());
 }
 void Property::removeOwner(){
- owner == nullptr;
+ if(owner == nullptr){
+ }else{
+  //delete(owner);
+ }
  getBoard()->removeOwner(getSite());
 }
 int Property::getPrice(){
@@ -35,7 +38,7 @@ int Property::getPrice(){
 }
 void Property::changeMort(){
  mortgaged = !mortgaged;
- getBoard()->mortgage(getSite(),mortgaged);
+ getBoard()->mortgage(getPos(),mortgaged);
 }
 bool Property::getMort(){
  return mortgaged;
