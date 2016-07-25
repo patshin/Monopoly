@@ -62,22 +62,30 @@ public:
   void auction(std::string bname, int bpos); 
   //print properties owned
   void printProperties();
-  // property manipulations
-  // s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
+  //property manipulations
+  //s = mortgage, unmortgage, tradein, tradeout, improve, unimprove
   void prop_manip(int ppos, int changeMoney, std::string s);
-  // check if bankrupted
+  //check if bankrupted
   bool isBankrupt();
+  //switch bankrupt status
   void makeBankrupt();
-  bool canBankrupt(int change); //if true, give warning, cannot 付租金
+  //check if player can be bankrupted after balance is changed
+  bool canBankrupt(int change); 
+  //check if owns building p
   bool own(Building* p);
-//  std::vector<Building*> *getBuildingList();
+  //check if a building can trade
   bool canTrade(int bindex);
   //count for gyms or residences owned, b = gym or res
   int getNumOwn(std::string b);
+  //set RollupCups owned
   void setCupsOwn(int cup);
+  //set player balance
   void setBalance(int bal);
+  //set player position
   void setPos(int p);
+  //reset the player vector in a player
   void setPlayerList(std::vector<Player*> &pv);
+  //remove a player from the player vector
   void removePlayer(std::string n);
   ~Player();
 };
