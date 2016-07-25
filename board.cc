@@ -492,7 +492,7 @@ void Board::improve(){
     int buildingIndex;
     string property;
     string transaction;
-    cout << "Enter property name: ";
+  //  cout << "Enter property name: ";
     while(cin >> property){
         buildingIndex = findbuilding(property);
         if(buildingIndex == 40){
@@ -504,7 +504,8 @@ void Board::improve(){
             cout << "Can't be improved without being monoploy. If quit improving, enter quit. Or try again: ";
         }else break;
     }
-    cout << "Enter sell or buy:";
+  //  cout << "Enter sell or buy:";
+   if(property != "quit"){
     while(cin >> transaction){
         if(transaction == "buy"){
              int improvements = building[buildingIndex]->getImproveCount();
@@ -515,7 +516,7 @@ void Board::improve(){
              int improveCost = building[buildingIndex]->getImproveCost();
              cout << "This improvement costs " << improveCost << " dollars." << endl;
              players[currentplayer]->prop_manip(buildingIndex, improveCost, "improve");
-	     break;
+             break;
         }else if(transaction == "sell"){
             int improvements = building[buildingIndex]->getImproveCount();
             if(improvements == 0){
@@ -525,11 +526,12 @@ void Board::improve(){
             int improveCost = (building[buildingIndex]->getImproveCost())/2;
             cout << "Selling this improvement is worth " << improveCost << " dollars." << endl;
             players[currentplayer]->prop_manip(buildingIndex, improveCost, "unimprove");//what if they can't afford it?? what happened when they short?
-	    break;
+            break;
         }else{
             cout << "Illegal command." << endl;
         }
     }
+ }
 }
 
 void Board::display(){
@@ -540,7 +542,7 @@ void Board::display(){
 void Board::mortgage(const bool &whether){
     int buildingIndex;
     string property;
-    cout << "Enter property name: ";
+//    cout << "Enter property name: ";
     while(cin >> property){
         buildingIndex = findbuilding(property);
         if(property == "quit") break;
