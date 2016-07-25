@@ -80,7 +80,6 @@ Textdisplay::Textdisplay(){ //56
     }
 }
 	
-Textdisplay::~Textdisplay(){}
 vector <int> Textdisplay::PosToindex(int pos){
 	int row;
 	int col;
@@ -108,6 +107,7 @@ void Textdisplay::putPlayer(char c, int pos){
 	vector<int> v = PosToindex(pos);
 	int row = v[0];
 	int col = v[1]; 
+	v.clear();
 	for(int i=0; i < 6; i++){
 		if(display[row][col] != ' '){
 			col++;
@@ -125,6 +125,7 @@ void Textdisplay::putPlayer(char c, int pos){
  	vector<int> v = PosToindex(pos);
  	int row = v[0];
 	int col = v[1];
+	v.clear();
  	for(int n = 0; n < 6; n++){
  		if(display[row][col+n] == c){
  			display[row][col+n] = ' ';
@@ -137,6 +138,7 @@ void Textdisplay::putPlayer(char c, int pos){
  	vector<int> v = PosToindex(pos);
  	int row = v[0] + 1;
 	int col = v[1];
+	v.clear();
 	display[row][col] = c;
       //  cout << (*this);
  }
@@ -145,6 +147,7 @@ void Textdisplay::removeOwner(int pos){
  	vector<int> v = PosToindex(pos);
  	int row = v[0] + 1;
 	int col = v[1];
+	v.clear();
 	display[row][col] = '_';
     //    cout << (*this);
  }
@@ -172,8 +175,9 @@ void Textdisplay::improve(int pos, bool whether){
 		}
 	    }
 	}
-  //       cout << (*this);
+	v.clear();
 }
+
 void Textdisplay::mortgage(int pos, bool whether){
 	if(whether){
 		vector<int> v = PosToindex(pos);
@@ -186,7 +190,7 @@ void Textdisplay::mortgage(int pos, bool whether){
 	    int col = v[1] + 2;
 	    display[row][col] = '_';
 	}
-//         cout << (*this);
+	v.clear();
 }
 
 ostream &operator<<(ostream &out, const Textdisplay &td) {
@@ -198,3 +202,10 @@ ostream &operator<<(ostream &out, const Textdisplay &td) {
 	}
 	return out;
 } 
+
+Textdisplay::~Textdisplay(){
+	for (int i=55;i>=0;--i){
+	  display[i].clear();
+   	} 
+	display.clear();
+}
