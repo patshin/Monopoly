@@ -130,7 +130,9 @@ bool Player::isBlock(int bindex){
 
 void Player::changeBalance(int change){
   if(canBankrupt(change)) {
-    cout << "Warning! You are going to be bankrupted!" << endl;
+    cout << "WARNING!" << endl;
+    cout << "Your balance is negative now!" << endl;
+    cout << "Necessary actions must be taken to earn more balance!" << endl;
   }
   balance += change;  
   if(change > 0){
