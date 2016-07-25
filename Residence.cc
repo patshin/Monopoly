@@ -43,7 +43,7 @@ void Residence::method(Player *p){
    return;
   }     if(getMort() == true){
          cout << "Lucky! this property is mortgaged"<<endl;
-         return;
+	 return;
         }
  	Player *pyr = getOwner();
  	int n = pyr->getNumOwn("res");
