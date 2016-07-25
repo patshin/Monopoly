@@ -247,7 +247,7 @@ void Player::bankrupt(){
 void Player::auction(string bname, int bpos){ //use map
   int totalbidders = players.size() - 1;
   int nonzerobid = 0;
-  cout << "total bidder is " << totalbidders << endl;
+  cout << "Total number of bidders: " << totalbidders << endl;
   int curbid = (buildings.at(bpos))->getPrice();
   map<int, string> bidderList;
   for(int i=0; i<totalbidders+1;++i){
@@ -265,23 +265,23 @@ void Player::auction(string bname, int bpos){ //use map
       bidderList.erase(--bidderList.end());
       prevPriceBid = 1;
     }
-    for(auto it=bidderList.begin();it!=bidderList.end();++it){
+    for(auto itt=bidderList.begin();itt!=bidderList.end();++itt){
       if(totalbidders == 1){
         cout << "Congrats! " << it->second << " wins the bid for ";
         cout << bname << "!" << endl;
-        this->sendProperty(players[it->first],bpos);
+        this->sendProperty(players[itt->first],bpos);
         if(nonzerobid = 0){
-          players[it->first]->changeBalance(0 - curbid);
+          players[itt->first]->changeBalance(0 - curbid);
         } else {
-          players[it->first]->changeBalance(0 - curbid - 1);	
+          players[itt->first]->changeBalance(0 - curbid - 1);	
         }
         --totalbidders;
         break;
       }
       if (prevPriceBid == 0){
-        bidderList.erase((it->first)-1);
+        bidderList.erase((itt->first)-1);
       }
-      cout << it->second << ":" << endl;
+      cout << itt->second << ":" << endl;
       cout << "Please choose from the following two options:" << endl;
       cout << "If bidding, type in an integer greater than the current bid."
       << endl;
@@ -289,7 +289,7 @@ void Player::auction(string bname, int bpos){ //use map
       try {
 	int priceBid = 1;
 	while(cin >> priceBid){
-          if(players[it->first]->canBankrupt(0 - priceBid)) {
+          if(players[itt->first]->canBankrupt(0 - priceBid)) {
             cout << "Invalid bid! You don't have enough money!" << endl;
             continue;
           }
@@ -309,7 +309,7 @@ void Player::auction(string bname, int bpos){ //use map
 	}
       } catch (ios::failure &){
         cout << "Invalid command entered." << endl;
-        --it;
+        --itt;
         continue;
       }
     }
