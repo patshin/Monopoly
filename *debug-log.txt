@@ -1,4 +1,4 @@
 //推动历史的进程
 1. Vector reference does not sync
 2. cin: char, str load to int, int turns out to be 0.  No error displayed.
-3. 
+3. //testing mode:roll double not avaliable
