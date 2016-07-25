@@ -416,9 +416,9 @@ bool Player::own(Building* p){
   return (this == p->getOwner());
 }
 
-vector<Building*> *Player::getBuildingList(){
-  return &buildings;
-}
+//vector<Building*> *Player::getBuildingList(){
+//  return &buildings;
+//}
 
 int Player::getNumOwn(string b){
   int count;
