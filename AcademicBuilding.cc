@@ -54,6 +54,7 @@ void AcademicBuilding::method(Player *p){
   }
   if(getMort() == true){
    cout << "Lucky! this property is mortgaged"<<endl;
+   return;
   }
   cout << "Landing on an academic building, you need to pay "<<tuition[getImproveCount()];
   cout << " dollar." << endl;
