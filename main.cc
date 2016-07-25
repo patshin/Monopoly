@@ -173,4 +173,5 @@ int main(int argc, const char * argv[]) {
         cout << cmd << " Command not found. Try again:" << endl;
       }
   }
+  players.clear();
 }
