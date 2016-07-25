@@ -175,6 +175,7 @@ void Board::playerBankrupt(){
      return;
     }
     players[currentplayer]->bankrupt();//what player actually does?
+    players.erase(players.begin() + currentplayer);
     NumPlayers--;
 }
 
