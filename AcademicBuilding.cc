@@ -34,12 +34,12 @@ void AcademicBuilding::halfbase(){
 }
 void AcademicBuilding::method(Player *p){
 	if(getOwner() == nullptr){
- 	cout << "This Building is empty, do you want to purchase it?"<<endl;
+ 	cout << "This building is empty, do you want to purchase it?"<<endl;
  	cout << "[Y/N]" << endl;
  string s;
  while(cin>>s){
  	if(s == "Y"){
- 		cout << "you have pruchased this property!"<<endl;
+ 		cout<<"You have purchased this property!"<<endl;
  		p->purchase(getName());
  		return;
  	}else if(s =="N"){
@@ -51,7 +51,7 @@ void AcademicBuilding::method(Player *p){
   if(getOwner()->getChar() == p->getChar()){
    return;
   }
-  cout << "land on academic building, you need to pay"<<tuition[getImproveCount()]<<endl;
+  cout << "Landing on an academic building, you need to pay "<<tuition[getImproveCount()]<<endl;
   p->changeBalance(-tuition[getImproveCount()]);
   (getOwner())->changeBalance(tuition[getImproveCount()]);
  }
