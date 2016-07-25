@@ -319,6 +319,7 @@ void Board::loadFrom(ifstream &filename){
             if(owner != "BANK"){
                 int playerindex = findplayer(owner);
                 building[index]->setOwner(players[playerindex]);
+                players[playerindex]->addProperty(index);
             } //set owner to owner; can this method be protected??
 		    ss >> improvements;
 		    if(improvements == 0){
