@@ -212,18 +212,19 @@ void Player::bankrupt(){
   cout << "Type <give> to send your properties to the player owed." << endl;
   try{
     while(cin >> nextCommand){
+    	map<string, int> pCopy = pList;
       if (nextCommand == "auction"){
       	for (auto it=pList.begin(); it!=pList.end(); ++it){
           cout << it->first << " " << it->second << endl;
         }
-        for (auto it=pList.begin(); it!=pList.end(); ++it){
+        for (auto it=pCopy.begin(); it!=pCopy.end(); ++it){
           auction(it->first, it->second);
         }
         cout << name << "'s properties were successfully auctioned!" << endl;
         break;
       } else if(nextCommand == "give") {
         Player* OwedPerson = buildings[pos]->getOwner();
-        for (auto it=pList.begin(); it!=pList.end(); ++it){
+        for (auto it=pCopy.begin(); it!=pCopy.end(); ++it){
           sendProperty(OwedPerson,it->second);
         }
         cout << "All properties were sent to " << OwedPerson->getName() << "!" << endl;
@@ -236,12 +237,19 @@ void Player::bankrupt(){
   } catch (ios::failure &){}
   //delete every player's TBD
   for (auto it = players.begin() ; it != players.end(); ++it){
-    if((*it)->getName() == name){
-      players.erase(it);
-    }
+  	(*it)->removePlayer(name);
   }
 //  cout << "Number of players remain:" << endl;
   delete this;
+}
+
+void Player::removePlayer(string n){
+	for (auto it = players.begin() ; it != players.end(); ++it){
+    if((*it)->getName() == n){
+      players.erase(it);
+      break;
+    }
+  }
 }
 
 void Player::auction(string bname, int bpos){ //use map
@@ -489,4 +497,8 @@ void Player::setPlayerList(vector<Player*> &pv){
   players = pv;
 }
 
-Player::~Player(){}
+Player::~Player(){
+	buildings.clear();
+	players.clear();
+	pList.clear();
+}
