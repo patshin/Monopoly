@@ -60,9 +60,9 @@ void Controller::gamestart(){
 	    	}
 	    	cout << endl;
 	    }   
-                cout << "player attached failed" << endl;
+//                cout << "player attached failed" << endl;
 		board.attachplayers(name,c);//add to the board
-                cout << "player attached." << endl;
+  //              cout << "player attached." << endl;
 	}
 	for(int j = 0; j < NumOfPlayers; j++){
 		board.sendvector(j);
@@ -107,6 +107,19 @@ void Controller::roll(int dice1, int dice2){
 		        
 		    }
 		}else{
+              //          cout << "This is testing mode,enter the number of <dice1> <dice2>." << endl;
+//                        try{
+  //                       cin >> dice1 >> dice2;
+    //                    }
+      //                  catch(ios::failure&){
+        //                 cout << "Invalid input. Try agian: " << endl;
+          //               cin >> dice1 >> dice2;
+            //            }
+                        if(dice1 > 6 || dice2 > 6){
+                          cout << "Dice number cannot be more than 6. moving 0 as a punishment." << endl;
+                          dice1 = -1;
+                          dice2 = 1;
+                        }
 			while(dice1 == dice2 && turn < 3){ ////consider the case where dice1 and 2 greater than 6!!
 		    	cout << "dice1: " << dice1 << endl;
 		        cout << "dice2: " << dice2 << endl; 
@@ -134,9 +147,9 @@ void Controller::roll(int dice1, int dice2){
 		    }else{
 		        cout << "dice1: " << dice1 << endl;
 		    	cout << "dice2: " << dice2 << endl;
-                        cout << "start moving" << endl; 
+                      //  cout << "start moving" << endl; 
 		    	board.moveplayer(dice1 + dice2);
-			}
+		    }
 		}
 		if(board.playerStatus()){
 			board.switchStage();
