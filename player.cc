@@ -128,6 +128,7 @@ bool Player::isBlock(int bindex){
 
 bool Player::canTrade(int bindex){
   if(buildings[bindex]->getImproveCount() > 0) return false;
+  if(!(buildings[bindex]->getOwn())) return false;
 	//then check if block has any improvements
   string blockname = buildings[bindex]->getblock();
   for (auto it = buildings.begin() ; it != buildings.end(); ++it){
@@ -139,14 +140,13 @@ bool Player::canTrade(int bindex){
       if((*it)->getAca()){
         if(blockname == (*it)->getblock()){
           if((*it)->getImproveCount() > 0){
+	  cout<<"false here 1"<<endl;
             return false;
           }
         }
       }else{
 	return true;
       }
-    }else{
-     return false;
     }
   }
   return true;
