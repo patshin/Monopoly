@@ -173,7 +173,7 @@ void Controller::roll(int dice1, int dice2){
 
 void Controller::next(){
        if(board.playerbankrupt()){
-         cout << "You don't have money to move on. Declare bankcrucy or sell your property." << endl;
+         cout << "You don't have money to move on. Declare <bankrupt> to drop out or sell your property." << endl;
         }else{
         	if(playerstatus()){
 	        	cout << "Please roll first." << endl;
