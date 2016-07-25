@@ -422,9 +422,9 @@ void Board::trade(){
         }
         if(giveBuildingIndex == 40 || ReceiveBuildingIndex == 40){
             cout << "Property not found. Request Rejected." << endl;
-        }else if(!building[giveBuildingIndex]->tradable(players[currentplayer])){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
+        }else if(!players[currentplayer]->tradable(giveBuildingIndex)){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
             cout << give << " " << "cannot be traded. Request Rejected." << endl;
-        }else if(!building[ReceiveBuildingIndex]->tradable(players[receiverIndex])){
+        }else if(!players[receiverIndex]->tradable(ReceiveBuildingIndex)){
             cout << receive << " " << "cannot be traded. Request Rejected." << endl;
         }else{
             string cmd;
@@ -438,7 +438,7 @@ void Board::trade(){
                     players[receiverIndex]->prop_manip(ReceiveBuildingIndex, receivemoney, "tradeout");
                     break;
                 }else{
-                    cout << "command not found. Try agian: reject/accept.";
+                    cout << "Command not found. Try again: reject/accept.";
                 }
             }
         }
