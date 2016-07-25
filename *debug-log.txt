@@ -4,3 +4,5 @@
 3. //testing mode:roll double not avaliable
 4. Erase map while iterating >> segmentation fault
 5. Bankrupt() >> delete player 
+
+when file is saved, we need to start from the current player.
