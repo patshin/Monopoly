@@ -82,8 +82,9 @@ void Player::gotoSite(int p){
   //cout << "player::finish removing" << endl;
   pos = p;
   buildings[pos]->setPlayer(this);
-  //cout << "Now Im in DC" << endl;
+  cout << "1: Now Im in " << buildings[pos]->getName() << endl;
   buildings[pos]->method(this);
+  cout << "2: Now Im in " << buildings[pos]->getName() << endl;
 }
 
 void Player::purchase(string bname){
@@ -135,10 +136,10 @@ void Player::changeBalance(int change){
   }
   balance += change;  
   if(change > 0){
-  cout << change << " was added into " << name << "'s balance!" << endl;
+  cout << change << " dollar added into " << name << "'s balance!" << endl;
   }else{
     int i = 0 - change;
-    cout << i << " was removed from " << name << "'s balance!" << endl;
+    cout << i << " dollar removed from " << name << "'s balance!" << endl;
   }
 }
 
