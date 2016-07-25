@@ -82,9 +82,7 @@ void Player::gotoSite(int p){
   //cout << "player::finish removing" << endl;
   pos = p;
   buildings[pos]->setPlayer(this);
-  cout << "1: Now Im in " << buildings[pos]->getName() << endl;
   buildings[pos]->method(this);
-  cout << "2: Now Im in " << buildings[pos]->getName() << endl;
 }
 
 void Player::purchase(string bname){
