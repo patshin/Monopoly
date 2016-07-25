@@ -270,6 +270,7 @@ void Board::loadFrom(ifstream &filename){
 		    players[n]->setBalance(a); // set balance to a; can this method be protected;
 		    ss >> a;
               //      cout << "Postion: " << a << endl;
+                    building[(players[n]->getPos())]->removePlayer(players[n]);
 		    players[n]->setPos(a); // set position to a; can this method be protected;
 		}
 		catch(ios::failure&){
