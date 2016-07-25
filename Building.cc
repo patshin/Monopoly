@@ -44,33 +44,7 @@ void Building::removePlayer(Player* p){
 }
 
 
-bool Building::tradable(Player *p){
- if(!ownable){
- 	return false;
- }
- vector <Building*> *ptr = p->getBuildingList();
- int n = ptr->size();
- bool contain = false;
- for(int i = 0 ; i < n ; i++){
-  if(((*ptr)[i])->getOwn()){
-   if((((*ptr)[i])->getOwner())->getName() == p->getName()) {
-   	if((((*ptr)[i])->getName())==name){
-   		contain = true;
-   	}
-   	if((((*ptr)[i])->getAca()) == true){
-   		if((((*ptr)[i])->getImproveCount())!=0){
-   			return false;
-   		}
-   	}
-   }
-  }
- }
- if(contain == false){
- 	return false;
- }else{
- 	return true;
- }
-}
+
 void Building::b_refresh(){
  curplayer.clear();
 }

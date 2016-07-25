@@ -19,7 +19,6 @@ class Building {
  bool getOwn();
  void setPlayer(Player* p);
  void removePlayer(Player* p);
- int improvable();
  virtual bool getAca() = 0;
  virtual int getImproveCount();
  virtual Player* getOwner() = 0;
