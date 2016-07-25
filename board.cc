@@ -341,6 +341,7 @@ void Board::loadFrom(ifstream &filename){
 			exit(EXIT_FAILURE);
 		}
 	}
+	cout << *td << endl;
 }
 
 bool Board::finish(){
