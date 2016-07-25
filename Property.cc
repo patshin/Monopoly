@@ -29,7 +29,7 @@ void Property::setOwner(Player* p){
 void Property::removeOwner(){
  if(owner == nullptr){
  }else{
-  delete(owner);
+  //delete(owner);
  }
  getBoard()->removeOwner(getSite());
 }
