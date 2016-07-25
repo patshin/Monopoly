@@ -22,18 +22,26 @@ Controller::~Controller(){} //need implemetations????????
 void Controller::gamestart(){
 	cout << "enter the number of players:";
 	string name;
-    while(cin >> NumOfPlayers){
-    	if(cin.fail()){
+       try{ 
+         cin >> NumOfPlayers;
+         if(NumOfPlayers > 6){
+              throw 6;
+           }  
+         }
+    	catch(ios::failure&){
     		cout << "Please enter an interger:";
     		cin.clear();
     		cin.ignore();
-    	}else{
-    		if(NumOfPlayers > 6){
-    			cout << "Maximum players 6, try again:" << endl;
-    		}
-    		if(NumOfPlayers <= 6) break;
+                cin >> NumOfPlayers;
     	}
-    }
+        catch(int x){
+    	        cout << "Maximum players 6, try again:" << endl;
+    		cin >> NumOfPlayers;
+                if(NumOfPlayers > 6){
+                  throw 6;
+                }
+         }  
+
     cout << "Choose your character from Goose(G), GRT Bus(B), Tim Hortons Doughnut(D), Professor(P), Student(S), Money($), Laptop(L), Pink tie(T)" << endl;
     int len = 8;
     bool found = false;
@@ -43,7 +51,9 @@ void Controller::gamestart(){
 	    while(cin >> c){
 	    	for(int n = 0; n < len; n++){
 	    		if(characters[n] == c){
-	    			characters.erase(characters.begin() + n);
+//                               cout << characters[n] << endl;
+	    			 characters.erase(characters.begin() + n);
+  //                             cout << characters[n] << endl;
 	    			found = true;
 	    			len--;
 	    			break;
@@ -52,6 +62,7 @@ void Controller::gamestart(){
 	    	if(found){
 	    		cout << "Enter your name:";
 	    		cin >> name;
+                        found = false;
 	    		break;
 	    	}
 	    	cout << "Player Not found or chosen. Please enter a player character in the list: ";
