@@ -178,7 +178,10 @@ void Board::playerBankrupt(){
     }
     players[currentplayer]->bankrupt();//what player actually does?
     players.erase(players.begin() + currentplayer);
-    NumPlayers--;
+    --NumPlayers;
+    for(int i = 0;i<NumPlayers;++i){
+      sendvector(i);
+    }
 }
 
 void Board::printAsset(){
