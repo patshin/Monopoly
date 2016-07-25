@@ -18,8 +18,8 @@ void TimsLine::method(Player* p){
  while(cin>>cmd){
   if(cmd == "use"){
    if(p->getCupsOwn() == 0){
-    cout << "You do not own and tim cups" << endl;
-    cout << "please try [dice] double or [pay] 50"<<endl;
+    cout << "You do not own and tim cups." << endl;
+    cout << "Please try [dice] double or [pay] 50."<<endl;
    }else{
     cout << "tim cup used"<<endl;
     p->useCup();
@@ -29,21 +29,21 @@ void TimsLine::method(Player* p){
    }
   }else if(cmd == "dice"){
    if(roll == 1){
-    cout << "you have already rolled, please try [pay] 50 or [use] the rim cup"<<endl;
+    cout << "You have already rolled, please try [pay] 50 or [use] the rim cup."<<endl;
    }else{
     srand(time(0));
     int a = (rand()%6) + 1;
     int b = (rand()%6) + 1;
     if(a == b){
-     cout << "you have rolled double, now leave the line"<<endl;
+     cout << "You have rolled double, now leaving the line."<<endl;
      p->setTimTime(0);
      return;
     }else{
      roll = 1;
      if(p->getTimTime() == 3){
-      cout << "dice fail, you MUST [pay] 50 or [use] the rim cup"<<endl;
+      cout << "Dice failed, you MUST [pay] 50 or [use] the rim cup."<<endl;
      }else{
-      cout <<"dice fail, please try [pay] 50 or [use] the rim cup"<<endl;
+      cout <<"Dice failed, please try [pay] 50 or [use] the rim cup."<<endl;
      }
     }
    }
@@ -53,9 +53,9 @@ void TimsLine::method(Player* p){
    return;
   }else if(cmd == "skip"){
    if(skip == 3){
-    cout << "you can not skip, you MUST choose a method"<<endl;
+    cout << "You can not skip, you MUST choose a method."<<endl;
    }else{
-    cout << "skip this round, see you"<<endl;
+    cout << "Skipping this round, see you!"<<endl;
     if(p->rollable() == true){
      p->changeRollable();
     }
