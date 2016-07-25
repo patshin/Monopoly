@@ -51,7 +51,8 @@ void AcademicBuilding::method(Player *p){
   if(getOwner()->getChar() == p->getChar()){
    return;
   }
-  cout << "Landing on an academic building, you need to pay "<<tuition[getImproveCount()]<<endl;
+  cout << "Landing on an academic building, you need to pay "<<tuition[getImproveCount()];
+  cout << " dollar." << endl;
   p->changeBalance(-tuition[getImproveCount()]);
   (getOwner())->changeBalance(tuition[getImproveCount()]);
  }
