@@ -427,6 +427,7 @@ void Player::setBalance(int bal){
 
 void Player::setPos(int p){
   pos = p;
+  buildings[pos]->setPlayer(this);
 }
 
 void Player::setPlayerList(vector<Player*> &pv){
