@@ -170,7 +170,7 @@ void Controller::roll(int dice1, int dice2){
 			
 		}
 	}else{
-		cout << "Fuck off! You are not allowed to roll." << endl;
+		cout << "You are not allowed to roll." << endl;
 	}
 }
 
