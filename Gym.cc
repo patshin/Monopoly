@@ -42,7 +42,10 @@ void Gym::method(Player *p){
  }else{
 	 if(getOwner()->getChar() == p->getChar()){
    return;
-  }
+  }      
+	 if(getMort() == true){
+          cout << "Lucky! this property is mortgaged"<<endl;
+        }
  	Player *pyr = getOwner();
  	int n = pyr->getNumOwn("gym");
  	int fee = getFee(n);
