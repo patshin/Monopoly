@@ -335,7 +335,6 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
   	if(ppos>0 && changeMoney<0){
   		buildings[ppos]->setOwner(this);
       this->addProperty(ppos);
-      this->changeBalance(changeMoney);
   	}else if(ppos<0 && changeMoney>0){
   		this->changeBalance(changeMoney);
   	}else{
