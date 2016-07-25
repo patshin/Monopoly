@@ -243,6 +243,7 @@ void Player::bankrupt(){
 
 void Player::auction(string bname, int bpos){ //use map
   int totalbidders = players.size() - 1;
+  int nonzerobid = 0;
   cout << "total bidder is " << totalbidders << endl;
   int curbid = (buildings.at(pos))->getPrice();
   map<int, string> bidderList;
@@ -256,22 +257,28 @@ void Player::auction(string bname, int bpos){ //use map
   cout << "Lowest bid is " << curbid << endl;
   --curbid;
   int prevPriceBid = 1;
+  string prevname = "";
   while(totalbidders >= 1) {
     if (prevPriceBid == 0){
       bidderList.erase(--bidderList.end());
       prevPriceBid = 1;
+      prevname = "";
     }
     for(auto it=bidderList.begin();it!=bidderList.end();++it){
       if(totalbidders == 1){
         cout << "Congrats! " << it->second << " wins the bid for ";
         cout << bname << "!" << endl;
         this->sendProperty(players[it->first],bpos);
-        players[it->first]->changeBalance(0 - curbid);
+        if(nonzerobid = 0){
+          players[it->first]->changeBalance(0 - curbid);
+        } else {
+          players[it->first]->changeBalance(0 - curbid - 1);	
+        }
         --totalbidders;
         break;
       }
       if (prevPriceBid == 0){
-        bidderList.erase(--it);
+        bidderList.erase(prevname);
       }
       cout << it->second << ":" << endl;
       cout << "Please choose from the following two options:" << endl;
@@ -287,11 +294,13 @@ void Player::auction(string bname, int bpos){ //use map
           }
           if(priceBid == 0){
             prevPriceBid = 0;
+            prevname = it->second;
             --totalbidders;
             break;
           }else if(priceBid > curbid){
             curbid = priceBid;
             prevPriceBid = curbid;
+            ++nonzerobid;
             break;
           }else{
             cout << "Invalid price. Please enter your command again." << endl;
