@@ -108,12 +108,14 @@ Board::Board(Textdisplay *td,vector <Player*> &p): NumPlayers{0},td{td},currentp
 }
 
 Board::~Board(){
-    for(int n = 0; n < NumPlayers; n++){
-        delete players[n];
+    for(vector <Player*>::iterator it = players.begin(); it != players.end(); ++it){
+        delete (*it);
     }
-    for(int j = 0; j < 40; j++){
-        delete building[j];
+    players.clear();
+    for(vector <Building*>::iterator it = building.begin(); it != building.end(); ++it){
+        delete (*it);
     }
+    building.clear();
 }
 
 int Board::findbuilding(string name){
