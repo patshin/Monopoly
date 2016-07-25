@@ -11,7 +11,7 @@ class Property: public Building{
  Property(bool Academic, int price,std::string name, int site, Textdisplay* board);
  bool getAca();
  Player* getOwner();
- void removeOwner();
+ void removeOwner() override;
  int getPrice();
  void changeMort();
  bool getMort();
