@@ -329,6 +329,9 @@ BtoB:
 void Player::prop_manip(int ppos, int changeMoney, string s){
   string pname = getName();
   if(s == "tradein") {
+  	  	cout << "tradein" << endl;
+  	cout << "POS = " << ppos <<endl;
+  	cout << "changeMoney = " << changeMoney <<endl;
   	if(ppos>0 && changeMoney<0){
   		buildings[ppos]->setOwner(this);
       this->addProperty(ppos);
@@ -351,6 +354,9 @@ void Player::prop_manip(int ppos, int changeMoney, string s){
     }
     */
   } else if (s == "tradeout") {
+  	cout << "tradeout" << endl;
+  	cout << "POS = " << ppos <<endl;
+  	cout << "changeMoney = " << changeMoney <<endl;
   	if(ppos>0 && changeMoney<0){
   		pList.erase(buildings[ppos]->getName());
   	}else if(ppos<0 && changeMoney>0){
