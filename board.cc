@@ -422,9 +422,9 @@ void Board::trade(){
         }
         if(giveBuildingIndex == 40 || ReceiveBuildingIndex == 40){
             cout << "Property not found. Request Rejected." << endl;
-        }else if(!players[currentplayer]->tradable(giveBuildingIndex)){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
+        }else if(!players[currentplayer]->canTrade(giveBuildingIndex)){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
             cout << give << " " << "cannot be traded. Request Rejected." << endl;
-        }else if(!players[receiverIndex]->tradable(ReceiveBuildingIndex)){
+        }else if(!players[receiverIndex]->canTrade(ReceiveBuildingIndex)){
             cout << receive << " " << "cannot be traded. Request Rejected." << endl;
         }else{
             string cmd;
