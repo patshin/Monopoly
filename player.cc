@@ -282,7 +282,7 @@ void Player::auction(string bname, int bpos){
 //          players[itt->first]->changeBalance(0 - curbid - 1);
 //        } else {
           players[itt->first]->changeBalance(0 - curbid);	
-        }
+//        }
         --totalbidders;
         break;
       }
