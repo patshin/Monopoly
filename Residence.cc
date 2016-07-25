@@ -30,7 +30,7 @@ void Residence::method(Player *p){
  string s;
  while(cin>>s){
  	if(s == "Y"){
- 		cout << "you have pruchased this property!"<<endl;
+ 		cout << "You have pruchased this property!"<<endl;
  		p->purchase(getName());
  		return;
  	}else if(s =="N"){
@@ -45,7 +45,7 @@ void Residence::method(Player *p){
  	Player *pyr = getOwner();
  	int n = pyr->getNumOwn("res");
  	int fee = getFee(n);
- 	cout << "land at res, you need to pay "<<fee <<endl;
+ 	cout << "Landing at residence, you need to pay: "<<fee <<endl;
  	p->changeBalance(-fee);
 	pyr->changeBalance(fee);
  	return;
