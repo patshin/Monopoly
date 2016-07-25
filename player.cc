@@ -293,7 +293,7 @@ void Player::auction(string bname, int bpos){ //use map
 
 void Player::printProperties() {
   if(pList.size()==0) {
-    cout << "You don't own any properties right now!" << endl;
+    cout << name << " don't own any properties right now!" << endl;
     return;
   }
   cout << name << "'s balance: " << balance << endl;
