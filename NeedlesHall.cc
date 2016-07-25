@@ -8,6 +8,7 @@ NeedlesHall::NeedlesHall(int site, Textdisplay* board):
  NonProperty(false,"NeedlesHall",site, board){
 }
 void NeedlesHall::method(Player* p){
+	srand(time(0));
  int n = getNumRoll();
  if(n == 0){
  }else{
@@ -36,9 +37,9 @@ void NeedlesHall::method(Player* p){
   y=200;
  }
  if(y>0){
-  cout<<"You lost "<<y <<" dollars !"<<endl;
+  cout<<"You get "<<y <<" dollars !"<<endl;
  }else{
-  cout<<"You get "<<y<<" dollars !"<<endl;
+  cout<<"You lost "<<y<<" dollars !"<<endl;
  }
  p->changeBalance(y);
 }
