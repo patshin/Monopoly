@@ -133,19 +133,15 @@ bool Player::canTrade(int bindex){
   string blockname = buildings[bindex]->getblock();
   for (auto it = buildings.begin() ; it != buildings.end(); ++it){
     if((*it)->getOwn()){	    
-  if((buildings[bindex]->getOwner())->getName() == name){
-  }else{
-   return false;
-  }
+      if((buildings[bindex]->getOwner())->getName() != name){
+        return false;
+      }
       if((*it)->getAca()){
         if(blockname == (*it)->getblock()){
           if((*it)->getImproveCount() > 0){
-	  cout<<"false here 1"<<endl;
             return false;
           }
         }
-      }else{
-	return true;
       }
     }
   }
