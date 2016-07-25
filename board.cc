@@ -352,7 +352,7 @@ string Board::getwinner(){
 }
 
 bool Board::at_Tim(){
-    cout << "calling board at_Time" << endl;
+//    cout << "calling board at_Time" << endl;
     cout << players[currentplayer]->getName() << endl;
     return players[currentplayer]->getTimTime() > 0;
 }
@@ -377,11 +377,12 @@ void Board::trade(){
     string name;
     string give = "";
     string receive = "";
-    int givemoney = -1;
-    int receivemoney = -1;
+    int givemoney;
+    int receivemoney;
     int receiverIndex;
     int giveBuildingIndex = -1;
     int ReceiveBuildingIndex = -1;
+    int numberTest;
  //   cout << "Name: ";
     while(cin >> name){
         bool in = false;
@@ -396,23 +397,25 @@ void Board::trade(){
         cout << "Name not found. Try again:";
     }
    // cout << endl << "Give: ";
-    try{
-         cin >> givemoney;
-    }
-    catch(ios::failure&){
-        cin.clear();
-        cin >> give;
-    }
+         cin >> give;
+         istringstream sstream(give);
+        if(sstream >> numberTest){
+           give = "";
+           givemoney = numberTest;
+        }else{
+          givemoney = -1;
+        }
     cout << "givemoney: " << givemoney << endl;
     cout << "givebuilding " << give << endl;
  //   cout << endl << "Receive: ";
-    try{
-        cin >> receivemoney;
-    }
-    catch(ios::failure&){
-        cin.clear();
         cin >> receive;
-    }
+        istringstream ss1(receive);
+        if(ss1 >> numberTest){
+           receive = "";
+           receivemoney = numberTest;
+         }else{
+           receivemoney = -1;
+         }
     cout << "recievemoney: " << receivemoney << endl;
     cout << "recievebuilding " << receive << endl;
     if(give == "" && receive == ""){
@@ -423,16 +426,18 @@ void Board::trade(){
         if(give != ""){
            giveBuildingIndex = findbuilding(give);
            cout << "giveBuildingIndex: " << giveBuildingIndex << endl;
+           cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
         }
         if(receive != ""){
             ReceiveBuildingIndex = findbuilding(receive);
-            cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl; 
+            cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
+            cout << "giveBuildingIndex: " << giveBuildingIndex << endl; 
         }
         if(giveBuildingIndex == 40 || ReceiveBuildingIndex == 40){
             cout << "Property not found. Request Rejected." << endl;
-        }else if(!players[currentplayer]->canTrade(giveBuildingIndex)){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
+        }else if(giveBuildingIndex != -1 && !players[currentplayer]->canTrade(giveBuildingIndex)){ // inform building to implement this. Including the case that it is not owned by the currentplayer.
             cout << give << " " << "cannot be traded. Request Rejected." << endl;
-        }else if(!players[receiverIndex]->canTrade(ReceiveBuildingIndex)){
+        }else if(ReceiveBuildingIndex != -1 && !players[receiverIndex]->canTrade(ReceiveBuildingIndex)){
             cout << receive << " " << "cannot be traded. Request Rejected." << endl;
         }else{
             string cmd;
