@@ -322,7 +322,6 @@ void Board::loadFrom(ifstream &filename){
             if(owner != "BANK"){
                 int playerindex = findplayer(owner);
                 building[index]->setOwner(players[playerindex]);
-                players[playerindex]->addProperty(index);
             } //set owner to owner; can this method be protected??
 		    ss >> improvements;
 		    if(improvements == 0){
@@ -341,7 +340,6 @@ void Board::loadFrom(ifstream &filename){
 			exit(EXIT_FAILURE);
 		}
 	}
-	cout << *td << endl;
 }
 
 bool Board::finish(){
@@ -413,8 +411,8 @@ void Board::trade(){
         }else{
           givemoney = -1;
         }
-    cout << "givemoney: " << givemoney << endl;
-    cout << "givebuilding " << give << endl;
+//    cout << "givemoney: " << givemoney << endl;
+  //  cout << "givebuilding " << give << endl;
  //   cout << endl << "Receive: ";
         cin >> receive;
         istringstream ss1(receive);
@@ -424,8 +422,8 @@ void Board::trade(){
          }else{
            receivemoney = -1;
          }
-    cout << "recievemoney: " << receivemoney << endl;
-    cout << "recievebuilding " << receive << endl;
+  //  cout << "recievemoney: " << receivemoney << endl;
+  //  cout << "recievebuilding " << receive << endl;
     if(give == "" && receive == ""){
         cout << "Money for money? Rejected." << endl;
     }else{
@@ -433,13 +431,13 @@ void Board::trade(){
       //  int ReceiveBuildingIndex = -1;
         if(give != ""){
            giveBuildingIndex = findbuilding(give);
-           cout << "giveBuildingIndex: " << giveBuildingIndex << endl;
-           cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
+    //       cout << "giveBuildingIndex: " << giveBuildingIndex << endl;
+      //     cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
         }
         if(receive != ""){
             ReceiveBuildingIndex = findbuilding(receive);
-            cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
-            cout << "giveBuildingIndex: " << giveBuildingIndex << endl; 
+        //    cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
+          //  cout << "giveBuildingIndex: " << giveBuildingIndex << endl; 
         }
         if(giveBuildingIndex == 40 || ReceiveBuildingIndex == 40){
             cout << "Property not found. Request Rejected." << endl;
@@ -450,15 +448,15 @@ void Board::trade(){
         }else{
             string cmd;
             cout << name << endl;
-            cout << "Please choose accept or reject this offer?" << endl;
+            cout << players[receiverIndex]->getName() <<" can choose accept or reject this offer?" << endl;
             while(cin >> cmd){                
                 if(cmd == "reject") break;
                 if(cmd == "accept"){
                 	//debugging
-                    cout << "giveBuilding index is " << giveBuildingIndex << endl;
-                    cout << "ReceiveBuilding index is " << ReceiveBuildingIndex << endl;
-                    cout << "givemoney index is " << givemoney << endl;
-                    cout << "receive index is " << receivemoney << endl;
+//                    cout << "giveBuilding index is " << giveBuildingIndex << endl;
+  //                  cout << "ReceiveBuilding index is " << ReceiveBuildingIndex << endl;
+    //                cout << "givemoney index is " << givemoney << endl;
+      //              cout << "receive index is " << receivemoney << endl;
                     players[currentplayer]->prop_manip(giveBuildingIndex, givemoney, "tradeout");
                     players[currentplayer]->prop_manip(ReceiveBuildingIndex, receivemoney, "tradein");
                     players[receiverIndex]->prop_manip(giveBuildingIndex, givemoney, "tradein");
