@@ -49,6 +49,7 @@ void Building::b_refresh(){
  curplayer.clear();
 }
 Building ::~Building(){
+  curplayer.clear();
 }
 int Building::getImproveCost(){
  return 0;
@@ -89,3 +90,5 @@ int Building::getNumRoll(){
 void Building::setNumRoll(int n){
   
 }
+
+
