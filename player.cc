@@ -68,7 +68,7 @@ void Player::move(int step){
       pos += step;
     }
   }
-  cout << name << "was moved to" << buildings[pos]->getName() << endl;
+  cout << name << " was moved to " << buildings[pos]->getName() << endl;
   //cout << "player::start setting player" << endl;
   buildings[pos]->setPlayer(this);
   //cout << "player::finish setting" << endl;
