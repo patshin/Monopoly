@@ -91,7 +91,6 @@ void Player::purchase(string bname){
   int pay = 0 - (buildings.at(pos))->getPrice();
   if(canBankrupt(pay)) {
     cout << "Warning! You don't have enough money!" << endl;
-    return;
   }
   this->changeBalance(pay);
   cout << name << " now owns " << bname << "!" << endl;

@@ -289,6 +289,9 @@ void Board::loadFrom(ifstream &filename){
                 }
             }
         }
+	for(int j = 0;j<NumPlayers;j++){
+  	 sendvector(j);
+	}
     }
 	while(true){
 		string s;
