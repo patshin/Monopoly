@@ -257,12 +257,10 @@ void Player::auction(string bname, int bpos){ //use map
   cout << "Lowest bid is " << curbid << endl;
   --curbid;
   int prevPriceBid = 1;
-  string prevname = "";
   while(totalbidders >= 1) {
     if (prevPriceBid == 0){
       bidderList.erase(--bidderList.end());
       prevPriceBid = 1;
-      prevname = "";
     }
     for(auto it=bidderList.begin();it!=bidderList.end();++it){
       if(totalbidders == 1){
@@ -278,7 +276,7 @@ void Player::auction(string bname, int bpos){ //use map
         break;
       }
       if (prevPriceBid == 0){
-        bidderList.erase(prevname);
+        bidderList.erase((it->first)-1);
       }
       cout << it->second << ":" << endl;
       cout << "Please choose from the following two options:" << endl;
@@ -294,7 +292,6 @@ void Player::auction(string bname, int bpos){ //use map
           }
           if(priceBid == 0){
             prevPriceBid = 0;
-            prevname = it->second;
             --totalbidders;
             break;
           }else if(priceBid > curbid){
