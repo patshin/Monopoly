@@ -90,5 +90,8 @@ int Building::getNumRoll(){
 void Building::setNumRoll(int n){
   
 }
+void Building::removeOwner(){
+ 
+}
 
 
