@@ -91,6 +91,7 @@ string Controller::playername(){
 void Controller::roll(int dice1, int dice2){
 	int turn = 0;
 	string roll;
+	srand(time(0));
 	if(playerstatus()){
 		if(!testingMode){
 		    dice1 = rand()%6 + 1;
