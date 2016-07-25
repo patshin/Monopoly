@@ -128,6 +128,22 @@ bool Player::isBlock(int bindex){
   return true;
 }
 
+bool Player::canTrade(int bindex){
+  string blockname = buildings[bindex]->getblock();
+  for (auto it = buildings.begin() ; it != buildings.end(); ++it){
+    if((*it)->getOwn()){
+      if((*it)->getAca()){
+        if(blockname == (*it)->getblock()){
+          if((*it)->getImproveCount() > 0){
+            return false;
+          }
+        }
+      }
+    }
+  }
+  return true;
+}
+
 void Player::changeBalance(int change){
   if(canBankrupt(change)) {
     cout << "WARNING!" << endl;
