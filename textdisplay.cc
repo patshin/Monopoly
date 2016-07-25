@@ -182,11 +182,11 @@ void Textdisplay::improve(int pos, bool whether){
 void Textdisplay::mortgage(int pos, bool whether){
 	vector<int> v = PosToindex(pos);
 	if(whether){
- 	    int row = v[0] - 1;
+ 	    int row = v[0] + 1;
 	    int col = v[1] + 2;
 	    display[row][col] = 'M';
 	}else{
- 	    int row = v[0] - 1;
+ 	    int row = v[0] + 1;
 	    int col = v[1] + 2;
 	    display[row][col] = '_';
 	}
