@@ -5,7 +5,8 @@
 #include "AcademicBuilding.h"
 using namespace std;
 
-AcademicBuilding::AcademicBuilding(int price, int imc, vector <int> tut,string blk,string name, int site, Textdisplay* board ) :Property(true,price,name,site,board){
+AcademicBuilding::AcademicBuilding(int price, int imc, vector <int> tut,string blk,string name, int site, Textdisplay* board ) 
+:Property(true,price,name,site,board){
  this->improveCost=imc;
  this->tuition=tut;
  this->block=blk;
