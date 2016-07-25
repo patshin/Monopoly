@@ -38,7 +38,7 @@ int Property::getPrice(){
 }
 void Property::changeMort(){
  mortgaged = !mortgaged;
- getBoard()->mortgage(getPos(),mortgaged);
+ getBoard()->mortgage(getSite(),mortgaged);
 }
 bool Property::getMort(){
  return mortgaged;
