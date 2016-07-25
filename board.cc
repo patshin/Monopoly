@@ -532,8 +532,8 @@ void Board::mortgage(const bool &whether){
     cout << "Enter property name: ";
     while(cin >> property){
         buildingIndex = findbuilding(property);
+        if(property == "quit") break;
         if(buildingIndex == 40){
-            if(property == "quit") break;
             cout << "Property Not Found. If quit mortgaging, enter quit. Or try again: ";
         }else if(!players[currentplayer]->own(building[buildingIndex])){// inform player to implement this.
             cout << "You don't have this property. If quit mortgaging, enter quit. Or try again: ";
@@ -541,6 +541,8 @@ void Board::mortgage(const bool &whether){
             cout << "Improvements haven't been all sold. If quit mortgaging, enter quit. Or change another property: ";
         }else break;
     }
+   if(property != "quit"){
+
     if(whether){
         if(building[buildingIndex]->getMort()){
             cout << "Already mortgaged. Request Rejected.";
@@ -558,4 +560,5 @@ void Board::mortgage(const bool &whether){
             players[currentplayer]->prop_manip(buildingIndex, cost, "unmortgage");
         }
     }
+  }
 }
