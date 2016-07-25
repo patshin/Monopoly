@@ -213,7 +213,7 @@ void Player::bankrupt(){
       }
     }
   } catch (ios::failure &){}
-  //delete every player's TBC
+  //delete every player's TBD
   for (auto it = players.begin() ; it != players.end(); ++it){
     if((*it)->getName() == name){
       players.erase(it);
