@@ -78,6 +78,7 @@ public:
   void setBalance(int bal);
   void setPos(int p);
   void setPlayerList(std::vector<Player*> &pv);
+  void removePlayer(string n);
   ~Player();
 };
 #endif
