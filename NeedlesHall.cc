@@ -8,11 +8,12 @@ NeedlesHall::NeedlesHall(int site, Textdisplay* board):
  NonProperty(false,"NeedlesHall",site, board){
 }
 void NeedlesHall::method(Player* p){
-	srand(time(0));
  int n = getNumRoll();
  if(n == 0){
  }else{
-  int x = rand()%1-100;
+	 
+	srand(time(0));
+  int x = rand()%100+1;
   if(x == 1){
    cout << "Congrats! You've received a Tim Cup!" << endl;
    setNumRoll(n-1);
@@ -20,7 +21,7 @@ void NeedlesHall::method(Player* p){
   }
  }
  srand(time(0));
- int y = rand()%1-18;
+ int y = rand()%18+1;
  if(y==1){
   y= -200;
  }else if(y>=2&&y<=3){

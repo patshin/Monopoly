@@ -13,15 +13,16 @@ void SLC::method(Player* p){
  if(n == 0){
  }else{
   srand(time(0));
-  int x = rand()%1-100;
+  int x = rand()%100+1;
   if(x == 1){
    cout << "Congrats! You've received a Tim Cup!" << endl;
    setNumRoll(n-1);
    p->receiveCup();
   }
  }
+ srand(time(0));
  int position;
- int y = rand()%1-24;
+ int y = rand()%24+1;
  if(y>=1&&y<=3){
   p->move(-3);
  }else if(y>=4&&y<=7){
