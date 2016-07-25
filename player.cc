@@ -227,24 +227,9 @@ void Player::bankrupt(){
       }
     }
   } catch (ios::failure &){}
-  //remove this player from every player's vector
-  /*
-  for (auto it = players.begin() ; it != players.end(); ++it){
-  	(*it)->removePlayer(name);
-  }
-  */
   delete this;
 }
-/*
-void Player::removePlayer(string n){
-    for (auto it = players.begin() ; it != players.end(); ++it){
-    if((*it)->getName() == n){
-      players.erase(it);
-      break;
-    }
-  }
-}
-*/
+
 void Player::auction(string bname, int bpos){
   int totalbidders = players.size() - 1;
   int nonzerobid = 0;
@@ -272,17 +257,15 @@ void Player::auction(string bname, int bpos){
       if(totalbidders == 1){
       	if(nonzerobid == 0) {
       	  cout << "No one has placed bid. Auction cancelled." << endl;
+      	  cout << "Property released to open market." << endl;
+      	  buildings[bpos]->removeOwner();
       	  --totalbidders;
       	  break;
       	}
         cout << "Congrats! " << itt->second << " wins the bid for ";
         cout << bname << "!" << endl;
         this->sendProperty(players[itt->first],bpos);
-//        if(nonzerobid == 0){
-//          players[itt->first]->changeBalance(0 - curbid - 1);
-//        } else {
-          players[itt->first]->changeBalance(0 - curbid);	
-//        }
+        players[itt->first]->changeBalance(0 - curbid);	
         --totalbidders;
         break;
       }
