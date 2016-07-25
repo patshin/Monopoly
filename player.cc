@@ -270,10 +270,10 @@ void Player::auction(string bname, int bpos){ //use map
         cout << "Congrats! " << itt->second << " wins the bid for ";
         cout << bname << "!" << endl;
         this->sendProperty(players[itt->first],bpos);
-        if(nonzerobid = 0){
-          players[itt->first]->changeBalance(0 - curbid);
+        if(nonzerobid == 0 || nonzerobid == 1){
+          players[itt->first]->changeBalance(0 - curbid - 1);
         } else {
-          players[itt->first]->changeBalance(0 - curbid - 1);	
+          players[itt->first]->changeBalance(0 - curbid);	
         }
         --totalbidders;
         break;
