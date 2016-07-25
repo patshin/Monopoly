@@ -31,7 +31,7 @@ void Gym::method(Player *p){
  string s;
  while(cin>>s){
  	if(s == "Y"){
- 		cout << "you have pruchased this property!"<<endl;
+ 		cout << "You have pruchased this property!"<<endl;
  		p->purchase(getName());
  		return;
  	}else if(s =="N"){
@@ -46,7 +46,7 @@ void Gym::method(Player *p){
  	Player *pyr = getOwner();
  	int n = pyr->getNumOwn("gym");
  	int fee = getFee(n);
- 	cout << "land at gym, you need to pay "<<fee <<endl;
+ 	cout << "Landing at gym, you need to pay: "<<fee <<endl;
  	p->changeBalance(-fee);
 	pyr->changeBalance(fee);
  	return;
