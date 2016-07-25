@@ -14,9 +14,9 @@ class Board{
         std::string winner;
         std::vector <Player*> players;///share ptr??
         std::vector <Building*> building;//share ptr??
-        Textdisplay td;
+        Textdisplay *td;
 public:
-        Board(Textdisplay &td,std::vector <Player *> &p);
+        Board(Textdisplay *td,std::vector <Player *> &p);
         ~Board();
         void attachplayers(std::string name,char c);
     void moveplayer(int steps);
