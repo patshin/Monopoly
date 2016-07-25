@@ -285,14 +285,14 @@ void Board::loadFrom(ifstream &filename){
             if(a == 1){
                 ss >> a;
                 if(a == 2){
-                    players[currentplayer]->setTimTime(1);
-                    players[currentplayer]->setTimTime(1);
-                    players[currentplayer]->setTimTime(1);
+                    players[n]->setTimTime(1);
+                    players[n]->setTimTime(1);
+                    players[n]->setTimTime(1);
                 }else if(a == 1){
-                     players[currentplayer]->setTimTime(1);
-                     players[currentplayer]->setTimTime(1);
+                     players[n]->setTimTime(1);
+                     players[n]->setTimTime(1);
                 }else{
-                    players[currentplayer]->setTimTime(1);;
+                    players[n]->setTimTime(1);;
                 }
             }
         }
