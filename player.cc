@@ -248,7 +248,7 @@ void Player::auction(string bname, int bpos){ //use map
   int totalbidders = players.size() - 1;
   int nonzerobid = 0;
   cout << "total bidder is " << totalbidders << endl;
-  int curbid = (buildings.at(pos))->getPrice();
+  int curbid = (buildings.at(bpos))->getPrice();
   map<int, string> bidderList;
   for(int i=0; i<totalbidders+1;++i){
     if(players[i]->getName() == this->getName()){
