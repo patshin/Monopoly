@@ -375,8 +375,8 @@ void Board::clear(){
 
 void Board::trade(){
     string name;
-    string give;
-    string receive;
+    string give = "";
+    string receive = "";
     int givemoney = -1;
     int receivemoney = -1;
     int receiverIndex;
@@ -393,20 +393,22 @@ void Board::trade(){
         if(in) break;
         cout << "Name not found. Try again:";
     }
-    cout << endl << "Give: ";
-    if(cin >> givemoney){
-        give = "";
-    }else{
+    try{
+         cin >> givemoney;
+    }
+    catch(ios::failure&){
         cin.clear();
         cin >> give;
     }
-    cout << endl << "Receive: ";
-    if(cin >> receivemoney){
-        receive = "";
-    }else{
+    //cout << endl << "Receive: ";
+    try{
+        cin >> receivemoney;
+    }
+    catch(ios::failure&){
         cin.clear();
         cin >> receive;
     }
+
     if(give == "" && receive == ""){
         cout << "Money for money? Rejected." << endl;
     }else{
