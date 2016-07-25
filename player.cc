@@ -267,7 +267,7 @@ void Player::auction(string bname, int bpos){ //use map
     }
     for(auto itt=bidderList.begin();itt!=bidderList.end();++itt){
       if(totalbidders == 1){
-        cout << "Congrats! " << it->second << " wins the bid for ";
+        cout << "Congrats! " << itt->second << " wins the bid for ";
         cout << bname << "!" << endl;
         this->sendProperty(players[itt->first],bpos);
         if(nonzerobid = 0){
