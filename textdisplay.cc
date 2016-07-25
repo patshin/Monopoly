@@ -161,6 +161,7 @@ void Textdisplay::improve(int pos, bool whether){
 	    		col++;
 	    	}else{
 	    	display[row][col] = 'I';
+	    	break;
 		}
 	    }
 	}else{
@@ -171,6 +172,7 @@ void Textdisplay::improve(int pos, bool whether){
 	    		col++;
 	    	}else{
 	    	display[row][col-1] = ' ';
+	    	break;
 		}
 	    }
 	}
