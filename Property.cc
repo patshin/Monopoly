@@ -60,10 +60,22 @@ void Property::refresh(){
  setImprovements(0);
 }
 void Property::setImprovements(int n){
+ if(n>=getImproveCount()){
+  int i =n - getImproveCount();
+  for(int t = 0 ; t < i ; t++){
+ getBoard()->improve(getSite(),true);
+  }
+ }else{
+  int i =getImproveCount() - n;
+  for(int t = 0 ; t < i ; t++){
+ getBoard()->improve(getSite(),false);
+  }
+ }
  improvements = n;
 }
 int Property::getImproveCount(){
  return improvements;
+
 }
  int Property::getNumRoll(){
  	return 0;

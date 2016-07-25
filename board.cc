@@ -455,7 +455,7 @@ void Board::improve(){
         if(buildingIndex == 40){
             if(property == "quit") break;
             cout << "Property Not Found. If quit improving, enter quit. Or try again: ";
-        }else if(building[buildingIndex]->getOwn() && players[currentplayer]->own(building[buildingIndex])){// inform player to implement this.
+        }else if(!(building[buildingIndex]->getOwn()) || !(players[currentplayer]->own(building[buildingIndex]))){// inform player to implement this.
             cout << "You don't have this property. If quit improving, enter quit. Or try again: ";
         }else if(!players[currentplayer]->isBlock(buildingIndex)){//inform building to implement this;
             cout << "Can't be improved without being monoploy. If quit improving, enter quit. Or try again: ";
@@ -472,6 +472,7 @@ void Board::improve(){
              int improveCost = building[buildingIndex]->getImproveCost();
              cout << "This improvement costs " << improveCost << " dollars." << endl;
              players[currentplayer]->prop_manip(buildingIndex, improveCost, "improve");
+	     break;
         }else if(transaction == "sell"){
             int improvements = building[buildingIndex]->getImproveCount();
             if(improvements == 0){
@@ -481,6 +482,7 @@ void Board::improve(){
             int improveCost = (building[buildingIndex]->getImproveCost())/2;
             cout << "Selling this improvement is worth " << improveCost << " dollars." << endl;
             players[currentplayer]->prop_manip(buildingIndex, improveCost, "unimprove");//what if they can't afford it?? what happened when they short?
+	    break;
         }else{
             cout << "Illegal command." << endl;
         }
@@ -501,7 +503,7 @@ void Board::mortgage(const bool &whether){
         if(buildingIndex == 40){
             if(property == "quit") break;
             cout << "Property Not Found. If quit mortgaging, enter quit. Or try again: ";
-        }else if(players[currentplayer]->own(building[buildingIndex])){// inform player to implement this.
+        }else if(!players[currentplayer]->own(building[buildingIndex])){// inform player to implement this.
             cout << "You don't have this property. If quit mortgaging, enter quit. Or try again: ";
         }else if(building[buildingIndex]->getImproveCount() != 0){
             cout << "Improvements haven't been all sold. If quit mortgaging, enter quit. Or change another property: ";

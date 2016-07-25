@@ -156,8 +156,9 @@ void Textdisplay::improve(int pos, bool whether){
 	    for(int i=0; i < 6; i++){
 	    	if(display[row][col] != ' '){
 	    		col++;
-	    	}else break;
+	    	}else{
 	    	display[row][col] = 'I';
+		}
 	    }
 	}else{
 		vector<int> v = PosToindex(pos);
@@ -166,8 +167,9 @@ void Textdisplay::improve(int pos, bool whether){
 	    for(int i=0; i < 6; i++){
 	    	if(display[row][col] != ' '){
 	    		col++;
-	    	}else break;
+	    	}else{
 	    	display[row][col-1] = ' ';
+		}
 	    }
 	}
          cout << (*this);
