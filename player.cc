@@ -471,9 +471,9 @@ void Player::setPos(int p){
   pos = p;
   buildings[pos]->setPlayer(this);
 }
-/*
+
 void Player::setPlayerList(vector<Player*> &pv){
   players = pv;
 }
-*/
+
 Player::~Player(){}
