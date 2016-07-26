@@ -452,8 +452,8 @@ void Board::trade(){
         }
         if(receive != ""){
             ReceiveBuildingIndex = findbuilding(receive);
-        //    cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
-          //  cout << "giveBuildingIndex: " << giveBuildingIndex << endl; 
+       //     cout << "ReceiveBuildingIndex: " << ReceiveBuildingIndex << endl;
+         //   cout << "giveBuildingIndex: " << giveBuildingIndex << endl; 
         }
         if(giveBuildingIndex == 40 || ReceiveBuildingIndex == 40){
             cout << "Property not found. Request Rejected." << endl;
@@ -461,6 +461,8 @@ void Board::trade(){
             cout << give << " " << "cannot be traded. Request Rejected." << endl;
         }else if(ReceiveBuildingIndex != -1 && !players[receiverIndex]->canTrade(ReceiveBuildingIndex)){
             cout << receive << " " << "cannot be traded. Request Rejected." << endl;
+        }else if(receivemoney != -1 && players[receiverIndex]->getBalance() < receivemoney){
+            cout << "Not enough money. Request Rejected." << endl; 
         }else{
             string cmd;
             cout << name << endl;
