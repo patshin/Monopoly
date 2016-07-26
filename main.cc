@@ -92,6 +92,7 @@ int main(int argc, const char * argv[]) {
 
 
   if(argc == 1 || argc == 2 || argc > 4){
+    con.display();
     cout << "Welcome to the game." << endl;
     con.gamestart();
     con.display();
@@ -117,10 +118,10 @@ int main(int argc, const char * argv[]) {
     }
     if(con.rollStage()){
        cout << "It's "<< con.playername() << "'s turn to play" << endl;
-       cout << "Choose of the commands: roll|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|asset|all|save <filename>" << endl; 
+       cout << "Choose one of the commands: roll|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|asset|all|save <filename>|Quit" << endl; 
      }else{
         cout << "You finished rolling." << endl;
-        cout << "Choose of the commands: next|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|asset|all|save <filename>" << endl;
+        cout << "Choose one of the commands: next|trade <name> <give> <receieve>|improve <property> buy/sell|mortgage <property>|unmortgage <property>|bankrupt|asset|all|save <filename>|Quit" << endl;
      }
       try{
         cin >> cmd;
@@ -169,7 +170,20 @@ int main(int argc, const char * argv[]) {
       }else if(cmd == "unmortgage"){
         con.mortgage(false);
         con.display();
-      }else{
+      }else if(cmd == "Quit"){
+        cout << "Would you like to save the game? Y/N" << endl;
+        string s;
+        cin >> s;
+        if(s == "Y"){
+           cout << "Enter filename: ";
+           string name;
+           cin >> name;
+           con.save(name);
+           break;
+        }else{
+            exit(EXIT_SUCCESS); 
+        }
+       }else{
         cout << cmd << " Command not found. Try again:" << endl;
       }
   }
