@@ -49,7 +49,7 @@ void Residence::method(Player *p){
  	int n = pyr->getNumOwn("res");
  	int fee = getFee(n);
  	cout << "Landing at residence, you need to pay: "<<fee <<endl;
- 	p->changeBalance(-fee);
+ 	p->changeBalance(0-fee);
 	pyr->changeBalance(fee);
  	return;
  }
