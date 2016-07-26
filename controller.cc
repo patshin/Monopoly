@@ -296,3 +296,6 @@ void Controller::clearboard(){
         testingMode = false; 
         trading = false;
 }
+
+
+

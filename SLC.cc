@@ -43,3 +43,11 @@ void SLC::method(Player* p){
   p->move(30 - position);
  }
 }
+
+
+
+
+
+
+
+

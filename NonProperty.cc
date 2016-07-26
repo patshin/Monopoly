@@ -57,3 +57,6 @@ NonProperty::~NonProperty(){}
 int NonProperty::getImproveCost(){
  return 0;
 }
+
+
+

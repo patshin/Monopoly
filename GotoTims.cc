@@ -12,3 +12,11 @@ void GotoTims::method(Player* p){
  p->gotoSite(10);
 }
 GotoTims::~GotoTims(){}
+
+
+
+
+
+
+
+

@@ -69,3 +69,10 @@ void AcademicBuilding::method(Player *p){
 AcademicBuilding::~AcademicBuilding(){
 	tuition.clear();
 }
+
+
+
+
+
+
+

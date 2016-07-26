@@ -209,3 +209,7 @@ Textdisplay::~Textdisplay(){
    	} 
 	display.clear();
 }
+
+
+
+

@@ -99,3 +99,11 @@ int Property::getImproveCost(){
 int Property::getValue(){
  return 0;
 }
+
+
+
+
+
+
+
+

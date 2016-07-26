@@ -12,3 +12,9 @@ void CollectOSAP::method(Player* p){
  p->changeBalance(200);
 }
 CollectOSAP::~CollectOSAP(){}
+
+
+
+
+
+

@@ -63,3 +63,9 @@ string Gym::getblock(){
  return "";
 }
 Gym::~Gym(){}
+
+
+
+
+
+

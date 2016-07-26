@@ -13,3 +13,8 @@ void CoopFee::method(Player* p){
  p->changeBalance(-150);
 }
 CoopFee::~CoopFee(){}
+
+
+
+
+

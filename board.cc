@@ -577,3 +577,7 @@ void Board::mortgage(const bool &whether){
     }
   }
 }
+
+
+
+
