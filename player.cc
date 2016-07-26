@@ -285,15 +285,6 @@ void Player::auction(string bname, int bpos){
         --totalbidders;
         break;
       }
-      if(totalbidders == 1){
-    		if(nonzerobid == 0) {
-      	  cout << "No one has placed bid. Auction cancelled." << endl;
-      	  cout << bname <<" was released to open market." << endl;
-      	  buildings[bpos]->removeOwner();
-      	  --totalbidders;
-      	  break;
-      	}
-    	}
       if (prevPriceBid == 0){
         bidderList.erase((itt->first)-1);
       }
@@ -312,6 +303,16 @@ void Player::auction(string bname, int bpos){
           if(priceBid == 0){
             prevPriceBid = 0;
             --totalbidders;
+            //if all quitting
+              if(totalbidders == 0){
+    		if(nonzerobid == 0) {
+      	  	  cout << "No one has placed bid. Auction cancelled." << endl;
+      	  	  cout << bname <<" was released to open market." << endl;
+      	  	  buildings[bpos]->removeOwner();
+//      	  	  --totalbidders;
+      	  	  break;
+      		}
+      	      }
             break;
           }else if(priceBid > curbid){
             curbid = priceBid;
