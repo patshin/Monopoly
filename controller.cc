@@ -249,9 +249,9 @@ void Controller::turnonTestingMode(){
 	testingMode = true;
 }
 
-void Controller::clearboard(){
-	board.clear();
-}
+//void Controller::clearboard(){
+//	board.clear();
+//}
 
 bool Controller::is_atTimline(){
 	return board.at_Tim();
@@ -279,4 +279,20 @@ void Controller::improve(){
 
 void Controller::mortgage(const bool &whether){
 	board.mortgage(whether);
+}
+
+void Controller::clearboard(){
+        characters.push_back('G');
+        characters.push_back('B');
+        characters.push_back('D');
+        characters.push_back('P');
+        characters.push_back('S');
+        characters.push_back('$');
+        characters.push_back('L');
+        characters.push_back('T');
+        board.clear();
+        playerindex = 0;
+        NumOfPlayers = 0;
+        testingMode = false; 
+        trading = false;
 }
