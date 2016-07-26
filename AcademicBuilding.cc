@@ -15,6 +15,9 @@ int AcademicBuilding::getImproveCost(){
  return improveCost;
 }
 int AcademicBuilding::getFee(){
+ if(getOwner()->isBlock(getSite())&&getOwner()->canTrade(getSite())){
+  return tuition[0]*2;
+ }
  return tuition[getImproveCount()];
 }
 int AcademicBuilding::getValue(){
@@ -56,10 +59,10 @@ void AcademicBuilding::method(Player *p){
    cout << "Lucky! this property is mortgaged"<<endl;
    return;
   }
-  cout << "Landing on an academic building, you need to pay "<<tuition[getImproveCount()];
+  cout << "Landing on an academic building, you need to pay "<<getFee();
   cout << " dollar." << endl;
-  p->changeBalance(-tuition[getImproveCount()]);
-  (getOwner())->changeBalance(tuition[getImproveCount()]);
+  p->changeBalance(-getFee());
+  (getOwner())->changeBalance(getFee());
  }
 }
 
