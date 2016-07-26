@@ -21,27 +21,39 @@ Controller::Controller(Board &b,int seed): board{b},playerindex{0},NumOfPlayers{
 Controller::~Controller(){} //need implemetations????????
 
 void Controller::gamestart(){
+        cin.exceptions(ios::eofbit|ios::failbit);
 	cout << "enter the number of players:";
 	string name;
+        bool threw = false;
+     do{
        try{ 
          cin >> NumOfPlayers;
-         if(NumOfPlayers > 6){
+         if(NumOfPlayers > 6 || NumOfPlayers < 2){
               throw 6;
-           }  
+           }
+         threw = false;  
          }
     	catch(ios::failure&){
     		cout << "Please enter an interger:";
     		cin.clear();
     		cin.ignore();
-                cin >> NumOfPlayers;
+               // cin >> NumOfPlayers;
+              //  if(NumOfPlayers > 6){
+               //   throw 6;
+               // }
+                threw = true;
+                
     	}
         catch(int x){
-    	        cout << "Maximum players 6, try again:" << endl;
-    		cin >> NumOfPlayers;
-                if(NumOfPlayers > 6){
-                  throw 6;
-                }
-         }  
+    	        cout << "Maximum players 6, Minimum 2, try again:" ;
+    	//	cin >> NumOfPlayers;
+          //      if(NumOfPlayers > 6){
+            //      throw 6;
+              //  }
+                threw = true;
+         }
+      }while(threw); 
+      
 
     cout << "Choose your character from Goose(G), GRT Bus(B), Tim Hortons Doughnut(D), Professor(P), Student(S), Money($), Laptop(L), Pink tie(T)" << endl;
     int len = 8;
@@ -161,7 +173,8 @@ void Controller::roll(int dice1, int dice2){
 		    }else{
 		        cout << "dice1: " << dice1 << endl;
 		    	cout << "dice2: " << dice2 << endl;
-                      //  cout << "start moving" << endl; 
+                      //  cout << "start moving" << endl;
+                        cout << "total moves" << dice1+dice2 << endl;
 		    	board.moveplayer(dice1 + dice2);
 		    }
 		}
