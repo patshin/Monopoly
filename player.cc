@@ -210,6 +210,18 @@ void Player::bankrupt(){
   int timIndex = 10;
   int cupRemain = buildings[timIndex]->getNumRoll();
   buildings[timIndex]->setNumRoll(cupRemain + cupsOwn);
+  //if not landing on a property
+  if(buildings[pos]->getOwn() == false){
+  	map<string, int> pCopy = pList;
+  	for (auto it=pCopy.begin(); it!=pCopy.end(); ++it){
+      auction(it->first, it->second);
+    }
+    cout << name << "'s properties were successfully auctioned!" << endl;
+    pCopy.clear();
+    delete this;
+    return;
+  }
+  
   string nextCommand;
   cout << "Please choose from the following two options:" << endl;
   cout << "Type <auction> if you want your properties auctioned." << endl;
@@ -236,6 +248,7 @@ void Player::bankrupt(){
       }
     }
   } catch (ios::failure &){}
+  pCopy.clear();
   delete this;
 }
 
