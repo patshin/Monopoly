@@ -127,15 +127,16 @@ bool Player::isBlock(int bindex){
 }
 
 bool Player::canTrade(int bindex){
+  if((buildings[bindex]->getOwner())->getName() != name){
+    cout << "Invalid Trade! You don't own this property!" << endl;
+    return false;
+  }
   if(buildings[bindex]->getImproveCount() > 0) return false;
   if(!(buildings[bindex]->getOwn())) return false;
 	//then check if block has any improvements
   string blockname = buildings[bindex]->getblock();
   for (auto it = buildings.begin() ; it != buildings.end(); ++it){
     if((*it)->getOwn()){	    
-      if((buildings[bindex]->getOwner())->getName() != name){
-        return false;
-      }
       if((*it)->getAca()){
         if(blockname == (*it)->getblock()){
           if((*it)->getImproveCount() > 0){
