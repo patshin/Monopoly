@@ -116,9 +116,13 @@ bool Player::isBlock(int bindex){
     if((*it)->getOwn()){
       if((*it)->getAca()){
         if(blockname == (*it)->getblock()){
-          if(((*it)->getOwner())->getName() != name){
-            return false;
-          }
+        	if ((*it)->getOwner() != nullptr){
+          	if(((*it)->getOwner())->getName() != name){
+            	return false;
+          	}
+        	} else {
+        		return false;
+        	}
         }
       }
     }
@@ -127,6 +131,10 @@ bool Player::isBlock(int bindex){
 }
 
 bool Player::canTrade(int bindex){
+	if ((*it)->getOwner() == nullptr){
+		cout << "Invalid Trade! This property has no owner!" << endl;
+    return false;
+	}
   if((buildings[bindex]->getOwner())->getName() != name){
     cout << "Invalid Trade! You don't own this property!" << endl;
     return false;
