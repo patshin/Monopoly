@@ -234,6 +234,7 @@ void Player::bankrupt(){
           auction(it->first, it->second);
         }
         cout << name << "'s properties were successfully auctioned!" << endl;
+        pCopy.clear();
         break;
       } else if(nextCommand == "give") {
         Player* OwedPerson = buildings[pos]->getOwner();
@@ -241,6 +242,7 @@ void Player::bankrupt(){
           sendProperty(OwedPerson,it->second);
         }
         cout << "All properties were sent to " << OwedPerson->getName() << "!" << endl;
+        pCopy.clear();
         break;
       } else {
         cout << "Invalid command. Please choose again." << endl;
@@ -248,7 +250,6 @@ void Player::bankrupt(){
       }
     }
   } catch (ios::failure &){}
-  pCopy.clear();
   delete this;
 }
 
