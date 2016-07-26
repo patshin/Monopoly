@@ -309,7 +309,6 @@ void Player::auction(string bname, int bpos){
       	  	  cout << "No one has placed bid. Auction cancelled." << endl;
       	  	  cout << bname <<" was released to open market." << endl;
       	  	  buildings[bpos]->removeOwner();
-//      	  	  --totalbidders;
       	  	  break;
       		}
       	      }
