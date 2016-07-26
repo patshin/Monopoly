@@ -131,7 +131,7 @@ bool Player::isBlock(int bindex){
 }
 
 bool Player::canTrade(int bindex){
-	if (building[bindex]->getOwner() == nullptr){
+	if (buildings[bindex]->getOwner() == nullptr){
 	  cout << "Invalid Trade! This property has no owner!" << endl;
           return false;
 	}
