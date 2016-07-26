@@ -152,7 +152,7 @@ bool Player::canTrade(int bindex){
 void Player::changeBalance(int change){
   if(canBankrupt(change)) {
     cout << "WARNING!" << endl;
-    cout << "Your balance is negative now!" << endl;
+    cout << name << "'s balance is negative now!" << endl;
     cout << "Necessary actions must be taken to earn more balance!" << endl;
   }
   balance += change;  
