@@ -109,6 +109,7 @@ int main(int argc, const char * argv[]) {
         while(cin >> c){
                 if(c == 'N') {exit(EXIT_SUCCESS);}
             if(c == 'Y'){
+                con.clearboard();
                 con.gamestart();
                 break;
             }else{
