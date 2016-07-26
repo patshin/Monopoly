@@ -2,7 +2,6 @@
 #define _CONTROLLER_
 #include "board.h"
 #include "textdisplay.h"
-#include "player.h"
 #include <string>
 #include <vector>
 
