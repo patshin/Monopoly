@@ -2,6 +2,7 @@
 #define _CONTROLLER_
 #include "board.h"
 #include "textdisplay.h"
+#include "player.h"
 #include <string>
 #include <vector>
 
@@ -45,7 +46,7 @@ public:
 	// return if the game is in testing mode
 	void turnonTestingMode();
 	// turn on the testing mode
-	void clearboard();
+//	void clearboard();
 	bool is_atTimline();
 	bool is_trading();
 	void display();
@@ -54,6 +55,7 @@ public:
 	void mortgage(const bool &whether);
         bool rollStage();
         std::string playername();
+        void clearboard();
 };
 
 #endif
