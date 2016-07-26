@@ -262,14 +262,7 @@ void Player::auction(string bname, int bpos){
       prevPriceBid = 1;
     }
     for(auto itt=bidderList.begin();itt!=bidderList.end();++itt){
-      if(totalbidders == 1){
-      	if(nonzerobid == 0) {
-      	  cout << "No one has placed bid. Auction cancelled." << endl;
-      	  cout << "Property released to open market." << endl;
-      	  buildings[bpos]->removeOwner();
-      	  --totalbidders;
-      	  break;
-      	}
+      if(totalbidders == 1 && nonzerobid != 0){
         cout << "Congrats! " << itt->second << " wins the bid for ";
         cout << bname << "!" << endl;
         this->sendProperty(players[itt->first],bpos);
@@ -277,6 +270,15 @@ void Player::auction(string bname, int bpos){
         --totalbidders;
         break;
       }
+      if(totalbidders == 1){
+    		if(nonzerobid == 0) {
+      	  cout << "No one has placed bid. Auction cancelled." << endl;
+      	  cout << bname <<" was released to open market." << endl;
+      	  buildings[bpos]->removeOwner();
+      	  --totalbidders;
+      	  break;
+      	}
+    	}
       if (prevPriceBid == 0){
         bidderList.erase((itt->first)-1);
       }
@@ -317,11 +319,11 @@ void Player::auction(string bname, int bpos){
 }
 
 void Player::printProperties() {
+	cout << name << "(" << this->getChar() << ")" << "'s balance: " << balance << endl;
   if(pList.size()==0) {
-    cout << name << " don't own any properties right now!" << endl;
+    cout << name << " doesn't own any properties right now!" << endl;
     return;
   }
-  cout << name << "'s balance: " << balance << endl;
   cout << name << " owns:" << endl;
   for (map<string,int>::iterator it=pList.begin(); it!=pList.end(); ++it){
     cout << (buildings[it->second])->getName() << " ";
